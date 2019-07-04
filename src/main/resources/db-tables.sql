@@ -1,5 +1,5 @@
 CREATE TABLE users (
-user_id int SERIAL,
+user_id int SERIAL PRIMARY KEY,
 login varchar(25) NOT NULL ,
 password varchar(25) NOT NULL,
 role varchar(25),
@@ -8,25 +8,26 @@ active boolean
 
 CREATE TABLE orders (
 order_id SERIAL PRIMARY KEY,
-user_id int REFERENCES users (ID)
+user_id int REFERENCES users (user_id)
 );
 
 CREATE TABLE categories (
 category_id SERIAL PRIMARY KEY,
-name VARCHAR
+name varchar(25)
 );
 
 CREATE TABLE items (
 item_id SERIAL PRIMARY KEY,
-name VARCHAR(25),
+name varchar(25),
 category_id int REFERENCES categories (category_id),
 price int,
 available int
 );
 
 CREATE TABLE item_orders (
+item_order_id SERIAL,
 item_id int REFERENCES items (item_id),
 order_id int REFERENCES orders (order_id),
-count int
+quantity int
 );
 
