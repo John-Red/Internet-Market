@@ -17,7 +17,6 @@ public enum ServerApplication {
   private static final String URL_PATTERN = "/baseServlet";
   ServerAppConfig config;
 
-
   public void start() throws LifecycleException {
     configInit();
 
@@ -39,10 +38,10 @@ public enum ServerApplication {
     tomcat.getServer().await();
   }
 
-  private void configInit (){
+  private void configInit() {
     Yaml yaml = new Yaml();
     InputStream inputStream =
-            this.getClass().getClassLoader().getResourceAsStream("application.yaml");
+        this.getClass().getClassLoader().getResourceAsStream("application.yaml");
     this.config = yaml.load(inputStream);
   }
 }

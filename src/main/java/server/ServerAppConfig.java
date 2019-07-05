@@ -3,7 +3,9 @@ package server;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public class ServerAppConfig {
-  @Getter @Setter private int port;
-  @Getter @Setter private String basedir;
+  private int port;
+  private String basedir;
 }
