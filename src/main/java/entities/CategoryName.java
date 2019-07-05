@@ -1,4 +1,4 @@
-package database;
+package entities;
 
 public enum CategoryName {
   ELECTRONICS,
