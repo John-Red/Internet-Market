@@ -42,10 +42,17 @@
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
+
+        <!--  SNAKEYAML   -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.21</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <tomcat.version>8.0.48</tomcat.version>
+        <tomcat.version>8.0.53</tomcat.version>
     </properties>
 
 </project>

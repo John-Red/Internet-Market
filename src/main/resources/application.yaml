@@ -1,0 +1,3 @@
+!!server.ServerAppConfig
+port: 8080
+basedir: temp
