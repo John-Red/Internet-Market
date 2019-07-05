@@ -43,6 +43,6 @@ public enum ServerApplication {
     Yaml yaml = new Yaml();
     InputStream inputStream =
             this.getClass().getClassLoader().getResourceAsStream("application.yaml");
-    config = yaml.load(inputStream);
+    this.config = yaml.load(inputStream);
   }
 }
