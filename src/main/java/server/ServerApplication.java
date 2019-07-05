@@ -3,11 +3,8 @@ package server;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
-import org.yaml.snakeyaml.Yaml;
-
 import javax.servlet.http.HttpServlet;
 import java.io.File;
-import java.io.InputStream;
 
 /** Creates Server application with tomcat first servlet is on http://localhost:8080/baseServlet */
 public enum ServerApplication {
@@ -15,7 +12,7 @@ public enum ServerApplication {
 
   private static final String SERVLET_NAME = "Servlet1";
   private static final String URL_PATTERN = "/baseServlet";
-  ServerAppConfig config;
+  private ServerAppConfig config;
 
   public void start() throws LifecycleException {
     configInit();
@@ -39,9 +36,6 @@ public enum ServerApplication {
   }
 
   private void configInit() {
-    Yaml yaml = new Yaml();
-    InputStream inputStream =
-        this.getClass().getClassLoader().getResourceAsStream("application.yaml");
-    this.config = yaml.load(inputStream);
+    config = ServerAppConfig.getInstance();
   }
 }
