@@ -1,16 +1,15 @@
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import server.ServerApplication;
 
+@Log4j
 public class Application {
 
-  private static final Logger LOGGER = Logger.getLogger(Application.class.getSimpleName());
   public static void main(String[] args) {
-    LOGGER.info("Application is started");
+    log.info("Application is started");
     try {
       ServerApplication.INSTANCE.start();
     } catch (Exception e) {
-      LOGGER.error("ServerApplication exeption");
-      e.printStackTrace();
+      log.error(e.getMessage(), e);
     }
   }
 }
