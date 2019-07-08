@@ -9,6 +9,7 @@ import java.io.InputStream;
 public class ServerAppConfig {
   @Getter @Setter private int port;
   @Getter @Setter private String basedir;
+  @Getter @Setter private String webappDirLocation;
   private static ServerAppConfig instance;
 
   private ServerAppConfig() {}
