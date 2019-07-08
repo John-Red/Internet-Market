@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Orders {
-  private Long orderId;
-  private Long userId;
+    private Long orderId;
+    private Long userId;
 }
