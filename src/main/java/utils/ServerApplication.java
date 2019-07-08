@@ -1,4 +1,4 @@
-package server;
+package utils;
 
 import lombok.extern.log4j.Log4j;
 import org.apache.catalina.Context;
