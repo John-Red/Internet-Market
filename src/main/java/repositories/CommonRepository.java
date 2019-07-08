@@ -3,6 +3,7 @@ package repositories;
 import java.util.List;
 
 public interface CommonRepository {
-    List<?> get ();
+    List<?> get();
+
     boolean delete(Integer id);
 }
