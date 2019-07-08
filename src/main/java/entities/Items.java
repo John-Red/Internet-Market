@@ -2,9 +2,11 @@ package entities;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 @Builder
 @Data
+@ToString
 public class Items {
 
     private Long itemId;
@@ -13,10 +15,4 @@ public class Items {
     private Integer price;
     private Integer available;
 
-    @Override
-    public String toString() {
-        return String.format(
-                "Items: [id = %d, name = '%s', category_id = %s, price = %s, available = %s]",
-                itemId, name, categoryId, price, available);
-    }
 }
