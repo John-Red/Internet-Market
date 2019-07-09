@@ -19,24 +19,26 @@ public enum ServerApplication {
   private ServerAppConfig config;
 
   public void start() throws LifecycleException, ServletException {
-    //init configuration
+    // init configuration
     configInit();
 
-    //create server
+    // create server
     Tomcat tomcat = new Tomcat();
 
-    //config port
+    // config port
     int webPort = config.getPort();
     tomcat.setPort(webPort);
 
-    //creating a context
+    // creating a context
     StandardContext ctx =
-        (StandardContext) tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
+        (StandardContext)
+            tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
 
     log.info(
-        "configuring app with basedir: " + new File("./" + config.getWebappDirLocation()).getAbsolutePath());
+        "configuring app with basedir: "
+            + new File("./" + config.getWebappDirLocation()).getAbsolutePath());
 
-    // Declare an alternative location for your "WEB-INF/classes" dir
+    // Declare an alternative location for "WEB-INF/classes" dir
     File additionWebInfClasses = new File("target/classes");
     WebResourceRoot resources = new StandardRoot(ctx);
     resources.addPreResources(
@@ -46,7 +48,7 @@ public enum ServerApplication {
 
     tomcat.start();
     tomcat.getServer().await();
-}
+  }
 
   private void configInit() {
     config = ServerAppConfig.getInstance();
