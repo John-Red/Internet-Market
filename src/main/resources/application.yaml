@@ -2,7 +2,6 @@
 port: 8080
 basedir: tomcattemp
 webappDirLocation: src/main/webapp/
-basedir: temp
 databaseUrl: jdbc:postgresql://rogue.db.elephantsql.com:5432/jgmweyay
 databaseUsername: jgmweyay
 databasePassword: dh4gKvTLWAmMZKYQ5JSt_yCUMgxWI9bL
