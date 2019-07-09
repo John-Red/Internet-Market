@@ -1,3 +1,6 @@
 /.idea/
 /temp/
 *iml
+/log/
+/tomcat.8080/
+/tomcattemp/

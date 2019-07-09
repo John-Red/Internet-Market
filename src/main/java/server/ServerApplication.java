@@ -1,5 +1,6 @@
 package server;
 
+import lombok.extern.log4j.Log4j;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import java.io.File;
 
 /** Creates Server application with tomcat first servlet is on http://localhost:8080/baseServlet */
+@Log4j
 public enum ServerApplication {
   INSTANCE;
 
@@ -16,6 +18,7 @@ public enum ServerApplication {
 
   public void start() throws LifecycleException {
     configInit();
+    log.info("ServerApplicatin is started");
 
     Tomcat tomcat = new Tomcat();
     tomcat.setBaseDir(config.getBasedir());
