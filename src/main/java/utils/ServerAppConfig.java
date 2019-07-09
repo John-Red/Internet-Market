@@ -1,14 +1,18 @@
-package server;
+package utils;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.yaml.snakeyaml.Yaml;
 import java.io.InputStream;
+
 @Log4j
 public class ServerAppConfig {
   @Getter @Setter private int port;
   @Getter @Setter private String basedir;
+  @Getter @Setter private String databaseUrl;
+  @Getter @Setter private String databaseUsername;
+  @Getter @Setter private String databasePassword;
   @Getter @Setter private String webappDirLocation;
   private static ServerAppConfig instance;
 

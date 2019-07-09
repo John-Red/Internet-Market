@@ -1,5 +1,5 @@
+import utils.ServerApplication;
 import lombok.extern.log4j.Log4j;
-import server.ServerApplication;
 
 @Log4j
 public class Application {
