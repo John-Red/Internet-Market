@@ -15,4 +15,12 @@
         <url-pattern>/items</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ordersServlet</servlet-name>
+        <servlet-class>servlets.OrdersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ordersServlet</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
 </web-app>
