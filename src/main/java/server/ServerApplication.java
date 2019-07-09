@@ -36,9 +36,7 @@ public enum ServerApplication {
     Context ctx =
             tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
 
-    log.info(
-        "configuring app with basedir: "
-            + new File("./" + config.getWebappDirLocation()).getAbsolutePath());
+    log.info("configuring app with basedir: "+ config.getWebappDirLocation());
 
     // Declare an alternative location for "WEB-INF/classes" dir
     File additionWebInfClasses = new File("target/classes");
