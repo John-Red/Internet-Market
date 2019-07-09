@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-Start page
+Orders page
 </body>
 </html>

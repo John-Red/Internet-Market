@@ -43,7 +43,7 @@
             <version>${tomcat.version}</version>
         </dependency>
 
-        <!--  SNAKEYAML   -->
+         <!--  SNAKEYAML   -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
@@ -58,8 +58,9 @@
         </dependency>
     </dependencies>
 
+
     <properties>
-        <tomcat.version>8.0.53</tomcat.version>
+        <tomcat.version>8.5.42</tomcat.version>
     </properties>
 
 </project>

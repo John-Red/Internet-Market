@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-Start page
+Items page
 </body>
 </html>

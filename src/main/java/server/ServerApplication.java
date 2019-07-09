@@ -3,37 +3,50 @@ package server;
 import lombok.extern.log4j.Log4j;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
+import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
-import javax.servlet.http.HttpServlet;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
+
+import javax.servlet.ServletException;
 import java.io.File;
 
-/** Creates Server application with tomcat first servlet is on http://localhost:8080/baseServlet */
+/**
+ * Creates Server application with tomcat all servlets is on http://localhost:8080/ +
+ * servletname.jsp
+ */
 @Log4j
 public enum ServerApplication {
   INSTANCE;
 
-  private static final String SERVLET_NAME = "Servlet1";
-  private static final String URL_PATTERN = "/baseServlet";
   private ServerAppConfig config;
 
   public void start() throws LifecycleException {
+    // init configuration
     configInit();
-    log.info("ServerApplicatin is started");
 
+    // create server
     Tomcat tomcat = new Tomcat();
-    tomcat.setBaseDir(config.getBasedir());
-    tomcat.setPort(config.getPort());
 
-    String contextPath = "";
-    String docBase = new File(".").getAbsolutePath();
+    // config port
+    int webPort = config.getPort();
+    tomcat.setPort(webPort);
 
-    Context context = tomcat.addContext(contextPath, docBase);
+    // creating a context
+    Context ctx =
+            tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
 
-    HttpServlet servlet = new BaseServlet();
+    log.info("configuring app with basedir: "+ config.getWebappDirLocation());
 
-    tomcat.addServlet(contextPath, SERVLET_NAME, servlet);
-    context.addServletMappingDecoded(URL_PATTERN, SERVLET_NAME);
+    // Declare an alternative location for "WEB-INF/classes" dir
+    File additionWebInfClasses = new File("target/classes");
+    WebResourceRoot resources = new StandardRoot(ctx);
+    resources.addPreResources(
+        new DirResourceSet(
+            resources, "/WEB-INF/classes", additionWebInfClasses.getAbsolutePath(), "/"));
+    ctx.setResources(resources);
 
+    // starting server
     tomcat.start();
     tomcat.getServer().await();
   }
