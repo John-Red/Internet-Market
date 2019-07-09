@@ -39,11 +39,11 @@ public enum ServerApplication {
     log.info("configuring app with basedir: "+ config.getWebappDirLocation());
 
     // Declare an alternative location for "WEB-INF/classes" dir
-    File additionWebInfClasses = new File("target/classes");
+    File additionWebInfClasses = new File("target/classes/servlets");
     WebResourceRoot resources = new StandardRoot(ctx);
     resources.addPreResources(
         new DirResourceSet(
-            resources, "/WEB-INF/classes", additionWebInfClasses.getAbsolutePath(), "/"));
+            resources, "/", additionWebInfClasses.getAbsolutePath(), "/"));
     ctx.setResources(resources);
 
     // starting server
