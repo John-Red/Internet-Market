@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-Start page
+Users page
 </body>
 </html>

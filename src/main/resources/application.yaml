@@ -1,3 +1,4 @@
 !!server.ServerAppConfig
 port: 8080
-basedir: tomcattemp
+basedir: temp
+webappDirLocation: src/main/webapp/
