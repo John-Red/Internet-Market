@@ -60,7 +60,7 @@
 
 
     <properties>
-        <tomcat.version>8.0.53</tomcat.version>
+        <tomcat.version>8.5.42</tomcat.version>
     </properties>
 
 </project>
