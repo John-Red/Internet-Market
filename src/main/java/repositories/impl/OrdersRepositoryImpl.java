@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class OrdersRepositoryImpl implements OrdersRepository {
+public enum OrdersRepositoryImpl implements OrdersRepository {
+  INSTANCE;
+
   public List<Orders> get() {
     List<Orders> result =
         DatabaseConnection.INSTANCE
