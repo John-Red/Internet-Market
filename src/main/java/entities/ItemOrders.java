@@ -1,6 +1,5 @@
 package entities;
 
-
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,6 +11,4 @@ public class ItemOrders {
   private Long orderId;
   private Long itemOrderId;
   private Integer quantity;
-
 }
-

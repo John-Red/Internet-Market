@@ -2,14 +2,14 @@ package repositories.impl;
 
 import entities.Items;
 import org.springframework.jdbc.core.RowMapper;
-import repositories.ItemsRepository;
+import repositories.ItemRepository;
 import utils.DatabaseConnection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public enum ItemsRepositoryImpl implements ItemsRepository {
+public enum ItemRepositoryImpl implements ItemRepository {
   INSTANCE;
 
   public List<Items> get() {
@@ -18,7 +18,6 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
             .getConnection()
             .query(
                 "SELECT * FROM items",
-                new Object[]{},
                 new RowMapper<Items>() {
                   public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
                     return Items.builder()
@@ -44,8 +43,8 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
             available);
   }
 
-  public boolean delete(Integer item_id) {
+  public boolean delete(Long id) {
     String sql = "DELETE FROM items WHERE item_id = ?";
-    return DatabaseConnection.INSTANCE.getConnection().update(sql, item_id) == 1;
+    return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
   }
 }

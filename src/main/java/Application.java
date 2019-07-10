@@ -6,7 +6,6 @@ import utils.DatabaseConnection;
 import utils.ServerApplication;
 import lombok.extern.log4j.Log4j;
 
-
 @Log4j
 public class Application {
 
