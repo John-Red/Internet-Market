@@ -6,13 +6,13 @@ import repositories.impl.ItemRepositoryImpl;
 
 import java.util.List;
 
-public enum ItemService {
+public enum ItemsService {
   INSTANCE;
 
   private ItemRepository itemRepository = new ItemRepositoryImpl();
 
   public void insert(String name, long categoryId, int price, int available) {
-     itemRepository.insert(name,categoryId,price,available);
+    itemRepository.insert(name, categoryId, price, available);
   }
 
   public List<Items> get() {
