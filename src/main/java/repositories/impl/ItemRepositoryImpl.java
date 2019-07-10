@@ -18,7 +18,6 @@ public enum ItemRepositoryImpl implements ItemRepository {
             .getConnection()
             .query(
                 "SELECT * FROM items",
-                new Object[]{},
                 new RowMapper<Items>() {
                   public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
                     return Items.builder()
@@ -44,9 +43,8 @@ public enum ItemRepositoryImpl implements ItemRepository {
             available);
   }
 
-  public boolean delete(Integer item_id) {
+  public boolean delete(Long id) {
     String sql = "DELETE FROM items WHERE item_id = ?";
-    Object[] args = new Object[]{item_id};
-    return DatabaseConnection.INSTANCE.getConnection().update(sql, args) == 1;
+    return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
   }
 }

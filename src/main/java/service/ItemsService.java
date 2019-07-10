@@ -9,17 +9,15 @@ import java.util.List;
 public enum ItemsService {
   INSTANCE;
 
-  private ItemRepository itemRepository = new ItemRepositoryImpl();
-
   public void insert(String name, long categoryId, int price, int available) {
-    itemRepository.insert(name, categoryId, price, available);
+    ItemRepositoryImpl.INSTANCE.insert(name, categoryId, price, available);
   }
 
   public List<Items> get() {
-    return itemRepository.get();
+    return ItemRepositoryImpl.INSTANCE.get();
   }
 
   public void delete(Long id) {
-    itemRepository.delete(id);
+    ItemRepositoryImpl.INSTANCE.delete(id);
   }
 }

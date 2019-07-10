@@ -1,7 +1,6 @@
 import utils.ServerApplication;
 import lombok.extern.log4j.Log4j;
 
-
 @Log4j
 public class Application {
 
@@ -12,6 +11,5 @@ public class Application {
     } catch (Exception e) {
       log.error(e.getMessage(), e);
     }
-
   }
 }
