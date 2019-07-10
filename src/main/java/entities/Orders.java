@@ -8,6 +8,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class Orders {
-    private Long orderId;
-    private Long userId;
+
+  private Long orderId;
+  private Long userId;
 }

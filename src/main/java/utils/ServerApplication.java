@@ -34,7 +34,7 @@ public enum ServerApplication {
 
     // creating a context
     Context ctx =
-            tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
+        tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
 
     log.info("configuring app with basedir: " + config.getWebappDirLocation());
 

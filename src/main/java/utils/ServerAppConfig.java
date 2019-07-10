@@ -8,15 +8,29 @@ import java.io.InputStream;
 
 @Log4j
 public class ServerAppConfig {
-  @Getter @Setter private int port;
-  @Getter @Setter private String basedir;
-  @Getter @Setter private String databaseUrl;
-  @Getter @Setter private String databaseUsername;
-  @Getter @Setter private String databasePassword;
-  @Getter @Setter private String webappDirLocation;
+
+  @Getter
+  @Setter
+  private int port;
+  @Getter
+  @Setter
+  private String basedir;
+  @Getter
+  @Setter
+  private String databaseUrl;
+  @Getter
+  @Setter
+  private String databaseUsername;
+  @Getter
+  @Setter
+  private String databasePassword;
+  @Getter
+  @Setter
+  private String webappDirLocation;
   private static ServerAppConfig instance;
 
-  private ServerAppConfig() {}
+  private ServerAppConfig() {
+  }
 
   static ServerAppConfig getInstance() {
     if (instance == null) {
