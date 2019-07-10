@@ -6,8 +6,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-<div class="table-container">
-  <table>
+  <table class="table">
       <tr>
           <th>ID</th>
           <th>Name</th>
@@ -25,6 +24,5 @@
           </tr>
       </c:forEach>
   </table>
-</div>
 </body>
 </html>
