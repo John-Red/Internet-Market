@@ -62,4 +62,16 @@ public enum ItemRepositoryImpl implements ItemRepository {
       return exists;
     }
   }
+  public boolean isExist (String name){
+    String sql = "SELECT COUNT(*) FROM items WHERE name = ?";
+    boolean exists;
+    exists = false;
+    try{
+    exists= DatabaseConnection.INSTANCE.getConnection().queryForObject(sql, new Object[] { name }, Integer.class) > 0;
+   } catch (DataAccessException e){
+      log.error(e);
+    }finally{
+      return exists;
+    }
+  }
 }
