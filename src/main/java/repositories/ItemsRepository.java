@@ -1,10 +1,9 @@
 package repositories;
 
 import entities.Items;
-
 import java.util.List;
 
-public interface ItemRepository {
+public interface ItemsRepository {
 
   List<Items> get();
 

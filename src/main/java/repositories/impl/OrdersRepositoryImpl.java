@@ -1,6 +1,5 @@
 package repositories.impl;
 
-import entities.Items;
 import entities.Orders;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.OrdersRepository;
