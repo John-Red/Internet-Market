@@ -33,17 +33,15 @@ public enum ServerApplication {
     tomcat.setPort(webPort);
 
     // creating a context
-    Context ctx =
-            tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
+    Context ctx = tomcat.addWebapp("/", new File(config.getWebappDirLocation()).getAbsolutePath());
 
-    log.info("configuring app with basedir: "+ config.getWebappDirLocation());
+    log.info("configuring app with basedir: " + config.getWebappDirLocation());
 
     // Declare an alternative location for "WEB-INF/classes" dir
     File additionWebInfClasses = new File("target/classes/servlets");
     WebResourceRoot resources = new StandardRoot(ctx);
     resources.addPreResources(
-        new DirResourceSet(
-            resources, "/", additionWebInfClasses.getAbsolutePath(), "/"));
+        new DirResourceSet(resources, "/", additionWebInfClasses.getAbsolutePath(), "/"));
     ctx.setResources(resources);
 
     // starting server

@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Categories {
-    private Long categoryId;
-    private CategoryName name;
+
+  private Long categoryId;
+  private CategoryName name;
 }

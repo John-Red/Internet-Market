@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 @Log4j
 public class ServerAppConfig {
+
   @Getter @Setter private int port;
   @Getter @Setter private String basedir;
   @Getter @Setter private String databaseUrl;

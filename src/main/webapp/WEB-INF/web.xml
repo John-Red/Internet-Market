@@ -1,15 +1,26 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd" >
-<web-app>
-        <display-name>Archetype Created Web Application</display-name>
-        <servlet>
-            <servlet-name>servlets.HelloServlet</servlet-name>
-            <servlet-class>servlets.HelloServlet</servlet-class>
-        </servlet>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  version="3.1">
 
-        <servlet-mapping>
-            <servlet-name>servlets.HelloServlet</servlet-name>
-            <url-pattern>/items</url-pattern>
-        </servlet-mapping>
+  <display-name>Test</display-name>
+
+  <servlet>
+    <servlet-name>itemsServlet</servlet-name>
+    <servlet-class>servlets.ItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>itemsServlet</servlet-name>
+    <url-pattern>/items</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ordersServlet</servlet-name>
+    <servlet-class>servlets.OrdersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ordersServlet</servlet-name>
+    <url-pattern>/orders</url-pattern>
+  </servlet-mapping>
 </web-app>
