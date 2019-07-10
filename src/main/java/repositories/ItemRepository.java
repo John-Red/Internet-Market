@@ -5,9 +5,10 @@ import entities.Items;
 import java.util.List;
 
 public interface ItemRepository {
-    List<Items> get();
 
-    void insert(String name, long categoryId, int price, int available);
+  List<Items> get();
 
-    boolean delete(Integer id);
+  void insert(String name, long categoryId, int price, int available);
+
+  boolean delete(Integer id);
 }
