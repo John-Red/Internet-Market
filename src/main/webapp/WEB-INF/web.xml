@@ -32,4 +32,13 @@
     <servlet-name>Cart</servlet-name>
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>adminServlet</servlet-name>
+    <servlet-class>servlets.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
 </web-app>
