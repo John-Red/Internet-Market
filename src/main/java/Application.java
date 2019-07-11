@@ -1,6 +1,4 @@
 import lombok.extern.log4j.Log4j;
-import repositories.impl.ItemRepositoryImpl;
-import service.ItemsService;
 import utils.ServerApplication;
 
 @Log4j
