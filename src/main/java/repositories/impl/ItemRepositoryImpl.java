@@ -10,13 +10,16 @@ import utils.DatabaseConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 @Log4j
 public enum ItemRepositoryImpl implements ItemRepository {
   INSTANCE;
 
   List<Items> result;
+
   public List<Items> get() {
-   result = DatabaseConnection.INSTANCE
+    result =
+        DatabaseConnection.INSTANCE
             .getConnection()
             .query(
                 "SELECT * FROM items",
@@ -50,27 +53,34 @@ public enum ItemRepositoryImpl implements ItemRepository {
     return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
   }
 
-  public boolean isExist (Long id){
+  public boolean isExist(Long id) {
     String sql = "SELECT COUNT(*) FROM items WHERE item_id = ?";
-    boolean exists;
-    exists = false;
-    try{
-    exists= DatabaseConnection.INSTANCE.getConnection().queryForObject(sql, new Object[] { id }, Integer.class) > 0;
-   } catch (DataAccessException e){
+    boolean exists = false;
+    try {
+      exists =
+          DatabaseConnection.INSTANCE
+                  .getConnection()
+                  .queryForObject(sql, new Object[] {id}, Integer.class)
+              > 0;
+    } catch (DataAccessException e) {
       log.error(e);
-    }finally{
+    } finally {
       return exists;
     }
   }
-  public boolean isExist (String name){
+
+  public boolean isExist(String name) {
     String sql = "SELECT COUNT(*) FROM items WHERE name = ?";
-    boolean exists;
-    exists = false;
-    try{
-    exists= DatabaseConnection.INSTANCE.getConnection().queryForObject(sql, new Object[] { name }, Integer.class) > 0;
-   } catch (DataAccessException e){
+    boolean exists = false;
+    try {
+      exists =
+          DatabaseConnection.INSTANCE
+                  .getConnection()
+                  .queryForObject(sql, new Object[] {name}, Integer.class)
+              > 0;
+    } catch (DataAccessException e) {
       log.error(e);
-    }finally{
+    } finally {
       return exists;
     }
   }
