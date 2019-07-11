@@ -1,6 +1,8 @@
 package repositories.impl;
 
 import entities.Items;
+import lombok.extern.log4j.Log4j;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.ItemRepository;
 import utils.DatabaseConnection;
@@ -9,16 +11,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Log4j
 public enum ItemRepositoryImpl implements ItemRepository {
   INSTANCE;
 
+  List<Items> result;
+
   public List<Items> get() {
-    List<Items> result =
+    result =
         DatabaseConnection.INSTANCE
             .getConnection()
             .query(
                 "SELECT * FROM items",
-                new Object[]{},
                 new RowMapper<Items>() {
                   public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
                     return Items.builder()
@@ -44,9 +48,40 @@ public enum ItemRepositoryImpl implements ItemRepository {
             available);
   }
 
-  public boolean delete(Integer item_id) {
+  public boolean delete(Long id) {
     String sql = "DELETE FROM items WHERE item_id = ?";
-    Object[] args = new Object[]{item_id};
-    return DatabaseConnection.INSTANCE.getConnection().update(sql, args) == 1;
+    return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
+  }
+
+  public boolean isExist(Long id) {
+    String sql = "SELECT COUNT(*) FROM items WHERE item_id = ?";
+    boolean exists = false;
+    try {
+      exists =
+          DatabaseConnection.INSTANCE
+                  .getConnection()
+                  .queryForObject(sql, new Object[] {id}, Integer.class)
+              > 0;
+    } catch (DataAccessException e) {
+      log.error(e);
+    } finally {
+      return exists;
+    }
+  }
+
+  public boolean isExist(String name) {
+    String sql = "SELECT COUNT(*) FROM items WHERE name = ?";
+    boolean exists = false;
+    try {
+      exists =
+          DatabaseConnection.INSTANCE
+                  .getConnection()
+                  .queryForObject(sql, new Object[] {name}, Integer.class)
+              > 0;
+    } catch (DataAccessException e) {
+      log.error(e);
+    } finally {
+      return exists;
+    }
   }
 }

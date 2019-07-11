@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 public enum DatabaseConnection {
-
   INSTANCE;
 
   private JdbcTemplate jdbcTemplate;
@@ -21,6 +20,4 @@ public enum DatabaseConnection {
   public JdbcTemplate getConnection() {
     return jdbcTemplate;
   }
-
-
 }
