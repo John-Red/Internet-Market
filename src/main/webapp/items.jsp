@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="./css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all"/>
+<style>
+.item-container {
+display: flex;
+display:inline-block;
+
+flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 16px 20px 12px;
+}
+</style>
 </head>
+
 <body>
-  <table class="table">
-      <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Available</th>
-      </tr>
-      <c:forEach items="${itemsList}" var="item" >
-          <tr>
-              <td>${item.getItemId()}</td>
-              <td>${item.getName()}</td>
-              <td>${item.getAvailable()}</td>
-              <td>${item.getCategoryId()}</td>
-              <td>${item.getPrice()}</td>
-          </tr>
-      </c:forEach>
-  </table>
+<c:forEach items="${itemsList}" var="item" >
+<div class="item-container">
+<div class=""><img alt="item image" src=""></div>
+<div><p>${item.getName()}</p></div>
+<div><span>${item.getPrice()} $</span></div>
+<div><p>Available:  ${item.getAvailable()}</p></div>
+<div><button>BUY</button></div>
+</div>
+
+</c:forEach>
 </body>
 </html>

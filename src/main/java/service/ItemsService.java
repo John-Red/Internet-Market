@@ -1,21 +1,32 @@
 package service;
 
 import entities.Items;
+import repositories.impl.ItemRepositoryImpl;
+
 import java.util.List;
-import repositories.impl.ItemsRepositoryImpl;
+import utils.exeptions.DataDoesNotExist;
+import utils.exeptions.NameAlreadyExists;
+
 
 public enum ItemsService {
   INSTANCE;
 
-  public void insert(String name, long categoryId, int price, int available) {
-    ItemsRepositoryImpl.INSTANCE.insert(name, categoryId, price, available);
-  }
-
   public List<Items> get() {
-    return ItemsRepositoryImpl.INSTANCE.get();
+    return ItemRepositoryImpl.INSTANCE.get();
   }
 
-  public void delete(Long id) {
-    ItemsRepositoryImpl.INSTANCE.delete(id);
+  public void insert(String name, long categoryId, int price, int available)
+      throws NameAlreadyExists {
+ if (!ItemRepositoryImpl.INSTANCE.isExist(name))
+    ItemRepositoryImpl.INSTANCE.insert(name, categoryId, price, available);
+ else
+   throw new NameAlreadyExists();
+  }
+
+  public void delete(Long id) throws DataDoesNotExist {
+    if (ItemRepositoryImpl.INSTANCE.isExist(id))
+      ItemRepositoryImpl.INSTANCE.delete(id);
+     else
+      throw new DataDoesNotExist();
   }
 }

@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.File;
 import lombok.extern.log4j.Log4j;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
@@ -7,9 +8,6 @@ import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
-
-import javax.servlet.ServletException;
-import java.io.File;
 
 /**
  * Creates Server application with tomcat all servlets is on http://localhost:8080/ +

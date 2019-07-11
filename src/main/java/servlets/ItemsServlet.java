@@ -15,6 +15,7 @@ public class ItemsServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     List<Items> list = ItemsService.INSTANCE.get();
+
     request.setAttribute("itemsList", list);
 
     request.getRequestDispatcher("/items.jsp").forward(request, response);
