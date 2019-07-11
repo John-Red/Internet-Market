@@ -17,7 +17,6 @@ public class ItemsServlet extends HttpServlet {
     List<Items> list = ItemsService.INSTANCE.get();
 
     request.setAttribute("itemsList", list);
-
     request.getRequestDispatcher("/items.jsp").forward(request, response);
   }
 }
