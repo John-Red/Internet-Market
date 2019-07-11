@@ -1,23 +1,21 @@
 package service;
 
 import entities.Items;
-import repositories.ItemRepository;
-import repositories.impl.ItemRepositoryImpl;
-
 import java.util.List;
+import repositories.impl.ItemsRepositoryImpl;
 
 public enum ItemsService {
   INSTANCE;
 
   public void insert(String name, long categoryId, int price, int available) {
-    ItemRepositoryImpl.INSTANCE.insert(name, categoryId, price, available);
+    ItemsRepositoryImpl.INSTANCE.insert(name, categoryId, price, available);
   }
 
   public List<Items> get() {
-    return ItemRepositoryImpl.INSTANCE.get();
+    return ItemsRepositoryImpl.INSTANCE.get();
   }
 
   public void delete(Long id) {
-    ItemRepositoryImpl.INSTANCE.delete(id);
+    ItemsRepositoryImpl.INSTANCE.delete(id);
   }
 }

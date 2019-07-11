@@ -2,14 +2,14 @@ package repositories.impl;
 
 import entities.Items;
 import org.springframework.jdbc.core.RowMapper;
-import repositories.ItemRepository;
+import repositories.ItemsRepository;
 import utils.DatabaseConnection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public enum ItemRepositoryImpl implements ItemRepository {
+public enum ItemsRepositoryImpl implements ItemsRepository {
   INSTANCE;
 
   public List<Items> get() {

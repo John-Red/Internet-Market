@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Cart extends HttpServlet {
+
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    request.getRequestDispatcher("/cart.jsp").forward(request, response);
+    request.getRequestDispatcher("/header.jsp").forward(request, response);
   }
 }
