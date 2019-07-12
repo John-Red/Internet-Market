@@ -8,7 +8,7 @@ public interface ItemsRepository {
 
   List<Items> get();
 
-  void insert(String name, long categoryId, int price, int available);
+  void insert(String name, long categoryId, int price, int available, String image);
 
   boolean delete(Long id);
 }

@@ -14,4 +14,5 @@ public class Items {
   private Long categoryId;
   private Integer price;
   private Integer available;
+  private String image;
 }

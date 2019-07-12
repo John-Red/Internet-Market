@@ -16,7 +16,7 @@ public enum UsersRepositoryImpl {
             .getConnection()
             .query(
                 "SELECT * FROM users",
-                new Object[]{},
+                new Object[] {},
                 new RowMapper<Users>() {
                   public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
                     return Users.builder()
