@@ -21,7 +21,8 @@ item_id SERIAL PRIMARY KEY,
 name varchar(25),
 category_id int REFERENCES categories (category_id),
 price int,
-available int
+available int,
+image varchar(25)
 );
 
 CREATE TABLE item_orders (
