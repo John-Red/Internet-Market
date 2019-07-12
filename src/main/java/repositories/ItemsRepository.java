@@ -4,7 +4,8 @@ import entities.Items;
 
 import java.util.List;
 
-public interface ItemRepository {
+public interface ItemsRepository {
+
   List<Items> get();
 
   void insert(String name, long categoryId, int price, int available);
