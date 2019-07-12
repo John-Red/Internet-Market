@@ -5,42 +5,7 @@
     <title>Title</title>
 <link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
-<style>
-.image-container{
-width: 200px;
-height: 300px;
-}
-.img{
-width: auto;
-height: auto;
-max-width:200px;
-max-height:300px;
-}
-html,body{
-	background:#fff;
-	font-size: 100%;
-	font-family:'Oxygen-Regular';
-}
-.span {
-    font-size: 0.9em;
-    color: #F67777;
-    line-height: 1.8em;
-    font-family: 'Ubuntu-Bold';
-}
-.item-container {
-display: flex;
-display:inline-block;
-position:relative;
-border: 1px solid #EFECEC;
-padding: 10px;
-
-flex-flow: row wrap;
-    justify-content: space-between;
-    margin: 0;
-    padding: 16px 20px 12px;
-}
-</style>
-
+<link href="css/itemsstyle.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 
