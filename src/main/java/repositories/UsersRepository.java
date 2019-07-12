@@ -10,5 +10,4 @@ public interface UsersRepository {
   void insert(Integer userId, String login, String password, String role, boolean active);
 
   boolean delete(Integer userId);
-
 }

@@ -10,7 +10,7 @@
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" href="css/header_style.css"/>
 </head>
 <body>
@@ -27,9 +27,9 @@
 				<i class="fa fa-bars"></i>
 			</div>
 			<div class="header-right">
-			  <a href="#" class="item" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
-			  <a href="/items" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>2</span></a>
-			  <a href="#" class="item" ><i class="fa fa-search fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
+			  <a href="#" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
+			  <a href="/items" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>46</span></a>
+			  <a href="#" class="search" ><i class="fa fa-search fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
 			</div>
 			<!-- site menu -->
 			<ul class="main-menu">

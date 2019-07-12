@@ -25,11 +25,11 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>Cart</servlet-name>
-    <servlet-class>servlets.Cart</servlet-class>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>servlets.CartServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Cart</servlet-name>
+    <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
 </web-app>

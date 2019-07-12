@@ -7,12 +7,12 @@ import utils.ServerApplication;
 public class Application {
 
   public static void main(String[] args) {
-    log.info("Application is started");
+
 
     try {
       ServerApplication.INSTANCE.start();
     } catch (Exception e) {
-      log.error(e.getMessage(), e);
+      e.getMessage();
     }
   }
 }

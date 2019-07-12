@@ -19,9 +19,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
 
   public List<Items> get() {
     result =
-        DatabaseConnection.INSTANCE
-            .getConnection()
-            .query(
+        DatabaseConnection.INSTANCE.getConnection().query(
                 "SELECT * FROM items",
                 new RowMapper<Items>() {
                   public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -38,9 +36,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
   }
 
   public void insert(String name, long categoryId, int price, int available) {
-    DatabaseConnection.INSTANCE
-        .getConnection()
-        .update(
+    DatabaseConnection.INSTANCE.getConnection().update(
             "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
             name,
             categoryId,
