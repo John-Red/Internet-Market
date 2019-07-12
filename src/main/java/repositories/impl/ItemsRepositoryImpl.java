@@ -31,7 +31,8 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                         .categoryId(rs.getLong("category_id"))
                         .price(rs.getInt("price"))
                         .available(rs.getInt("available"))
-                        .image(rs.getString("image")!=null ? rs.getString("image"): "default.jpg")
+                        .image(
+                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
                         .build();
                   }
                 });
@@ -50,13 +51,10 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
             image);
   }
 
-  public void updateImage (int id,String image) {
+  public void updateImage(int id, String image) {
     DatabaseConnection.INSTANCE
         .getConnection()
-        .update(
-            "UPDATE items SET image = ? WHERE item_id = ?",
-            image,
-            id);
+        .update("UPDATE items SET image = ? WHERE item_id = ?", image, id);
   }
 
   public boolean delete(Long id) {
