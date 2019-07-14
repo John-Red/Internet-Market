@@ -71,7 +71,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                   .getConnection()
                   .queryForObject(sql, new Object[] {id}, Integer.class)
               > 0;
-    } catch (DataAccessException e) {
+    } catch (Exception e) {
       log.error(e);
     } finally {
       return exists;
@@ -87,7 +87,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                   .getConnection()
                   .queryForObject(sql, new Object[] {name}, Integer.class)
               > 0;
-    } catch (DataAccessException e) {
+    } catch (Exception e) {
       log.error(e);
     } finally {
       return exists;
