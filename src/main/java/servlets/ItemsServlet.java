@@ -31,5 +31,7 @@ public class ItemsServlet extends HttpServlet {
     String name = req.getParameter("addInCart");
     Long id = Long.parseLong(name);
     ItemOrdersService.INSTANCE.insert(id);
+
+    resp.sendRedirect("/items");
   }
 }
