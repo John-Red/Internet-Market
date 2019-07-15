@@ -31,10 +31,3 @@ item_id int REFERENCES items (item_id),
 order_id int REFERENCES orders (order_id),
 quantity int
 );
-
-CREATE TABLE IF NOT EXISTS cart (
-id SERIAL PRIMARY KEY,
-user_id int REFERENCES users (user_id),
-item_id int REFERENCES items (item_id),
-quantity int
-);

@@ -65,7 +65,6 @@ flex-flow: row wrap;
   display: flex;
   flex-direction: row;
   margin: 0 10%;
-  height: 92%;
 }
 a{
     color: #F67777;

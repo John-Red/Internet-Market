@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/itemsstyle.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 
 <body>
-<%@include file="header.jsp" %>
 
 <div class="page">
 <div class="col-left">
