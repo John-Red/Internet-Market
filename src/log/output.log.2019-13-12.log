@@ -1,2 +1,0 @@
-2019-07-12 18:13:39,095  INFO utils.ServerAppConfig:35 Server configuration was read
-2019-07-12 18:13:39,222  INFO utils.ServerApplication:36 configuring app with basedir: src/main/webapp/
