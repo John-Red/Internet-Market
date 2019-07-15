@@ -4,6 +4,7 @@ import entities.Users;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.UsersRepository;
 import utils.DatabaseConnection;
@@ -11,11 +12,10 @@ import utils.DatabaseConnection;
 public enum UsersRepositoryImpl implements UsersRepository {
   INSTANCE;
 
+  JdbcTemplate statement = DatabaseConnection.INSTANCE.getConnection();
+
   public List<Users> get() {
-    List<Users> result =
-        DatabaseConnection.INSTANCE
-            .getConnection()
-            .query(
+    return statement.query(
                 "SELECT * FROM users",
                 new RowMapper<Users>() {
                   public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -28,14 +28,10 @@ public enum UsersRepositoryImpl implements UsersRepository {
                         .build();
                   }
                 });
-
-    return result;
   }
 
   public void insert(String login, String password, String role, boolean active) {
-    DatabaseConnection.INSTANCE
-        .getConnection()
-        .update(
+    statement.update(
             "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
             login,
             password,
@@ -45,7 +41,18 @@ public enum UsersRepositoryImpl implements UsersRepository {
 
   public boolean delete(Long id) {
     String sql = "DELETE FROM items WHERE user_id = ?";
-    return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
+    return statement.update(sql, id) == 1;
   }
+
+  public void changeActiveState (Long userId, Boolean state){
+    String sql = "UPDATE users SET active = ? WHERE user_id = ?;";
+    statement.update(sql,state, userId);
+  }
+
+  public void changeRole (Long userId, String role){
+    String sql = "UPDATE users SET role = ? WHERE user_id = ?;";
+    statement.update(sql,role, userId);
+  }
+
 }
 

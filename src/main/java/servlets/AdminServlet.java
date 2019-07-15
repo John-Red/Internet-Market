@@ -3,6 +3,8 @@ package servlets;
 import entities.Items;
 import entities.Users;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +29,22 @@ public class AdminServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    AdminService.INSTANCE.delete(Long.parseLong(req.getParameter("")));
+    //delete item from db
+    String delete = req.getParameter("delete");
+    if (delete != null) {
+      try {
+        ItemsService.INSTANCE.delete(Long.valueOf(delete));
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+    String state = req.getParameter("getState");
+    String userId = req.getParameter("userId");
+    String role = req.getParameter("getRole");
+    if (userId != null) {
+      AdminService.INSTANCE.changeStateAndRole(Long.valueOf(userId), role, Boolean.valueOf(state));
+    }
+    resp.sendRedirect(req.getContextPath() + "/admin");
   }
 }
