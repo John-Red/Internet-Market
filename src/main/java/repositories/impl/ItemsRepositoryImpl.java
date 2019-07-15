@@ -3,6 +3,7 @@ package repositories.impl;
 import entities.Items;
 import lombok.extern.log4j.Log4j;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.ItemsRepository;
 import utils.DatabaseConnection;
@@ -17,11 +18,10 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
 
   List<Items> result;
 
+  JdbcTemplate statement = DatabaseConnection.INSTANCE.getConnection();
+
   public List<Items> get() {
-    result =
-        DatabaseConnection.INSTANCE
-            .getConnection()
-            .query(
+    return statement.query(
                 "SELECT * FROM items",
                 new RowMapper<Items>() {
                   public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -34,23 +34,16 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                         .build();
                   }
                 });
-    return result;
   }
 
   public void insert(String name, long categoryId, int price, int available) {
-    DatabaseConnection.INSTANCE
-        .getConnection()
-        .update(
+    statement.update(
             "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
-            name,
-            categoryId,
-            price,
-            available);
+            name, categoryId, price, available);
   }
 
   public boolean delete(Long id) {
-    String sql = "DELETE FROM items WHERE item_id = ?";
-    return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
+    return statement.update("DELETE FROM items WHERE item_id = ?", id) == 1;
   }
 
   public boolean isExist(Long id) {
@@ -58,9 +51,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     boolean exists = false;
     try {
       exists =
-          DatabaseConnection.INSTANCE
-                  .getConnection()
-                  .queryForObject(sql, new Object[] {id}, Integer.class)
+          statement.queryForObject(sql, new Object[] {id}, Integer.class)
               > 0;
     } catch (DataAccessException e) {
       log.error(e);
@@ -73,10 +64,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     String sql = "SELECT COUNT(*) FROM items WHERE name = ?";
     boolean exists = false;
     try {
-      exists =
-          DatabaseConnection.INSTANCE
-                  .getConnection()
-                  .queryForObject(sql, new Object[] {name}, Integer.class)
+      exists = statement.queryForObject(sql, new Object[] {name}, Integer.class)
               > 0;
     } catch (DataAccessException e) {
       log.error(e);
@@ -84,4 +72,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
       return exists;
     }
   }
+
+
+
 }
