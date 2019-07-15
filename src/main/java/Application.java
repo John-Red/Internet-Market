@@ -13,7 +13,6 @@ public class Application {
   public static void main(String[] args) {
     log.info("Application is started");
 
-
     try {
       ServerApplication.INSTANCE.start();
     } catch (Exception e) {

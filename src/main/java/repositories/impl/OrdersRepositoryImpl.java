@@ -14,7 +14,7 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
   List<Orders> result;
 
   public List<Orders> get() {
-    result=
+    result =
         DatabaseConnection.INSTANCE
             .getConnection()
             .query(
@@ -43,7 +43,7 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
   }
 
   public List<Orders> getUsersOrder() {
-    result=
+    result =
         DatabaseConnection.INSTANCE
             .getConnection()
             .query(

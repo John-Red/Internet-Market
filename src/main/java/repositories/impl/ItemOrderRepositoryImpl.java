@@ -32,7 +32,27 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
     return result;
   }
 
-  public void insert(Long itemId, int orderId, int quantity) {
+  public List<ItemOrders> getOrder(Long orderId) {
+    result =
+        DatabaseConnection.INSTANCE
+            .getConnection()
+            .query(
+                "SELECT * FROM item_orders WHERE order_id = ?",
+                new RowMapper<ItemOrders>() {
+                  public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    return ItemOrders.builder()
+                        .itemOrderId(rs.getLong("item_order_id"))
+                        .itemId(rs.getLong("item_id"))
+                        .orderId(rs.getLong("order_id"))
+                        .quantity(rs.getInt("quantity"))
+                        .build();
+                  }
+                },
+                orderId);
+    return result;
+  }
+
+  public void insert(Long itemId, Long orderId, int quantity) {
     DatabaseConnection.INSTANCE
         .getConnection()
         .update(
@@ -40,6 +60,16 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
             itemId,
             orderId,
             quantity);
+  }
+
+  public void set(int quantity, Long itemId, Long orderId) {
+    DatabaseConnection.INSTANCE
+        .getConnection()
+        .update(
+            "UPDATE item_orders SET quantity = ? WHERE item_id = ? AND order_id = ?;",
+            quantity,
+            itemId,
+            orderId);
   }
 
   public boolean delete(Long id) {

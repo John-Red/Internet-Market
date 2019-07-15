@@ -7,7 +7,7 @@ public interface ItemOrdersRepository {
 
   List<ItemOrders> get();
 
-  void insert(Long itemId, int orderId, int quantity);
+  void insert(Long itemId, Long orderId, int quantity);
 
   boolean delete(Long id);
 }
