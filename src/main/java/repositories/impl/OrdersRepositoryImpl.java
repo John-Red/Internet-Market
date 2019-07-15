@@ -11,9 +11,10 @@ import java.util.List;
 
 public enum OrdersRepositoryImpl implements OrdersRepository {
   INSTANCE;
+  List<Orders> result;
 
   public List<Orders> get() {
-    List<Orders> result =
+    result=
         DatabaseConnection.INSTANCE
             .getConnection()
             .query(
@@ -23,6 +24,7 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
                     return Orders.builder()
                         .orderId(rs.getLong("order_id"))
                         .userId(rs.getLong("user_id"))
+                        .active(rs.getBoolean("active"))
                         .build();
                   }
                 });
@@ -38,5 +40,23 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
   public boolean delete(Integer order_id) {
     String sql = "DELETE FROM orders WHERE order_id = ?";
     return DatabaseConnection.INSTANCE.getConnection().update(sql, order_id) == 1;
+  }
+
+  public List<Orders> getUsersOrder() {
+    result=
+        DatabaseConnection.INSTANCE
+            .getConnection()
+            .query(
+                "SELECT * FROM orders WHERE active = true AND user_id=1",
+                new RowMapper<Orders>() {
+                  public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    return Orders.builder()
+                        .orderId(rs.getLong("order_id"))
+                        .userId(rs.getLong("user_id"))
+                        .active(rs.getBoolean("active"))
+                        .build();
+                  }
+                });
+    return result;
   }
 }

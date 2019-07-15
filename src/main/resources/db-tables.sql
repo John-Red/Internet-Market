@@ -8,7 +8,8 @@ active boolean
 
 CREATE TABLE orders (
 order_id SERIAL PRIMARY KEY,
-user_id int REFERENCES useintrs (user_id)
+user_id int REFERENCES useintrs (user_id),
+active boolean DEFAULT true
 );
 
 CREATE TABLE categories (

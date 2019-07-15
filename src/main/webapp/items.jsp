@@ -12,6 +12,7 @@
 
 <div class="page">
 <div class="col-left">
+<form method="post">
 <c:forEach items="${itemsList}" var="item" >
 <div class="item-container">
 
@@ -22,8 +23,10 @@
 <div><h2>${item.getName()}</h2></div>
 <div><span class="span">${item.getPrice()} $</span></div>
 <div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
+
 <div class="img item_add">
-<a href="#"><img src="./images/ca.png" alt=""></a>
+<button type="submit" name = "addInCart" value="${item.getItemId()}"><img src="./images/ca.png"></button>
+
 </div>
 
 
