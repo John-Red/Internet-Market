@@ -3,12 +3,9 @@ package repositories.impl;
 import entities.Users;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import repositories.UsersRepository;
 import utils.DatabaseConnection;
 
 public enum UsersRepositoryImpl {
@@ -56,10 +53,6 @@ public enum UsersRepositoryImpl {
     String sql = "UPDATE users SET role = ? WHERE user_id = ?;";
     statement.update(sql,role, userId);
   }
-
-
-  public int compare(Users o1, Users o2) {
-    return o1.getUserId().intValue() - o2.getUserId().intValue();
-  }
+  
 }
 
