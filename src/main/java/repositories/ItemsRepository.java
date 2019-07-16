@@ -1,7 +1,6 @@
 package repositories;
 
 import entities.Items;
-
 import java.util.List;
 
 public interface ItemsRepository {

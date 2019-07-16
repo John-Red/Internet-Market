@@ -12,6 +12,7 @@ public enum ItemsService {
   public List<Items> get() {
     return ItemsRepositoryImpl.INSTANCE.get();
   }
+
   public List<Items> get(Long itemId) {
     return ItemsRepositoryImpl.INSTANCE.get(itemId);
   }

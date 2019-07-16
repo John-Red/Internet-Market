@@ -1,15 +1,13 @@
 package repositories.impl;
 
 import entities.Items;
-import lombok.extern.log4j.Log4j;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.RowMapper;
-import repositories.ItemsRepository;
-import utils.DatabaseConnection;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import lombok.extern.log4j.Log4j;
+import org.springframework.jdbc.core.RowMapper;
+import repositories.ItemsRepository;
+import utils.DatabaseConnection;
 
 @Log4j
 public enum ItemsRepositoryImpl implements ItemsRepository {
@@ -57,7 +55,8 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                             rs.getString("image") != null ? rs.getString("image") : "default.jpg")
                         .build();
                   }
-                },itemId);
+                },
+                itemId);
     return result;
   }
 
@@ -79,7 +78,8 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                             rs.getString("image") != null ? rs.getString("image") : "default.jpg")
                         .build();
                   }
-                },categoryId);
+                },
+                categoryId);
     return result;
   }
 

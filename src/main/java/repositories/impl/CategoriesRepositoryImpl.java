@@ -1,14 +1,13 @@
 package repositories.impl;
 
 import entities.Categories;
-import entities.ItemOrders;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 import utils.DatabaseConnection;
 
-public enum  CategoriesRepositoryImpl {
+public enum CategoriesRepositoryImpl {
   INSTANCE;
 
   List<Categories> result;
@@ -51,8 +50,6 @@ public enum  CategoriesRepositoryImpl {
   public void insert(String name) {
     DatabaseConnection.INSTANCE
         .getConnection()
-        .update(
-            "INSERT INTO categories (name) VALUES (?);",
-            name);
+        .update("INSERT INTO categories (name) VALUES (?);", name);
   }
 }
