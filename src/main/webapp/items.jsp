@@ -36,8 +36,8 @@
 			<!--categories-->
 						<h2>Categories</h2>
 							<ul class="menu-drop">
-							 <c:forEach items="${itemsList}" var="item" >
-							    <li class="item1"><a href="#">${item.getCategoryId()}</a></li>
+							 <c:forEach items="${categoriesList}" var="categories" >
+							    <li class="item1"><a href="/items?category=${categories.getName()}">${categories.getName()}</a></li>
 							</c:forEach>
 						</ul>
 </div>
