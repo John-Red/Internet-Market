@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>EPAM EXPRESS</title>
 <link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/itemsstyle.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
@@ -25,7 +25,7 @@
 <div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
 
 <div class="item_add">
-<button style="cursor: pointer;" type="submit" name="addInCart" value="${item.getItemId()}"><img src="./images/ca.png"></button>
+<button style="cursor: pointer;" type="submit" name="addInCart" value="${item.getItemId()}"><img src="./img/ca.png"></button>
 </div>
 </div>
 </c:forEach>

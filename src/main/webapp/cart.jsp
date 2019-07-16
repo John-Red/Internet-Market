@@ -36,7 +36,7 @@
                               <td>
                                   <div class="media">
                                       <div class="d-flex">
-                                          <img src="./images/${cart.getItemsImage()}" class="img" alt="">
+                                          <img src="./img/${cart.getItemsImage()}" class="img" alt="">
                                       </div>
                                       <div class="media-body">
                                           <p>${cart.itemsName}</p>

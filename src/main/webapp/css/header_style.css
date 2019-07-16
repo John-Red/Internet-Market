@@ -97,7 +97,7 @@ ol {
 
 .site-logo {
 	display: inline-block;
-	padding: 58px 34px 58px;
+	padding: 58px 34px 0px;
 	padding-top: 0;
 	float: left;
 }
