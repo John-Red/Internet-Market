@@ -2,13 +2,15 @@ package entities;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
-@Data
 @Builder
+@Data
 public class Cart {
 
-  private Long id;
-  private Long userId;
-  private Long itemId;
-  private Integer quantity;
+  private String itemsImage;
+  private String itemsName;
+  private Integer itemsPrice;
+  private Integer itemOrdersQuantity;
+  private Integer itemOrderId;
 }

@@ -15,7 +15,7 @@ html,body{
 	background:#fff;
 	font-size: 100%;
 	font-family:'Helvetica';
-	background-image: url(/images/background.jpg);
+	background-image: none;
   background-size: cover;
   margin: 0;
   padding: 0;
