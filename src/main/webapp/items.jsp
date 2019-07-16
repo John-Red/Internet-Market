@@ -17,7 +17,7 @@
 <div class="item-container">
 
 <div class = "image-container">
-<div><img src="./images/${item.getImage()}" class="img" alt=""></div>
+<div><img src="./img/${item.getImage()}" class="img" alt=""></div>
 </div>
 
 <div><h2>${item.getName()}</h2></div>
