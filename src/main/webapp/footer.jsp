@@ -10,12 +10,12 @@
 <footer>
 <div class="footer-container">
 					<ul class="footer-logo">
-						<li><a href="#"><img src="images/f1.png" class="img-responsive" alt=""></a></li>
-						<li><a href="#"><img src="images/f2.png" class="img-responsive" alt=""></a></li>
-						<li><a href="#"><img src="images/f3.png" class="img-responsive" alt=""></a></li>
+						<li><a><img src="images/f1.png" class="img-responsive" alt=""></a></li>
+						<li><a><img src="images/f2.png" class="img-responsive" alt=""></a></li>
+						<li><a><img src="images/f3.png" class="img-responsive" alt=""></a></li>
 					</ul>
 					<p class="footer-copyright">&copy; 2019 Epam Express. All Rights Reserved</p>
 					</div>
 	</footer>
 	</body>
-</html>
+</html>%>
