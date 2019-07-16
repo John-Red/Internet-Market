@@ -39,6 +39,28 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     return result;
   }
 
+  public List<Items> get(Long itemId) {
+    result =
+        DatabaseConnection.INSTANCE
+            .getConnection()
+            .query(
+                "SELECT * FROM items WHERE item_id = ?",
+                new RowMapper<Items>() {
+                  public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    return Items.builder()
+                        .itemId(rs.getLong("item_id"))
+                        .name(rs.getString("name"))
+                        .categoryId(rs.getLong("category_id"))
+                        .price(rs.getInt("price"))
+                        .available(rs.getInt("available"))
+                        .image(
+                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
+                        .build();
+                  }
+                },itemId);
+    return result;
+  }
+
   public void insert(String name, long categoryId, int price, int available, String image) {
     DatabaseConnection.INSTANCE
         .getConnection()

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<%@include file="header.jsp" %>
 <div class="page">
 <div class="col-left">
 <form method="post">
@@ -24,14 +24,12 @@
 <div><span class="span">${item.getPrice()} $</span></div>
 <div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
 
-<div class="img item_add">
-<button type="submit" name = "addInCart" value="${item.getItemId()}"><img src="./images/ca.png"></button>
-
+<div class="item_add">
+<button type="submit" name="addInCart" value="${item.getItemId()}"><img src="./images/ca.png"></button>
 </div>
-
-
 </div>
 </c:forEach>
+</form>
 </div>
 
 <div class="col-right">

@@ -25,6 +25,7 @@ public enum ItemOrdersService {
       for (ItemOrders io : listItemOrders) {
         if (io.getItemId().equals(itemId)) {
           idAlreadyExists = true;
+          if (io.getQuantity()<ItemsService.INSTANCE.get(itemId).get(0).getAvailable())
           ItemOrderRepositoryImpl.INSTANCE.set(
               io.getQuantity() + 1, itemId, listItemOrders.get(0).getOrderId());
         }
