@@ -3,20 +3,23 @@ package repositories.impl;
 import entities.Users;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.UsersRepository;
 import utils.DatabaseConnection;
 
-public enum UsersRepositoryImpl implements UsersRepository {
+public enum UsersRepositoryImpl implements UsersRepository, Comparator<Users> {
   INSTANCE;
 
   JdbcTemplate statement = DatabaseConnection.INSTANCE.getConnection();
 
   public List<Users> get() {
+
     return statement.query(
-                "SELECT * FROM users",
+                "SELECT * FROM users order by login",
                 new RowMapper<Users>() {
                   public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
                     return Users.builder()
@@ -54,5 +57,9 @@ public enum UsersRepositoryImpl implements UsersRepository {
     statement.update(sql,role, userId);
   }
 
+
+  public int compare(Users o1, Users o2) {
+    return o1.getUserId().intValue() - o2.getUserId().intValue();
+  }
 }
 

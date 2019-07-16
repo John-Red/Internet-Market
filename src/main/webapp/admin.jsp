@@ -6,8 +6,8 @@
 <link href="./css/bootstrap.css" rel="stylesheet">
 <style>
 TABLE {
-    width: 25%; /* Ширина таблицы */
-    height: 25%; /* Высота таблицы */
+    width: 25%; 
+    height: 25%;
    }
 </style>
 </head>
@@ -22,7 +22,6 @@ TABLE {
   <table class="table">
   <caption>Users</caption>
       <tr>
-          <th>ID</th>
           <th>Login</th>
           <th>Role</th>
           <th>Active</th>
@@ -31,7 +30,6 @@ TABLE {
       <c:forEach items="${usersList}" var="user">
               <form method="post">
           <tr>
-              <td>${user.getUserId()}</td>
               <td>${user.getLogin()}</td>
               <td>
               <select name="getRole">

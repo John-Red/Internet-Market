@@ -3,7 +3,6 @@ package service;
 import entities.Items;
 import entities.Users;
 import java.util.List;
-import repositories.UsersRepository;
 import repositories.impl.ItemsRepositoryImpl;
 import repositories.impl.UsersRepositoryImpl;
 

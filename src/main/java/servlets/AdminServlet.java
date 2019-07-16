@@ -3,16 +3,16 @@ package servlets;
 import entities.Items;
 import entities.Users;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lombok.extern.log4j.Log4j;
 import service.AdminService;
 import service.ItemsService;
 
+@Log4j
 public class AdminServlet extends HttpServlet {
 
   @Override
@@ -29,16 +29,18 @@ public class AdminServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
+
     //delete item from db
     String delete = req.getParameter("delete");
     if (delete != null) {
       try {
         ItemsService.INSTANCE.delete(Long.valueOf(delete));
       } catch (Exception e) {
-        e.printStackTrace();
+        log.error(e.getMessage(), e);
       }
     }
 
+    //change active state and user role
     String state = req.getParameter("getState");
     String userId = req.getParameter("userId");
     String role = req.getParameter("getRole");
@@ -47,4 +49,5 @@ public class AdminServlet extends HttpServlet {
     }
     resp.sendRedirect(req.getContextPath() + "/admin");
   }
+
 }
