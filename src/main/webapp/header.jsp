@@ -18,10 +18,10 @@
 	<!-- Header section -->
 	<header class="header-section header-normal">
 		<div class="container-fluid">
-			<!-- logo -->
+			<!-- logo --><a href="/items">
 			<div class="site-logo">
-				<img src="img/epam_logo.png" alt="logo">
-			</div>
+				<img src="img/epam_logo.png"  alt="logo">
+			</div></a>
 			<!-- responsive -->
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
@@ -33,11 +33,12 @@
 			</div>
 			<!-- site menu -->
 			<ul class="main-menu">
-				<li><a href="index.html">Electronics</a></li>
-				<li><a href="#">Sporting Goods</a></li>
-				<li><a href="#">Merch</a></li>
-				<li><a href="#">Stationery</a></li>
-				<li><a href="#">Books</a></li>
+			<li><a href="/items?category=furniture">Furniture</a></li>
+				<li><a href="/items?category=electronics">Electronics</a></li>
+				<li><a href="/items?category=sporting goods">Sporting Goods</a></li>
+				<li><a href="/items?category=merch">Merch</a></li>
+				<li><a href="/items?category=stationary">Stationery</a></li>
+				<li><a href="/items?category=books">Books</a></li>
 			</ul>
 		</div>
 	</header>
