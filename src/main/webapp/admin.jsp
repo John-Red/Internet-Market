@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
 TABLE {
     width: 25%; 

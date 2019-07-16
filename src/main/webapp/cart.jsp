@@ -36,7 +36,7 @@
                               <td>
                                   <div class="media">
                                       <div class="d-flex">
-                                          <img src="img/cart/cart1.png" alt="">
+                                          <img src="./images/${cart.getItemsImage()}" class="img" alt="">
                                       </div>
                                       <div class="media-body">
                                           <p>${cart.itemsName}</p>
@@ -67,7 +67,7 @@
                           </form>
 							  <tr class="bottom_button">
                               <td>
-                               <button onclick="javascript:MyFunction();" class="button"<i class="fa fa-angle-up" aria-hidden="true"></i>Update Cart</button>
+                              <a class="gray_btn" href="/cart">Update Cart</a>
 
                               </td>
 
@@ -98,8 +98,8 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="/">Continue Shopping</a>
-                                      <a class="primary-btn ml-2" href="#">Proceed to checkout</a>
+                                      <a class="gray_btn" href="/items">Continue Shopping</a>
+                                      <a class="primary-btn ml-2" >Proceed to checkout</a>
                                   </div>
                               </td>
                           </tr>
