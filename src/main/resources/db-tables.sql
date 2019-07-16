@@ -8,7 +8,8 @@ active boolean
 
 CREATE TABLE orders (
 order_id SERIAL PRIMARY KEY,
-user_id int REFERENCES users (user_id)
+user_id int REFERENCES useintrs (user_id),
+active boolean DEFAULT true
 );
 
 CREATE TABLE categories (
@@ -21,7 +22,8 @@ item_id SERIAL PRIMARY KEY,
 name varchar(25),
 category_id int REFERENCES categories (category_id),
 price int,
-available int
+available int,
+image varchar(25)
 );
 
 CREATE TABLE item_orders (
@@ -30,4 +32,3 @@ item_id int REFERENCES items (item_id),
 order_id int REFERENCES orders (order_id),
 quantity int
 );
-

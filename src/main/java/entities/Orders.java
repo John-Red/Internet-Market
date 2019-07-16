@@ -11,4 +11,5 @@ public class Orders {
 
   private Long orderId;
   private Long userId;
+  private boolean active;
 }

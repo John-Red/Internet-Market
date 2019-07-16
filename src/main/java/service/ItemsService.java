@@ -1,9 +1,8 @@
 package service;
 
 import entities.Items;
-import repositories.impl.ItemsRepositoryImpl;
-
 import java.util.List;
+import repositories.impl.ItemsRepositoryImpl;
 import utils.exeptions.DataDoesNotExist;
 import utils.exeptions.NameAlreadyExists;
 
@@ -14,10 +13,10 @@ public enum ItemsService {
     return ItemsRepositoryImpl.INSTANCE.get();
   }
 
-  public void insert(String name, long categoryId, int price, int available)
+  public void insert(String name, long categoryId, int price, int available, String image)
       throws NameAlreadyExists {
     if (!ItemsRepositoryImpl.INSTANCE.isExist(name))
-      ItemsRepositoryImpl.INSTANCE.insert(name, categoryId, price, available);
+      ItemsRepositoryImpl.INSTANCE.insert(name, categoryId, price, available, image);
     else throw new NameAlreadyExists();
   }
 

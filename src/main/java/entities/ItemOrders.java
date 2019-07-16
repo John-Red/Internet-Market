@@ -7,8 +7,8 @@ import lombok.Data;
 @Builder
 public class ItemOrders {
 
+  private Long itemOrderId;
   private Long itemId;
   private Long orderId;
-  private Long itemOrderId;
   private Integer quantity;
 }

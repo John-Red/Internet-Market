@@ -19,7 +19,9 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
 
   public List<Items> get() {
     result =
-        DatabaseConnection.INSTANCE.getConnection().query(
+        DatabaseConnection.INSTANCE
+            .getConnection()
+            .query(
                 "SELECT * FROM items",
                 new RowMapper<Items>() {
                   public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -29,19 +31,30 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                         .categoryId(rs.getLong("category_id"))
                         .price(rs.getInt("price"))
                         .available(rs.getInt("available"))
+                        .image(
+                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
                         .build();
                   }
                 });
     return result;
   }
 
-  public void insert(String name, long categoryId, int price, int available) {
-    DatabaseConnection.INSTANCE.getConnection().update(
-            "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
+  public void insert(String name, long categoryId, int price, int available, String image) {
+    DatabaseConnection.INSTANCE
+        .getConnection()
+        .update(
+            "INSERT INTO items (name, category_id, price, available, image) VALUES (?, ?, ?, ?,?);",
             name,
             categoryId,
             price,
-            available);
+            available,
+            image);
+  }
+
+  public void updateImage(int id, String image) {
+    DatabaseConnection.INSTANCE
+        .getConnection()
+        .update("UPDATE items SET image = ? WHERE item_id = ?", image, id);
   }
 
   public boolean delete(Long id) {
@@ -53,11 +66,12 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     String sql = "SELECT COUNT(*) FROM items WHERE item_id = ?";
     boolean exists = false;
     try {
-      exists = DatabaseConnection.INSTANCE
+      exists =
+          DatabaseConnection.INSTANCE
                   .getConnection()
                   .queryForObject(sql, new Object[] {id}, Integer.class)
               > 0;
-    } catch (DataAccessException e) {
+    } catch (Exception e) {
       log.error(e);
     } finally {
       return exists;
@@ -73,7 +87,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                   .getConnection()
                   .queryForObject(sql, new Object[] {name}, Integer.class)
               > 0;
-    } catch (DataAccessException e) {
+    } catch (Exception e) {
       log.error(e);
     } finally {
       return exists;
