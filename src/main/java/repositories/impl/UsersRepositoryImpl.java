@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import repositories.UsersRepository;
 import utils.DatabaseConnection;
 
-public enum UsersRepositoryImpl implements UsersRepository, Comparator<Users> {
+public enum UsersRepositoryImpl {
   INSTANCE;
 
   JdbcTemplate statement = DatabaseConnection.INSTANCE.getConnection();
