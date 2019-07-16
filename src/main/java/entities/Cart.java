@@ -5,10 +5,10 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ItemOrders {
+public class Cart {
 
-  private Long itemOrderId;
+  private Long id;
+  private Long userId;
   private Long itemId;
-  private Long orderId;
   private Integer quantity;
 }

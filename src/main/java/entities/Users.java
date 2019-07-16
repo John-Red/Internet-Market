@@ -1,8 +1,12 @@
 package entities;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
+@Builder
 @Data
+@ToString
 public class Users {
 
   private Long userId;

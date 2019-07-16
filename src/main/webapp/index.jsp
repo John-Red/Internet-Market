@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-Start page
+Registration page
 </body>
 </html>

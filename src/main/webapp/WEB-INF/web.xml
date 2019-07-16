@@ -7,20 +7,29 @@
   <display-name>Test</display-name>
 
   <servlet>
-    <servlet-name>itemsServlet</servlet-name>
+    <servlet-name>ItemsServlet</servlet-name>
     <servlet-class>servlets.ItemsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>itemsServlet</servlet-name>
+    <servlet-name>ItemsServlet</servlet-name>
     <url-pattern>/items</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ordersServlet</servlet-name>
+    <servlet-name>OrdersServlet</servlet-name>
     <servlet-class>servlets.OrdersServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ordersServlet</servlet-name>
+    <servlet-name>OrdersServlet</servlet-name>
     <url-pattern>/orders</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Cart</servlet-name>
+    <servlet-class>servlets.Cart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cart</servlet-name>
+    <url-pattern>/cart</url-pattern>
   </servlet-mapping>
 </web-app>

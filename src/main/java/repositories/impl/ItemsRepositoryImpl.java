@@ -31,21 +31,30 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                         .categoryId(rs.getLong("category_id"))
                         .price(rs.getInt("price"))
                         .available(rs.getInt("available"))
+                        .image(
+                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
                         .build();
                   }
                 });
     return result;
   }
 
-  public void insert(String name, long categoryId, int price, int available) {
+  public void insert(String name, long categoryId, int price, int available, String image) {
     DatabaseConnection.INSTANCE
         .getConnection()
         .update(
-            "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
+            "INSERT INTO items (name, category_id, price, available, image) VALUES (?, ?, ?, ?,?);",
             name,
             categoryId,
             price,
-            available);
+            available,
+            image);
+  }
+
+  public void updateImage(int id, String image) {
+    DatabaseConnection.INSTANCE
+        .getConnection()
+        .update("UPDATE items SET image = ? WHERE item_id = ?", image, id);
   }
 
   public boolean delete(Long id) {
@@ -62,7 +71,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                   .getConnection()
                   .queryForObject(sql, new Object[] {id}, Integer.class)
               > 0;
-    } catch (DataAccessException e) {
+    } catch (Exception e) {
       log.error(e);
     } finally {
       return exists;
@@ -78,7 +87,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                   .getConnection()
                   .queryForObject(sql, new Object[] {name}, Integer.class)
               > 0;
-    } catch (DataAccessException e) {
+    } catch (Exception e) {
       log.error(e);
     } finally {
       return exists;
