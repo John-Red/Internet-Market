@@ -48,11 +48,11 @@
                               </td>
                               <td>
                                   <div class="product_count">
-                                      <input type="text" name="qty" id="sst1" maxlength="12" value="${cart.itemOrdersQuantity}" title="Quantity:"
+                                      <input type="text" name="qty" id="ss${cart.getItemOrderId()}" maxlength="12" value="${cart.itemOrdersQuantity}" title="Quantity:"
                                           class="input-text qty">
-                                      <button onclick="var result = document.getElementById('sst1'); var sst1 = result.value; if( !isNaN( sst1 )) result.value++;return false;"
+                                      <button onclick="var result = document.getElementById('ss${cart.getItemOrderId()}'); var ss${cart.getItemOrderId()} = result.value; if( !isNaN( ss${cart.getItemOrderId()} )) result.value++;return false;"
                                           class="increase items-count" type="button"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-                                      <button onclick="var result = document.getElementById('sst1'); var sst1 = result.value; if( !isNaN( sst1 ) &amp;&amp; sst1 > 0 ) result.value--;return false;"
+                                      <button onclick="var result = document.getElementById('ss${cart.getItemOrderId()}'); var ss${cart.getItemOrderId()} = result.value; if( !isNaN( ss${cart.getItemOrderId()} ) &amp;&amp; ss${cart.getItemOrderId()} > 0 ) result.value--;return false;"
                                           class="reduced items-count" type="button"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
                                   </div>
                               </td>
@@ -60,7 +60,7 @@
                                   <h5>${cart.itemsPrice}</h5>
                               </td>
                               <td>
-                                   <button type="submit" name="delete" value="${cart.getItemOrderId()}" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                   <button onclick="" name="delete" value="${cart.getItemOrderId()}" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                               </td>
                           </tr>
                           </c:forEach>

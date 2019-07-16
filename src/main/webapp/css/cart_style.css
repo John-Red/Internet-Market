@@ -4444,7 +4444,12 @@ a {
 
 .delete_button {
     margin-left: 20px;
-    color: #d35d47
+    color: #d35d47;
+    padding: 0;
+    border: none;
+    background: none;
+
+
 }
 
 .product_description_area {
