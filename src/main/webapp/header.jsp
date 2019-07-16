@@ -28,7 +28,7 @@
 			</div>
 			<div class="header-right">
 			  <a href="#" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
-			  <a href="/items" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>46</span></a>
+			  <a href="/cart" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>46</span></a>
 			  <a href="#" class="search" ><i class="fa fa-search fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
 			</div>
 			<!-- site menu -->

@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Builder
 @Data
-@ToString
+
 public class Users {
 
   private Long userId;

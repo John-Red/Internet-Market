@@ -110,5 +110,6 @@
       </div>
   </section>
   <!--================End Cart Area =================-->
+  <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

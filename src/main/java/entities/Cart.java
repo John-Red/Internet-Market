@@ -6,7 +6,6 @@ import lombok.ToString;
 
 @Builder
 @Data
-@ToString
 public class Cart {
 
   private String itemsImage;
