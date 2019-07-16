@@ -30,6 +30,7 @@
                           </tr>
                       </thead>
                       <tbody>
+                      <form method="post">
                       <c:forEach items="${cartList}" var="cart" >
                           <tr>
                               <td>
@@ -59,10 +60,11 @@
                                   <h5>${cart.itemsPrice}</h5>
                               </td>
                               <td>
-                                  <a href="#" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                   <button type="submit" name="delete" value="${cart.getItemOrderId()}" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                               </td>
                           </tr>
                           </c:forEach>
+                          </form>
 							  <tr class="bottom_button">
                               <td>
                                <button onclick="javascript:MyFunction();" class="button"<i class="fa fa-angle-up" aria-hidden="true"></i>Update Cart</button>

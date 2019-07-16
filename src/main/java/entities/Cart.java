@@ -13,4 +13,5 @@ public class Cart {
   private String itemsName;
   private Integer itemsPrice;
   private Integer itemOrdersQuantity;
+  private Integer itemOrderId;
 }
