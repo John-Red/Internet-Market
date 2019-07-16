@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="header.jsp" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="/css/bootstrap.css" rel="stylesheet">
 <style>
 TABLE {
     width: 25%; 
@@ -13,10 +14,7 @@ TABLE {
 </head>
 <body>
 <table class="table">
-<tr>
-  <th></th>
-  <th></th>
-</tr>
+
 <tr>
 <td>
   <table class="table">
@@ -25,6 +23,7 @@ TABLE {
           <th>Login</th>
           <th>Role</th>
           <th>Active</th>
+          <th></th>
           <th></th>
       </tr>
       <c:forEach items="${usersList}" var="user">
@@ -48,13 +47,12 @@ TABLE {
               <td>
               <td><button type="submit" name="userId" value="${user.getUserId()}">Submit</button></td>
               </td>
-          </tr>
           </form>
       </c:forEach>
   </table>
-  </td>
-  <td>
+</td>
 
+<td>
     <table class="table">
     <caption>Items</caption>
         <tr>
@@ -63,6 +61,7 @@ TABLE {
             <th>Available</th>
             <th>Category</th>
             <th>Price</th>
+            <th></th>
             <th></th>
         </tr>
         <c:forEach items="${itemsList}" var="item" >
@@ -76,12 +75,15 @@ TABLE {
                 <td>
                  <td><button type="submit" name="delete" value="${item.getItemId()}" onclick="return confirm('delete?');">X</button></td>
                 </td>
-            </tr>
         </c:forEach>
     </table>
-    </td>
+</td>
+</tr>
+</table>
+<jsp:include page="footer.jsp"></jsp:include>
 </tr>
 </body>
+
 </html>
 
 
