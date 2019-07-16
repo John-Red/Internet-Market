@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j;
 import service.AdminService;
-import service.ItemsService;
 
 @Log4j
 public class AdminServlet extends HttpServlet {
@@ -34,9 +33,9 @@ public class AdminServlet extends HttpServlet {
     String delete = req.getParameter("delete");
     if (delete != null) {
       try {
-        ItemsService.INSTANCE.delete(Long.valueOf(delete));
+        AdminService.INSTANCE.delete(Long.valueOf(delete));
       } catch (Exception e) {
-        log.error(e.getMessage(), e);
+        log.error(e);
       }
     }
 

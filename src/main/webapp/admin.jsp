@@ -54,7 +54,7 @@ TABLE {
   </table>
   </td>
   <td>
-   <form method="post">
+
     <table class="table">
     <caption>Items</caption>
         <tr>
@@ -66,6 +66,7 @@ TABLE {
             <th></th>
         </tr>
         <c:forEach items="${itemsList}" var="item" >
+           <form method="post">
             <tr>
                 <td>${item.getItemId()}</td>
                 <td>${item.getName()}</td>
