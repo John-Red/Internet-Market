@@ -29,12 +29,12 @@ public enum CategoriesRepositoryImpl {
     return result;
   }
 
-  public List<Categories> getCategory(Long orderId) {
+  public List<Categories> getCategory(String categoryName) {
     result =
         DatabaseConnection.INSTANCE
             .getConnection()
             .query(
-                "SELECT * FROM categories WHERE category_id = ?",
+                "SELECT * FROM categories WHERE name = ?",
                 new RowMapper<Categories>() {
                   public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
                     return Categories.builder()
@@ -43,7 +43,7 @@ public enum CategoriesRepositoryImpl {
                         .build();
                   }
                 },
-                orderId);
+                categoryName);
     return result;
   }
 

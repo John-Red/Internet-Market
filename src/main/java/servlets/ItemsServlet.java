@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import repositories.impl.CategoriesRepositoryImpl;
-import repositories.impl.ItemsRepositoryImpl;
 import service.ItemOrdersService;
 import service.ItemsService;
 
@@ -19,26 +18,10 @@ public class ItemsServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String selectedCategory = request.getParameter("category");
-    if (selectedCategory == null) {
-      List<Items> list = ItemsService.INSTANCE.get();
-      List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
-      request.setAttribute("itemsList", list);
-      request.setAttribute("categoriesList", categories);
-
-    } else {
-      List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
-      Long cateId = 0L;
-      for (Categories c : categories) {
-        if (c.getName().equals(selectedCategory)) {
-          cateId = c.getCategoryId();
-          break;
-        }
-      }
-      List<Items> list = ItemsRepositoryImpl.INSTANCE.getByCategory(cateId);
-      request.setAttribute("itemsList", list);
-      request.setAttribute("categoriesList", categories);
-    }
-
+    List<Items> itemsList = ItemsService.INSTANCE.get(selectedCategory);
+    List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
+    request.setAttribute("itemsList", itemsList);
+    request.setAttribute("categoriesList", categories);
     request.getRequestDispatcher("/items.jsp").forward(request, response);
   }
 
@@ -48,7 +31,6 @@ public class ItemsServlet extends HttpServlet {
     String name = req.getParameter("addInCart");
     Long id = Long.parseLong(name);
     ItemOrdersService.INSTANCE.insert(id);
-
     resp.sendRedirect("/items");
   }
 }

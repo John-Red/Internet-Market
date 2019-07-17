@@ -1,5 +1,8 @@
 package utils;
 
+import entities.Items;
+import java.util.ArrayList;
+import java.util.List;
 import service.ItemsService;
 import utils.exeptions.NameAlreadyExists;
 
@@ -8,6 +11,7 @@ public enum CreateRows {
 
   public void start() {
     try {
+
       ItemsService.INSTANCE.insert("sneakers", 4, 2300, 10, "sneakers.jpg");
       ItemsService.INSTANCE.insert("sneakers adidas", 4, 5500, 3, "sneakers adidas.jpg");
       ItemsService.INSTANCE.insert("chair", 1, 15000, 1, "chair.jpg");
