@@ -8,7 +8,7 @@ import repositories.impl.ItemsRepositoryImpl;
 import repositories.impl.UsersRepositoryImpl;
 import utils.exeptions.DataDoesNotExist;
 
-public enum AdminService  {
+public enum AdminService {
   INSTANCE;
 
   public List<Users> getAllUsers() {
@@ -24,9 +24,8 @@ public enum AdminService  {
     ItemsRepositoryImpl.INSTANCE.delete(id);
   }
 
-  public void changeStateAndRole (Long userId,String role, Boolean state){
+  public void changeStateAndRole(Long userId, String role, Boolean state) {
     UsersRepositoryImpl.INSTANCE.changeActiveState(userId, state);
     UsersRepositoryImpl.INSTANCE.changeRole(userId, role);
   }
-
 }

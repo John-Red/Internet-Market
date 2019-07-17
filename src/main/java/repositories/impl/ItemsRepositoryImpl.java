@@ -1,15 +1,13 @@
 package repositories.impl;
 
 import entities.Items;
-import lombok.extern.log4j.Log4j;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.RowMapper;
-import repositories.ItemsRepository;
-import utils.DatabaseConnection;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import lombok.extern.log4j.Log4j;
+import org.springframework.jdbc.core.RowMapper;
+import repositories.ItemsRepository;
+import utils.DatabaseConnection;
 
 @Log4j
 public enum ItemsRepositoryImpl implements ItemsRepository {
@@ -36,6 +34,52 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
                         .build();
                   }
                 });
+    return result;
+  }
+
+  public List<Items> get(Long itemId) {
+    result =
+        DatabaseConnection.INSTANCE
+            .getConnection()
+            .query(
+                "SELECT * FROM items WHERE item_id = ?",
+                new RowMapper<Items>() {
+                  public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    return Items.builder()
+                        .itemId(rs.getLong("item_id"))
+                        .name(rs.getString("name"))
+                        .categoryId(rs.getLong("category_id"))
+                        .price(rs.getInt("price"))
+                        .available(rs.getInt("available"))
+                        .image(
+                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
+                        .build();
+                  }
+                },
+                itemId);
+    return result;
+  }
+
+  public List<Items> getByCategory(Long categoryId) {
+    result =
+        DatabaseConnection.INSTANCE
+            .getConnection()
+            .query(
+                "SELECT * FROM items WHERE category_id = ?",
+                new RowMapper<Items>() {
+                  public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    return Items.builder()
+                        .itemId(rs.getLong("item_id"))
+                        .name(rs.getString("name"))
+                        .categoryId(rs.getLong("category_id"))
+                        .price(rs.getInt("price"))
+                        .available(rs.getInt("available"))
+                        .image(
+                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
+                        .build();
+                  }
+                },
+                categoryId);
     return result;
   }
 

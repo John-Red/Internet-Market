@@ -81,6 +81,7 @@ ol {
 	left: 0;
 	top: 0;
 	z-index: 99;
+	box-sizing: border-box; /*new line*/
 }
 
 .header-section.header-normal {
@@ -96,7 +97,7 @@ ol {
 
 .site-logo {
 	display: inline-block;
-	padding: 58px 34px 58px;
+	padding: 58px 34px 0px;
 	padding-top: 0;
 	float: left;
 }
@@ -109,8 +110,8 @@ ol {
 	list-style: none;
 	margin: 0 auto;
 	display: block;
-	float: right;
-	margin-right: 450px;
+	float: left; /* changed right to left */
+/*	margin-right: 450px; */
 }
 
 .main-menu li {

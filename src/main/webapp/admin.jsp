@@ -4,15 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
+.table {
+  margin-bottom: 0;
+}
+.table-container {
+ min-height: calc(100vh - 169px);
+}
 TABLE {
-    width: 25%; 
+    width: 25%;
     height: 25%;
    }
 </style>
 </head>
 <body>
+<div class="table-container">
 <table class="table">
 
 <tr>
@@ -80,10 +87,9 @@ TABLE {
 </td>
 </tr>
 </table>
+</div>
 <jsp:include page="footer.jsp"></jsp:include>
-</tr>
 </body>
-
 </html>
 
 

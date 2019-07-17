@@ -16,11 +16,11 @@ public class CartServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-      List<Cart> list = CartService.INSTANCE.get();
+    List<Cart> list = CartService.INSTANCE.get();
 
-      request.setAttribute("cartList", list);
+    request.setAttribute("cartList", list);
 
-      request.getRequestDispatcher("/cart.jsp").forward(request, response);
+    request.getRequestDispatcher("/cart.jsp").forward(request, response);
   }
 
   @Override

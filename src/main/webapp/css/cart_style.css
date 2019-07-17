@@ -3910,7 +3910,8 @@ a {
 
 .cart_area {
     padding-top: 90px;
-    padding-bottom: 55px
+    padding-bottom: 55px;
+    min-height: calc(100vh - 166px);
 }
 
 .cart_inner .table th,

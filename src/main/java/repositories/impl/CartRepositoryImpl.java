@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import lombok.extern.log4j.Log4j;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.CartRepository;
 import utils.DatabaseConnection;
@@ -35,9 +34,8 @@ public enum CartRepositoryImpl implements CartRepository {
             });
   }
 
-  public boolean delete(Long item_order_id){
+  public boolean delete(Long item_order_id) {
     String sql = "DELETE FROM item_orders WHERE item_order_id = ?";
     return DatabaseConnection.INSTANCE.getConnection().update(sql, item_order_id) == 1;
   }
-
 }

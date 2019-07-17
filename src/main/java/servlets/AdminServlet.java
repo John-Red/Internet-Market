@@ -29,7 +29,7 @@ public class AdminServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    //delete item from db
+    // delete item from db
     String delete = req.getParameter("delete");
     if (delete != null) {
       try {
@@ -39,7 +39,7 @@ public class AdminServlet extends HttpServlet {
       }
     }
 
-    //change active state and user role
+    // change active state and user role
     String state = req.getParameter("getState");
     String userId = req.getParameter("userId");
     String role = req.getParameter("getRole");
@@ -48,5 +48,4 @@ public class AdminServlet extends HttpServlet {
     }
     resp.sendRedirect(req.getContextPath() + "/admin");
   }
-
 }
