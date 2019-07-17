@@ -31,12 +31,13 @@ public enum ItemsService {
     else throw new DataDoesNotExist();
   }
 
-  public List<Items> get(String categoryName){
-    if (categoryName==null)
-      return get();
+  public List<Items> get(String categoryName) {
+    if (categoryName == null) return get();
     else {
       List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.getCategory(categoryName);
-      return (categories.size()>0) ? ItemsRepositoryImpl.INSTANCE.getByCategory(categories.get(0).getCategoryId()) : get();
+      return (categories.size() > 0)
+          ? ItemsRepositoryImpl.INSTANCE.getByCategory(categories.get(0).getCategoryId())
+          : get();
     }
   }
 }

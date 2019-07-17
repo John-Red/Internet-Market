@@ -14,11 +14,12 @@ public enum ItemOrdersService {
   }
 
   public void insert(Long itemId) {
+
     List<Orders> listOrders = OrdersRepositoryImpl.INSTANCE.getUsersOrder();
     List<ItemOrders> listItemOrders =
         ItemOrderRepositoryImpl.INSTANCE.getOrder(listOrders.get(0).getOrderId());
     boolean idAlreadyExists = false;
-    if (listItemOrders.size()>0 & listOrders.size() > 1) {
+    if (listItemOrders.size() > 0 & listOrders.size() > 1) {
       for (ItemOrders io : listItemOrders) {
         if (io.getItemId().equals(itemId)) {
           idAlreadyExists = true;

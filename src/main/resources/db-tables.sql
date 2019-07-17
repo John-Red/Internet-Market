@@ -14,7 +14,7 @@ active boolean DEFAULT true
 
 CREATE TABLE categories (
 category_id SERIAL PRIMARY KEY,
-name varchar(25)
+name varchar(25) UNIQUE
 );
 
 CREATE TABLE items (
