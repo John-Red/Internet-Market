@@ -8,7 +8,7 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 
-<body>
+<body><%@include file="header.jsp" %>
 
 <div class="page">
 <div class="col-left">
@@ -24,22 +24,20 @@
 <div><span class="span">${item.getPrice()} $</span></div>
 <div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
 
-<div class="img item_add">
-<button type="submit" name = "addInCart" value="${item.getItemId()}"><img src="./images/ca.png"></button>
-
+<div class="item_add">
+<button type="submit" name="addInCart" value="${item.getItemId()}"><img src="./images/ca.png"></button>
 </div>
-
-
 </div>
 </c:forEach>
+</form>
 </div>
 
 <div class="col-right">
 			<!--categories-->
 						<h2>Categories</h2>
 							<ul class="menu-drop">
-							 <c:forEach items="${itemsList}" var="item" >
-							    <li class="item1"><a href="#">${item.getCategoryId()}</a></li>
+							 <c:forEach items="${categoriesList}" var="categories" >
+							    <li class="item1"><a href="/items?category=${categories.getName()}">${categories.getName()}</a></li>
 							</c:forEach>
 						</ul>
 </div>

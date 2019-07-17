@@ -4,21 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-<link href="/css/bootstrap.css" rel="stylesheet">
-<style>
-TABLE {
-    width: 25%; 
-    height: 25%;
-   }
-</style>
+    <link rel="stylesheet" href="css/header_style.css"/>
+    <link rel="stylesheet" href="css/cart_style.css">
 </head>
+
 <body>
 <table class="table">
 
-<tr>
 <td>
+<table class="table">
+<caption>Users</caption>
   <table class="table">
-  <caption>Users</caption>
+
       <tr>
           <th>Login</th>
           <th>Role</th>
@@ -52,9 +49,11 @@ TABLE {
   </table>
 </td>
 
+
 <td>
     <table class="table">
     <caption>Items</caption>
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -73,15 +72,15 @@ TABLE {
                 <td>${item.getCategoryId()}</td>
                 <td>${item.getPrice()}</td>
                 <td>
-                 <td><button type="submit" name="delete" value="${item.getItemId()}" onclick="return confirm('delete?');">X</button></td>
+                 <td><button onclick="" name="delete" value="${item.getItemId()}" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </td>
         </c:forEach>
     </table>
 </td>
-</tr>
+
 </table>
 <jsp:include page="footer.jsp"></jsp:include>
-</tr>
+
 </body>
 
 </html>
