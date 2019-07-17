@@ -58,7 +58,7 @@ public enum UsersRepositoryImpl {
 
   public boolean loginAlreadyExists(String login) {
     String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
-    boolean exists = false;
+    boolean exists = true;
     try {
       exists =
           DatabaseConnection.INSTANCE

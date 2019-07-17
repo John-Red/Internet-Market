@@ -31,8 +31,9 @@
 						</button>
 					</div>
 					</div>
+					</form>
 			</div>
-			<div><span>Login and password should be more than 4 characters</span></div>
+			<div><span>Login should be more than 4 characters</span></div>
 			<div><span>${incorrect}</span></div>
 		</div>
 	</div>
