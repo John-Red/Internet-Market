@@ -8,10 +8,10 @@ public enum UsersService {
   INSTANCE;
 
   public boolean loginIsValid(String login) {
-    if (UsersRepositoryImpl.INSTANCE.loginAlreadyExists(login) | login.length() < 4) {
-      return false;
-    } else {
+    if (login.length() > 4 && !UsersRepositoryImpl.INSTANCE.loginAlreadyExists(login)) {
       return true;
+    } else {
+      return false;
     }
   }
 
