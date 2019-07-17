@@ -16,27 +16,27 @@ public enum UsersRepositoryImpl {
   public List<Users> get() {
 
     return statement.query(
-                "SELECT * FROM users order by login",
-                new RowMapper<Users>() {
-                  public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    return Users.builder()
-                        .userId(rs.getLong("user_id"))
-                        .login(rs.getString("login"))
-                        .password(rs.getString("password"))
-                        .role(rs.getString("role"))
-                        .active(rs.getBoolean("active"))
-                        .build();
-                  }
-                });
+        "SELECT * FROM users order by login",
+        new RowMapper<Users>() {
+          public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return Users.builder()
+                .userId(rs.getLong("user_id"))
+                .login(rs.getString("login"))
+                .password(rs.getString("password"))
+                .role(rs.getString("role"))
+                .active(rs.getBoolean("active"))
+                .build();
+          }
+        });
   }
 
   public void insert(String login, String password, String role, boolean active) {
     statement.update(
-            "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
-            login,
-            password,
-            role,
-            active);
+        "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
+        login,
+        password,
+        role,
+        active);
   }
 
   public boolean delete(Long id) {
@@ -44,15 +44,13 @@ public enum UsersRepositoryImpl {
     return statement.update(sql, id) == 1;
   }
 
-  public void changeActiveState (Long userId, Boolean state){
+  public void changeActiveState(Long userId, Boolean state) {
     String sql = "UPDATE users SET active = ? WHERE user_id = ?;";
-    statement.update(sql,state, userId);
+    statement.update(sql, state, userId);
   }
 
-  public void changeRole (Long userId, String role){
+  public void changeRole(Long userId, String role) {
     String sql = "UPDATE users SET role = ? WHERE user_id = ?;";
-    statement.update(sql,role, userId);
+    statement.update(sql, role, userId);
   }
-  
 }
-
