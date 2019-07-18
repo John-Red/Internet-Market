@@ -4,10 +4,12 @@ import entities.Users;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import lombok.extern.log4j.Log4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import utils.DatabaseConnection;
 
+@Log4j
 public enum UsersRepositoryImpl {
   INSTANCE;
 
@@ -32,7 +34,7 @@ public enum UsersRepositoryImpl {
 
   public void insert(String login, String password, String role, boolean active) {
     statement.update(
-        "INSERT INTO items (name, category_id, price, available) VALUES (?, ?, ?, ?);",
+        "INSERT INTO users (login, password, role, active) VALUES (?, ?, ?, ?);",
         login,
         password,
         role,
@@ -52,5 +54,21 @@ public enum UsersRepositoryImpl {
   public void changeRole(Long userId, String role) {
     String sql = "UPDATE users SET role = ? WHERE user_id = ?;";
     statement.update(sql, role, userId);
+  }
+
+  public boolean loginAlreadyExists(String login) {
+    String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
+    boolean exists = true;
+    try {
+      exists =
+          DatabaseConnection.INSTANCE
+                  .getConnection()
+                  .queryForObject(sql, new Object[] {login}, Integer.class)
+              > 0;
+    } catch (Exception e) {
+      log.error(e);
+    } finally {
+      return exists;
+    }
   }
 }
