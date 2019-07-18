@@ -10,11 +10,11 @@ public enum UsersService {
   INSTANCE;
 
   private boolean isLoginValid(String login) {
-    return login.length() > 4 && !UsersRepositoryImpl.INSTANCE.loginAlreadyExists(login);
+    return login.length() >= 4 && !UsersRepositoryImpl.INSTANCE.loginAlreadyExists(login);
   }
 
   private boolean isPasswordValid(String password) {
-    return password.length() < 255;
+    return password.length() > 4 && password.length() < 255;
   }
 
   public void insert(String login, String password) throws InvalidLoginOrPassword {

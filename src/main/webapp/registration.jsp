@@ -1,41 +1,40 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <link href="css/registration.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form method="post" class="login100-form validate-form">
-					<span class="login100-form-title p-b-33">
-						Account Registration
-					</span>
-
+		<div class="container-login">
+			<div>
+				<form method="post">
+				<div  class="wrap-login">
+          <span> Account Login </span>
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="login" placeholder="Login">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
+						<input class="input100" type="text" name="login" placeholder="Login" pattern="(?=.*[a-z]).{4,}"
+						title="Must contain at least 4 or more characters" required>
 					</div>
-
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="container-login100-form-btn m-t-20">
-						<button  class="login100-form-btn">
-							Sign UP
-						</button>
+					<div class="" data-validate="Password is required">
+					<input class="" type="password" id="psw" name="pass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+					title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 					</div>
 					</div>
+				 <input type="submit" value="Sign Up">
+          </form>
+          <div style="messg">
+           <div id="message">
+                    <span>Password must contain the following:</span>
+                    <p id="letter" class="invalid"> A <b> lowercase</b> letter</p>
+                    <p id="capital" class="invalid"> A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" class="invalid"> A <b>number</b></p>
+                    <p id="length" class="invalid"> Minimum <b>8 characters</b></p>
+                  </div>
+           </div>
+        </div>
+        <script src="js/registration.js"></script>
 					</form>
 			</div>
-			<div><span>Login should be more than 4 characters</span></div>
 			<div><span>${incorrect}</span></div>
 		</div>
-	</div>
 </body>
 </html>
