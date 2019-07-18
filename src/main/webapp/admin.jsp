@@ -72,7 +72,7 @@
                 <td>${item.getCategoryId()}</td>
                 <td>${item.getPrice()}</td>
                 <td>
-                 <td><button onclick="" name="delete" value="${item.getItemId()}" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                 <td><button type="submit" name="delete" value="${item.getItemId()}" onclick="return confirm('delete?');">X</button></td>
                 </td>
         </c:forEach>
     </table>

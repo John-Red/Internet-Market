@@ -30,9 +30,10 @@
                           </tr>
                       </thead>
                       <tbody>
-                      <form method="post">
+
                       <c:forEach items="${cartList}" var="cart" >
                           <tr>
+                          <form method="post">
                               <td>
                                   <div class="media">
                                       <div class="d-flex">
@@ -47,24 +48,31 @@
                                   <h5>${cart.itemsPrice}</h5>
                               </td>
                               <td>
+
                                   <div class="product_count">
-                                      <input type="text" name="qty" id="ss${cart.getItemOrderId()}" maxlength="12" value="${cart.itemOrdersQuantity}" title="Quantity:"
-                                          class="input-text qty">
-                                      <button onclick="var result = document.getElementById('ss${cart.getItemOrderId()}'); var ss${cart.getItemOrderId()} = result.value; if( !isNaN( ss${cart.getItemOrderId()} )) result.value++;return false;"
-                                          class="increase items-count" type="button"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-                                      <button onclick="var result = document.getElementById('ss${cart.getItemOrderId()}'); var ss${cart.getItemOrderId()} = result.value; if( !isNaN( ss${cart.getItemOrderId()} ) &amp;&amp; ss${cart.getItemOrderId()} > 0 ) result.value--;return false;"
-                                          class="reduced items-count" type="button"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+
+                                      <input type="text" id="ss${cart.getItemOrderId()}" maxlength="12" value="${cart.itemOrdersQuantity}" title="Quantity:"
+                                          class="input-text qty" readonly>
+
+                                      <button class="increase items-count" name="incrementQuantity" value="${cart.getItemOrderId()}" ><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+
+
+                                      <button class="reduced items-count" name="decrementQuantity" value="${cart.getItemOrderId()}"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+
                                   </div>
+
                               </td>
                               <td>
-                                  <h5>${cart.itemsPrice}</h5>
+                                  <h5><div>${cart.getTotalPrice()}</div></h5>
                               </td>
+
                               <td>
                                    <button onclick="" name="delete" value="${cart.getItemOrderId()}" class="delete_button" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                               </td>
+                              </form>
                           </tr>
                           </c:forEach>
-                          </form>
+
 							  <tr class="bottom_button">
                               <td>
                               <a class="gray_btn" href="/cart">Update Cart</a>
@@ -79,7 +87,7 @@
                                   <h5>Subtotal</h5>
                               </td>
                               <td>
-                                  <h5>$2160.00</h5>
+                                  <h5>${Subtotal}</h5>
                               </td>
                               <td>
 

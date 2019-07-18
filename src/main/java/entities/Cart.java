@@ -2,6 +2,7 @@ package entities;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Data
@@ -11,5 +12,6 @@ public class Cart {
   private String itemsName;
   private Integer itemsPrice;
   private Integer itemOrdersQuantity;
-  private Integer itemOrderId;
+  private Long itemOrderId;
+  private Integer totalPrice;
 }

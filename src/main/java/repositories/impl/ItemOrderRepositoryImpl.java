@@ -4,6 +4,7 @@ import entities.ItemOrders;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.ItemOrdersRepository;
 import utils.DatabaseConnection;
@@ -50,6 +51,15 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
                 },
                 orderId);
     return result;
+  }
+
+  public Long getItemId(Long item_order_id){
+    try {
+      return DatabaseConnection.INSTANCE.getConnection().queryForObject("SELECT item_id FROM item_orders WHERE item_order_id = ?",new Object[]{item_order_id}, Long.class);
+    } catch (DataAccessException e) {
+      e.printStackTrace();
+      return (long)0;
+    }
   }
 
   public void insert(Long itemId, Long orderId, int quantity) {

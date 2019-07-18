@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import lombok.extern.log4j.Log4j;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.CartRepository;
 import utils.DatabaseConnection;
@@ -28,14 +29,42 @@ public enum CartRepositoryImpl implements CartRepository {
                     .itemsName(rs.getString("name"))
                     .itemsPrice(rs.getInt("price"))
                     .itemOrdersQuantity(rs.getInt("quantity"))
-                    .itemOrderId(rs.getInt("item_order_id"))
+                    .itemOrderId(rs.getLong("item_order_id"))
                     .build();
               }
             });
+  }
+
+  public Integer availablity(Long item_id){
+    try {
+      return DatabaseConnection.INSTANCE.getConnection().queryForObject("SELECT available FROM items WHERE item_id = ?",new Object[]{item_id}, Integer.class);
+    } catch (DataAccessException e) {
+      e.printStackTrace();
+      return 0;
+    }
   }
 
   public boolean delete(Long item_order_id) {
     String sql = "DELETE FROM item_orders WHERE item_order_id = ?";
     return DatabaseConnection.INSTANCE.getConnection().update(sql, item_order_id) == 1;
   }
+
+  public Integer getSumCartQuantity(){
+    return DatabaseConnection.INSTANCE.getConnection().queryForObject("SELECT SUM(quantity) FROM item_orders",Integer.class);
+  }
+
+  public Integer getCartQuantityForItem(Long item_order_id){
+    return DatabaseConnection.INSTANCE.getConnection().queryForObject("SELECT quantity FROM item_orders WHERE item_order_id = ?",new Object[]{item_order_id}, Integer.class);
+  }
+
+  public void incrementQuantity(Long item_order_id){
+    String sql = "UPDATE item_orders SET quantity = quantity + 1 WHERE item_order_id = ?";
+    DatabaseConnection.INSTANCE.getConnection().update(sql, item_order_id);
+  }
+
+  public void decrementQuantity(Long item_order_id){
+    String sql = "UPDATE item_orders SET quantity = quantity - 1 WHERE item_order_id = ?";
+    DatabaseConnection.INSTANCE.getConnection().update(sql, item_order_id);
+  }
+
 }
