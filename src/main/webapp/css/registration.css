@@ -30,6 +30,7 @@ input[type=submit] {
 
 #message p {
   font-size: 16px;
+  padding-left: 17;
 }
 
 /* Add a green text color and a checkmark when the requirements are right */
@@ -63,11 +64,12 @@ input[type=submit] {
     padding-bottom: 55px;
     padding-top: 55px;
     display: block;
-    font-family: OpenSans-Regular;
+   font-family:'Helvetica';
     font-size: 30px;
-    color: #555555;
+    color:  #39c2d7;
     line-height: 1.2;
     text-align: center;
+    font-weight: bold;
 }
 .container-login {
     width: 100%;
@@ -82,4 +84,18 @@ input[type=submit] {
  font-size: 10px;
     color: #555555;
     text-align: center;
+}
+.wrap-message {
+ width: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    display: block;
+    font-weight: bold;
+    line-height: 20px;
+    font-family:'Helvetica';
 }
