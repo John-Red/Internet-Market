@@ -25,7 +25,7 @@
 <div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
 
 <div class="item_add">
-<button style="cursor: pointer;" type="submit" name="addInCart" value="${item.getItemId()}"><img src="./img/ca.png"></button>
+<button class="item-button" type="submit" name="addInCart" value="${item.getItemId()}"><img src="./img/ca.png"></button>
 </div>
 </div>
 </c:forEach>

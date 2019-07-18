@@ -1,7 +1,7 @@
 CREATE TABLE users (
 user_id SERIAL PRIMARY KEY,
 login varchar(25) NOT NULL ,
-password varchar(25) NOT NULL,
+password varchar(255) NOT NULL,
 role varchar(25),
 active boolean
 );
@@ -14,7 +14,7 @@ active boolean DEFAULT true
 
 CREATE TABLE categories (
 category_id SERIAL PRIMARY KEY,
-name varchar(25)
+name varchar(25) UNIQUE
 );
 
 CREATE TABLE items (

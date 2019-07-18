@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-Registration page
+Authorization page
 </body>
 </html>

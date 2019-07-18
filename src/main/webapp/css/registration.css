@@ -1,0 +1,85 @@
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color:  #39c2d7;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #FFF;
+  padding: 20px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #FFF;
+  color:  #39c2d7;
+  position: relative;
+}
+
+#message p {
+  font-size: 16px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: #39c2d7;
+}
+
+.valid:before {
+  position: relative;
+  left: -15px;
+  content:"\2714";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -15px;
+  content: "\2716";
+}
+.wrap-login {
+    width: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-bottom: 55px;
+    padding-top: 55px;
+    display: block;
+    font-family: OpenSans-Regular;
+    font-size: 30px;
+    color: #555555;
+    line-height: 1.2;
+    text-align: center;
+}
+.container-login {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.messg {
+ font-size: 10px;
+    color: #555555;
+    text-align: center;
+}
