@@ -45,6 +45,9 @@ flex-flow: row wrap;
     display: inline-block;
     float: right;
 }
+.item-button {
+  cursor: pointer;
+}
 
 .item_add button {
 border: none;
