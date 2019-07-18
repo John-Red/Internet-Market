@@ -22,7 +22,7 @@
 				 <input type="submit" value="Sign Up">
           </form>
           <div style="messg">
-           <div id="message">
+           <div id="message" class="wrap-message">
                     <span>Password must contain the following:</span>
                     <p id="letter" class="invalid"> A <b> lowercase</b> letter</p>
                     <p id="capital" class="invalid"> A <b>capital (uppercase)</b> letter</p>
