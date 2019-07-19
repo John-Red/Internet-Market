@@ -25,10 +25,12 @@
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
 			</div>
+			<form method="post">
 			<div class="header-right">
 			  <a href="/admin" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
-			  <a href="/cart" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
+			  <a href="/cart" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
 			  <a class="search" ><i class="fa fa-search fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
+			  </form>
 			</div>
 			<!-- site menu -->
 			<ul class="main-menu">

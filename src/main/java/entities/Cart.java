@@ -11,5 +11,10 @@ public class Cart {
   private String itemsName;
   private Integer itemsPrice;
   private Integer itemOrdersQuantity;
-  private Integer itemOrderId;
+  private Long itemOrderId;
+  private Integer totalPrice;
+
+  public Integer getTotalPrice() {
+    return itemsPrice * itemOrdersQuantity;
+  }
 }

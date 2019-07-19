@@ -4,10 +4,13 @@ import entities.ItemOrders;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import lombok.extern.log4j.Log4j;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.ItemOrdersRepository;
 import utils.DatabaseConnection;
 
+@Log4j
 public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
   INSTANCE;
 
@@ -50,6 +53,18 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
                 },
                 orderId);
     return result;
+  }
+
+  public Long getItemId(Long item_order_id) {
+    String sql = "SELECT item_id FROM item_orders WHERE item_order_id = ?";
+    try {
+      return DatabaseConnection.INSTANCE
+          .getConnection()
+          .queryForObject(sql, new Object[] {item_order_id}, Long.class);
+    } catch (DataAccessException e) {
+      log.error("DataAccessException", e);
+      return 0L;
+    }
   }
 
   public void insert(Long itemId, Long orderId, int quantity) {

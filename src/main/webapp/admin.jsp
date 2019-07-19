@@ -4,28 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<style>
-.table {
-  margin-bottom: 0;
-}
-.table-container {
- min-height: calc(100vh - 169px);
-}
-TABLE {
-    width: 25%;
-    height: 25%;
-   }
-</style>
+    <link rel="stylesheet" href="css/header_style.css"/>
+    <link rel="stylesheet" href="css/cart_style.css">
 </head>
+
 <body>
-<div class="table-container">
 <table class="table">
 
-<tr>
 <td>
+<table class="table">
+<caption>Users</caption>
   <table class="table">
-  <caption>Users</caption>
+
       <tr>
           <th>Login</th>
           <th>Role</th>
@@ -59,9 +49,11 @@ TABLE {
   </table>
 </td>
 
+
 <td>
     <table class="table">
     <caption>Items</caption>
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -85,11 +77,12 @@ TABLE {
         </c:forEach>
     </table>
 </td>
-</tr>
+
 </table>
-</div>
 <jsp:include page="footer.jsp"></jsp:include>
+
 </body>
+
 </html>
 
 
