@@ -1,5 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${param.lang}" />
+<fmt:setBundle basename="items" />
+
+<html lang="${param.lang}">
 <head>
     <meta charset="UTF-8">
     <title>EPAM EXPRESS</title>
@@ -22,7 +29,7 @@
 
 <div><h2>${item.getName()}</h2></div>
 <div><span class="span">${item.getPrice()} $</span></div>
-<div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
+<div class="item_available"><p> <fmt:message key="label.available" />  ${item.getAvailable()}</p></div>
 
 <div class="item_add">
 <button class="item-button" type="submit" name="addInCart" value="${item.getItemId()}"><img src="./img/ca.png"></button>
@@ -34,7 +41,7 @@
 
 <div class="col-right">
 			<!--categories-->
-						<h2>Categories</h2>
+						<h2><fmt:message key="label.Categories" /></h2>
 							<ul class="menu-drop">
 							 <c:forEach items="${categoriesList}" var="categories" >
 							    <li class="item1"><a href="/items?category=${categories.getName()}">${categories.getName()}</a></li>

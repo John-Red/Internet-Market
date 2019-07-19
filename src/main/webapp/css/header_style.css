@@ -97,9 +97,12 @@ ol {
 
 .site-logo {
 	display: inline-block;
-	padding: 58px 34px 0px;
+	padding: 58px 0px 0px;
 	padding-top: 0;
 	float: left;
+	width:250px;
+	display: inline-block;
+
 }
 
 .nav-switch {
@@ -162,4 +165,15 @@ ol {
 .header-right .search img {
 	padding-top: 10px;
 }
+.en-ru-img{
+display: inline-block;
+
+  max-width:30px;
+  max-height:30px;
+}
+.localisation{
+  display: inline-block;
+  width: 65px;
+}
+
 }

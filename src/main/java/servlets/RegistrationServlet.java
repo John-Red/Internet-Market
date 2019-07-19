@@ -22,8 +22,6 @@ public class RegistrationServlet extends HttpServlet {
       UsersService.INSTANCE.insert(login, password);
     } catch (InvalidLoginOrPassword e) {
       log.error(e);
-      req.setAttribute("incorrect", "incorrect login or password");
-      doGet(req, resp);
     }
     resp.sendRedirect("/");
   }
