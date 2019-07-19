@@ -19,7 +19,6 @@ public class HeaderServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     req.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
-    doGet(req,resp);
-
+    doGet(req, resp);
   }
 }

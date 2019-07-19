@@ -35,8 +35,8 @@ public class AdminServlet extends HttpServlet {
       try {
         AdminService.INSTANCE.delete(Long.valueOf(delete));
       } catch (Exception e) {
-      log.error(e);
-    }
+        log.error(e);
+      }
     }
 
     // change active state and user role

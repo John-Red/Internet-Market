@@ -29,21 +29,21 @@ public class CartServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    String name = req.getParameter("delete");
-    if (name != null) {
-      Long id = Long.parseLong(name);
-      CartService.INSTANCE.delete(id);
+    String deleteParameter = req.getParameter("delete");
+    if (deleteParameter != null) {
+      Long itemOrderId = Long.parseLong(deleteParameter);
+      CartService.INSTANCE.delete(itemOrderId);
     }
 
-    String name1 = req.getParameter("incrementQuantity");
-    if (name1 != null) {
-      Long itemOrderId = Long.parseLong(name1);
+    String incrementParameter = req.getParameter("incrementQuantity");
+    if (incrementParameter != null) {
+      Long itemOrderId = Long.parseLong(incrementParameter);
       CartService.INSTANCE.incrementQuantity(itemOrderId);
     }
 
-    String name2 = req.getParameter("decrementQuantity");
-    if (name2 != null) {
-      Long itemOrderId = Long.parseLong(name2);
+    String decrementParameter = req.getParameter("decrementQuantity");
+    if (decrementParameter != null) {
+      Long itemOrderId = Long.parseLong(decrementParameter);
       CartService.INSTANCE.decrementQuantity(itemOrderId);
     }
 

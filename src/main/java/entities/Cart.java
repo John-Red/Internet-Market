@@ -2,7 +2,6 @@ package entities;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Builder
 @Data
@@ -14,4 +13,10 @@ public class Cart {
   private Integer itemOrdersQuantity;
   private Long itemOrderId;
   private Integer totalPrice;
+
+  public Integer getTotalPrice() {
+    return itemsPrice*itemOrdersQuantity;
+  }
+
+
 }
