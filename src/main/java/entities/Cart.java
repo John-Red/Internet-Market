@@ -15,8 +15,6 @@ public class Cart {
   private Integer totalPrice;
 
   public Integer getTotalPrice() {
-    return itemsPrice*itemOrdersQuantity;
+    return itemsPrice * itemOrdersQuantity;
   }
-
-
 }
