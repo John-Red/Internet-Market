@@ -71,10 +71,7 @@ public enum UsersRepositoryImpl {
   public boolean validatePassword(String password, String login) {
     String sql = "SELECT password FROM users WHERE login = ?;";
     String passwordFromDB = statement.queryForObject(sql, new Object[]{login}, String.class);
-    if (password.equals(passwordFromDB)) {
-      return true;
-    }
-    return false;
+    return password.equals(passwordFromDB);
   }
 
 
