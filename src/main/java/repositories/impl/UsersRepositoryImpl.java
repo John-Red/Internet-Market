@@ -56,6 +56,34 @@ public enum UsersRepositoryImpl {
     statement.update(sql, role, userId);
   }
 
+  public String getRole(String login) {
+    String sql = "SELECT role FROM users WHERE login = ?;";
+    return statement.queryForObject(sql, new Object[] {login}, String.class);
+  }
+
+
+  public boolean isUserExist(String login) {
+    String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
+    boolean exists = false;
+    try {
+      exists = statement.queryForObject(sql, new Object[] {login}, Integer.class) > 0;
+    } catch (Exception e) {
+      log.error(e);
+    } finally {
+      return exists;
+    }
+  }
+
+  public boolean validatePassword (String password, String login){
+    String sql = "SELECT password FROM users WHERE login = ?;";
+    String passwordFromDB = statement.queryForObject(sql, new Object[] {login}, String.class);
+    if (password.equals(passwordFromDB)){
+      return true;
+    }
+    return false;
+  }
+
+
   public boolean loginAlreadyExists(String login) {
     String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
     boolean exists = true;

@@ -22,7 +22,7 @@
 
 <div><h2>${item.getName()}</h2></div>
 <div><span class="span">${item.getPrice()} $</span></div>
-<div class="item_available"><p>Available:  ${item.getAvailable()}</p></div>
+<div class="item_available"><p>Available:${item.getAvailable()}</p></div>
 
 <div class="item_add">
 <button class="item-button" type="submit" name="addInCart" value="${item.getItemId()}"><img src="./img/ca.png"></button>

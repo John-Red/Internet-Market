@@ -31,7 +31,6 @@
               <select name="getRole">
               <option value="${user.getRole()}">${user.getRole()}</option>
               <option value="user">->user</option>
-              <option value="guest">->guest</option>
               <option value="admin">->admin</option>
               </select>
               </td>
