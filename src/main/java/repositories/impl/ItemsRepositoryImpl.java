@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import lombok.extern.log4j.Log4j;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import repositories.ItemsRepository;
 import utils.DatabaseConnection;
@@ -14,107 +15,81 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
   INSTANCE;
 
   List<Items> result;
+  JdbcTemplate statement = DatabaseConnection.INSTANCE.getStatement();
 
   public List<Items> get() {
-    result =
-        DatabaseConnection.INSTANCE
-            .getConnection()
-            .query(
-                "SELECT * FROM items",
-                new RowMapper<Items>() {
-                  public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    return Items.builder()
-                        .itemId(rs.getLong("item_id"))
-                        .name(rs.getString("name"))
-                        .categoryId(rs.getLong("category_id"))
-                        .price(rs.getInt("price"))
-                        .available(rs.getInt("available"))
-                        .image(
-                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
-                        .build();
-                  }
-                });
+    result = statement.query("SELECT * FROM items", new RowMapper<Items>() {
+      public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return Items.builder()
+            .itemId(rs.getLong("item_id"))
+            .name(rs.getString("name"))
+            .categoryId(rs.getLong("category_id"))
+            .price(rs.getInt("price"))
+            .available(rs.getInt("available"))
+            .image(rs.getString("image") != null
+                ? rs.getString("image") : "default.jpg")
+            .build();
+      }
+    });
     return result;
   }
 
   public List<Items> get(Long itemId) {
-    result =
-        DatabaseConnection.INSTANCE
-            .getConnection()
-            .query(
-                "SELECT * FROM items WHERE item_id = ?",
-                new RowMapper<Items>() {
-                  public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    return Items.builder()
-                        .itemId(rs.getLong("item_id"))
-                        .name(rs.getString("name"))
-                        .categoryId(rs.getLong("category_id"))
-                        .price(rs.getInt("price"))
-                        .available(rs.getInt("available"))
-                        .image(
-                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
-                        .build();
-                  }
-                },
-                itemId);
+    result = statement.query("SELECT * FROM items WHERE item_id = ?", new RowMapper<Items>() {
+          public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return Items.builder()
+                .itemId(rs.getLong("item_id"))
+                .name(rs.getString("name"))
+                .categoryId(rs.getLong("category_id"))
+                .price(rs.getInt("price"))
+                .available(rs.getInt("available"))
+                .image(rs.getString("image") != null ?
+                    rs.getString("image") : "default.jpg")
+                .build();
+          }
+        },
+        itemId);
     return result;
   }
 
   public List<Items> getByCategory(Long categoryId) {
-    result =
-        DatabaseConnection.INSTANCE
-            .getConnection()
-            .query(
-                "SELECT * FROM items WHERE category_id = ?",
-                new RowMapper<Items>() {
-                  public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    return Items.builder()
-                        .itemId(rs.getLong("item_id"))
-                        .name(rs.getString("name"))
-                        .categoryId(rs.getLong("category_id"))
-                        .price(rs.getInt("price"))
-                        .available(rs.getInt("available"))
-                        .image(
-                            rs.getString("image") != null ? rs.getString("image") : "default.jpg")
-                        .build();
-                  }
-                },
-                categoryId);
+    result = statement.query("SELECT * FROM items WHERE category_id = ?", new RowMapper<Items>() {
+          public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return Items.builder()
+                .itemId(rs.getLong("item_id"))
+                .name(rs.getString("name"))
+                .categoryId(rs.getLong("category_id"))
+                .price(rs.getInt("price"))
+                .available(rs.getInt("available"))
+                .image(rs.getString("image") != null ?
+                    rs.getString("image") : "default.jpg")
+                .build();
+          }
+        },
+        categoryId);
     return result;
   }
 
   public void insert(String name, long categoryId, int price, int available, String image) {
-    DatabaseConnection.INSTANCE
-        .getConnection()
-        .update(
-            "INSERT INTO items (name, category_id, price, available, image) VALUES (?, ?, ?, ?,?);",
-            name,
-            categoryId,
-            price,
-            available,
-            image);
+    String sql = "INSERT INTO items (name, category_id, price, available, image) VALUES (?, ?, ?, ?,?);";
+    statement.update(sql, name, categoryId, price, available, image);
   }
 
   public void updateImage(int id, String image) {
-    DatabaseConnection.INSTANCE
-        .getConnection()
-        .update("UPDATE items SET image = ? WHERE item_id = ?", image, id);
+    String sql = "UPDATE items SET image = ? WHERE item_id = ?";
+    statement.update(sql, image, id);
   }
 
   public boolean delete(Long id) {
     String sql = "DELETE FROM items WHERE item_id = ?";
-    return DatabaseConnection.INSTANCE.getConnection().update(sql, id) == 1;
+    return statement.update(sql, id) == 1;
   }
 
   public boolean isExist(Long id) {
     String sql = "SELECT COUNT(*) FROM items WHERE item_id = ?";
     boolean exists = false;
     try {
-      exists =
-          DatabaseConnection.INSTANCE
-                  .getConnection()
-                  .queryForObject(sql, new Object[] {id}, Integer.class)
-              > 0;
+      exists = statement.queryForObject(sql, new Object[]{id}, Integer.class) > 0;
     } catch (Exception e) {
       log.error(e);
     } finally {
@@ -126,11 +101,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     String sql = "SELECT COUNT(*) FROM items WHERE name = ?";
     boolean exists = false;
     try {
-      exists =
-          DatabaseConnection.INSTANCE
-                  .getConnection()
-                  .queryForObject(sql, new Object[] {name}, Integer.class)
-              > 0;
+      exists = statement.queryForObject(sql, new Object[]{name}, Integer.class) > 0;
     } catch (Exception e) {
       log.error(e);
     } finally {
