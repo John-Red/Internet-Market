@@ -3911,7 +3911,7 @@ a {
 .cart_area {
     padding-top: 90px;
     padding-bottom: 55px;
-    min-height: calc(100vh - 166px);
+    min-height: calc(100vh - 182px);
 }
 
 .cart_inner .table th,

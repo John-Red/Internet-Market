@@ -13,16 +13,20 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/header_style.css"/>
     <link rel="stylesheet" href="css/cart_style.css">
+    <style>
+    .table{
+     margin-bottom: 0;
+    }
+    .page-style{
+     min-height: calc(100vh - 182px);
+    }
+    </style>
 </head>
 
 <body>
+<div class="page-style">
 <table class="table">
-
 <td>
-<table class="table">
-<caption>Users</caption>
-  <table class="table">
-
   <table class="table">
   <caption><fmt:message key="label.Users" /></caption>
       <tr>
@@ -60,9 +64,7 @@
 
 
 <td>
-    <table class="table">
-    <caption>Items</caption>
-    <table class="table">
+     <table class="table">
     <caption><fmt:message key="label.Items" /></caption>
         <tr>
             <th><fmt:message key="label.ID" /></th>
@@ -87,12 +89,10 @@
         </c:forEach>
     </table>
 </td>
-
 </table>
+</div>
 <jsp:include page="footer.jsp"></jsp:include>
-
 </body>
-
 </html>
 
 
