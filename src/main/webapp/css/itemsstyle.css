@@ -87,7 +87,7 @@ margin-bottom: 15px;
   display: flex;
   flex-direction: row;
   width: 100%;
-  min-height: calc(100vh - 166px);
+  min-height: calc(100vh - 182px);
 }
 
 .page h2 {
