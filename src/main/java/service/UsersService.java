@@ -20,7 +20,7 @@ public enum UsersService {
   public void insert(String login, String password) throws InvalidLoginOrPassword {
 
     if (isPasswordValid(password) && isLoginValid(login)) {
-      UsersRepositoryImpl.INSTANCE.insert(login, password, UserRole.USER.name(), true);
+      UsersRepositoryImpl.INSTANCE.insert(login, password,"user", true);
     } else {
       throw new InvalidLoginOrPassword();
     }
