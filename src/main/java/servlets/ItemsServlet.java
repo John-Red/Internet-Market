@@ -1,5 +1,6 @@
 package servlets;
 
+import entities.Cart;
 import entities.Categories;
 import entities.Items;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import repositories.impl.CartRepositoryImpl;
 import repositories.impl.CategoriesRepositoryImpl;
 import repositories.impl.UsersRepositoryImpl;
+import service.CartService;
 import service.ItemOrdersService;
 import service.ItemsService;
 
@@ -21,11 +23,17 @@ public class ItemsServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String selectedCategory = request.getParameter("category");
+    final HttpSession session = request.getSession();
+    Cart.currentUserId = UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
     List<Items> itemsList = ItemsService.INSTANCE.get(selectedCategory);
     List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
+    List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
+    int sumCartQuantity = 0;
+    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    }
     request.setAttribute("itemsList", itemsList);
     request.setAttribute("categoriesList", categories);
-    request.setAttribute("CartQuantity", CartRepositoryImpl.INSTANCE.getSumCartQuantity());
+    request.setAttribute("CartQuantity", sumCartQuantity);
     request.getRequestDispatcher("/items.jsp").forward(request, response);
   }
 

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="src/main/webapp/WEB-INF/css/bootstrap.min.css">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="css/cart_style.css">
-  <script type="text/javascript" src="js/button_test.js"></script>
+  <script language="javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 </head>
 <body>
   <!--================Cart Area =================-->
@@ -101,7 +101,6 @@
                           </tr>
 
                           <tr class="out_button_area">
-
                               <td class="d-none-l">
                               </td>
                               <td class="">
@@ -112,8 +111,10 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="/items"> <fmt:message key="label.ContinueShopping" /></a>
-                                      <a class="primary-btn ml-2" ><fmt:message key="label.Proceed" /></a>
+                                  <form method="post">
+                                      <a class="gray_btn" href="/items">Continue Shopping</a>
+                                      <button class="primary-btn" name="proceedToCheckout" value="${userId}" >Proceed to checkout</button>
+                                      </form>
                                   </div>
                               </td>
                           </tr>

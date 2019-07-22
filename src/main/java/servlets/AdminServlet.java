@@ -1,5 +1,6 @@
 package servlets;
 
+import entities.Cart;
 import entities.Items;
 import entities.Users;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j;
 import service.AdminService;
+import service.CartService;
 
 @Log4j
 public class AdminServlet extends HttpServlet {
@@ -20,7 +22,12 @@ public class AdminServlet extends HttpServlet {
     List<Users> listOfUsers = AdminService.INSTANCE.getAllUsers();
     req.setAttribute("usersList", listOfUsers);
     List<Items> listOfItems = AdminService.INSTANCE.getAllItems();
+    List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
+    int sumCartQuantity = 0;
+    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    }
     req.setAttribute("itemsList", listOfItems);
+    req.setAttribute("CartQuantity", sumCartQuantity);
     req.getRequestDispatcher("/admin.jsp").forward(req, resp);
   }
 

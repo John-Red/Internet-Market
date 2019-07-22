@@ -1,5 +1,6 @@
 package servlets;
 
+import entities.Cart;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,15 +11,15 @@ import service.CartService;
 public class HeaderServlet extends HttpServlet {
 
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    req.getRequestDispatcher("/cart.jsp").forward(req, resp);
+    request.getRequestDispatcher("/cart.jsp").forward(request, response);
   }
 
   @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    req.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
-    doGet(req, resp);
+    //request.setAttribute("CartQuantity", Cart.sumCartQuantity);
+    doGet(request, response);
   }
 }

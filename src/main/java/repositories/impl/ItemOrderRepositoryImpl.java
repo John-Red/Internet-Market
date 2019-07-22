@@ -85,9 +85,9 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
     statement.update(sql, quantity, itemId, orderId);
   }
 
-  public boolean delete(Long id) {
+  public boolean delete(Long orderId) {
     String sql = "DELETE FROM item_orders WHERE item_order_id = ?";
-    return statement.update(sql, id) == 1;
+    return statement.update(sql, orderId) == 1;
   }
 
   public boolean deleteByItemId(Long id) {

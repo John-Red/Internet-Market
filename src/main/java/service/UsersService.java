@@ -1,6 +1,8 @@
 package service;
 
 import lombok.extern.log4j.Log4j;
+import repositories.impl.CartRepositoryImpl;
+import repositories.impl.OrdersRepositoryImpl;
 import repositories.impl.UsersRepositoryImpl;
 import utils.exeptions.InvalidLoginOrPassword;
 
@@ -22,6 +24,19 @@ public enum UsersService {
     } else {
       throw new InvalidLoginOrPassword();
     }
+  }
+
+//  public Integer getCurrentUserId(String login){
+//    return UsersRepositoryImpl.INSTANCE.getCurrentUserId(login);
+//  }
+
+  public Integer getUserBalance(Long userId) {
+    return UsersRepositoryImpl.INSTANCE.getUserBalance(userId);
+  }
+
+  public void updateUserBalance(Long userId) {
+    Integer balance = UsersRepositoryImpl.INSTANCE.getUserBalance(userId) - CartService.INSTANCE.getSubtotalPrice();
+    UsersRepositoryImpl.INSTANCE.updateUserBalance(userId, balance);
   }
 
   public boolean isUserExist(String login){

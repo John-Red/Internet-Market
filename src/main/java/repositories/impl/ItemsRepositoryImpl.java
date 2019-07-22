@@ -1,6 +1,7 @@
 package repositories.impl;
 
 import entities.Items;
+import java.net.Inet4Address;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -107,5 +108,10 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     } finally {
       return exists;
     }
+  }
+
+  public void reduceQtyOfAvailableItems (Long itemId, Integer quantity ) {
+    String sql = "UPDATE items SET available = available - ? WHERE item_id = ?";
+    statement.update(sql, quantity, itemId);
   }
 }

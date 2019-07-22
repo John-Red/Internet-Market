@@ -1,0 +1,1 @@
+<t> not enough money </t>
