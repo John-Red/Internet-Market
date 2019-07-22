@@ -48,9 +48,5 @@ public enum ItemOrdersService {
   public boolean delete(Long orderId) {
     return ItemOrderRepositoryImpl.INSTANCE.delete(orderId);
   }
-
-  //  public void cleanCartAfterPurchase(Long orderId) {
-  //    cleanCartAfterPurchase(orderId);
-  //  }
 }
 

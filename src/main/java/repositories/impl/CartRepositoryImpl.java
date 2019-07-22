@@ -34,13 +34,14 @@ public enum CartRepositoryImpl implements CartRepository {
                 .itemId(rs.getLong("item_id"))
                 .build();
           }
-        }, userId);
+        },
+        userId);
   }
 
   public Integer availablityOfItem(Long item_id) {
     String sql = "SELECT available FROM items WHERE item_id = ?";
     try {
-      return statement.queryForObject(sql, new Object[]{item_id}, Integer.class);
+      return statement.queryForObject(sql, new Object[] {item_id}, Integer.class);
     } catch (DataAccessException e) {
       log.error("DataAccessException", e);
       return 0;
@@ -52,14 +53,9 @@ public enum CartRepositoryImpl implements CartRepository {
     return statement.update(sql, item_order_id) == 1;
   }
 
-  public Integer getSumCartQuantity() {
-    String sql = "SELECT SUM(quantity) FROM item_orders";
-    return statement.queryForObject(sql, Integer.class);
-  }
-
   public Integer getCartQuantityForItem(Long item_order_id) {
     String sql = "SELECT quantity FROM item_orders WHERE item_order_id = ?";
-    return statement.queryForObject(sql, new Object[]{item_order_id}, Integer.class);
+    return statement.queryForObject(sql, new Object[] {item_order_id}, Integer.class);
   }
 
   public void incrementQuantity(Long item_order_id) {

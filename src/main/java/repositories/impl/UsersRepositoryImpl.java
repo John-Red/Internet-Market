@@ -7,7 +7,6 @@ import java.util.List;
 import lombok.extern.log4j.Log4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import service.CartService;
 import utils.DatabaseConnection;
 
 @Log4j
@@ -54,14 +53,14 @@ public enum UsersRepositoryImpl {
 
   public String getRole(String login) {
     String sql = "SELECT role FROM users WHERE login = ?;";
-    return statement.queryForObject(sql, new Object[]{login}, String.class);
+    return statement.queryForObject(sql, new Object[] {login}, String.class);
   }
 
   public boolean isUserExist(String login) {
     String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
     boolean exists = false;
     try {
-      exists = statement.queryForObject(sql, new Object[]{login}, Integer.class) > 0;
+      exists = statement.queryForObject(sql, new Object[] {login}, Integer.class) > 0;
     } catch (Exception e) {
       log.error(e);
     } finally {
@@ -71,7 +70,7 @@ public enum UsersRepositoryImpl {
 
   public boolean validatePassword(String password, String login) {
     String sql = "SELECT password FROM users WHERE login = ?;";
-    String passwordFromDB = statement.queryForObject(sql, new Object[]{login}, String.class);
+    String passwordFromDB = statement.queryForObject(sql, new Object[] {login}, String.class);
     return password.equals(passwordFromDB);
   }
 
@@ -79,7 +78,7 @@ public enum UsersRepositoryImpl {
     String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
     boolean exists = true;
     try {
-      exists = statement.queryForObject(sql, new Object[]{login}, Integer.class) > 0;
+      exists = statement.queryForObject(sql, new Object[] {login}, Integer.class) > 0;
     } catch (Exception e) {
       log.error(e);
     } finally {
@@ -87,7 +86,7 @@ public enum UsersRepositoryImpl {
     }
   }
 
-  public Long getCurrentUserId(Object login){
+  public Long getCurrentUserId(Object login) {
     String sql = "SELECT user_id FROM users WHERE login = ?";
     return statement.queryForObject(sql, new Object[] {login}, Long.class);
   }
@@ -102,10 +101,9 @@ public enum UsersRepositoryImpl {
     statement.update(sql, balance, userId);
   }
 
-  public boolean isUserActive (String login){
+  public boolean isUserActive(String login) {
     String sql = "SELECT active FROM users WHERE login = ?;";
-    Boolean activeFieldFromDB = statement.queryForObject(sql, new Object[]{login}, Boolean.class);
+    Boolean activeFieldFromDB = statement.queryForObject(sql, new Object[] {login}, Boolean.class);
     return activeFieldFromDB;
   }
-
 }
