@@ -105,7 +105,6 @@ public enum UsersRepositoryImpl {
   public boolean isUserActive (String login){
     String sql = "SELECT active FROM users WHERE login = ?;";
     Boolean activeFieldFromDB = statement.queryForObject(sql, new Object[]{login}, Boolean.class);
-    System.out.println(activeFieldFromDB);
     return activeFieldFromDB;
   }
 

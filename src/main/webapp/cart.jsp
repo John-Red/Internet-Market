@@ -112,8 +112,8 @@
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
                                   <form method="post">
-                                      <a class="gray_btn" href="/items">Continue Shopping</a>
-                                      <button class="primary-btn" name="proceedToCheckout" value="${userId}" >Proceed to checkout</button>
+                                      <a class="gray_btn" href="/items"><fmt:message key="label.ContinueShopping" /></a>
+                                      <button class="primary-btn" name="proceedToCheckout" value="${userId}" ><fmt:message key="label.Proceed" /></button>
                                       </form>
                                   </div>
                               </td>

@@ -20,7 +20,7 @@ public enum ItemOrdersService {
       OrdersRepositoryImpl.INSTANCE.insert(userId);
     }
       List<ItemOrders> listItemOrders =
-          ItemOrderRepositoryImpl.INSTANCE.getOrder(listOrders. get(0).getOrderId());
+          ItemOrderRepositoryImpl.INSTANCE.getOrder(listOrders.get(0).getOrderId());
 
       boolean idAlreadyExists = false;
 

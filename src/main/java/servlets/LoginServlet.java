@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.util.DigestUtils;
 import service.UsersService;
 
 
@@ -28,7 +29,7 @@ public class LoginServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse res)
       throws ServletException, IOException {
     final String login = req.getParameter("login");
-    final String password = req.getParameter("password");
+    final String password = DigestUtils.md5DigestAsHex(req.getParameter("password").getBytes());
     if (!(UsersService.INSTANCE.isUserActive(login))){
       req.getRequestDispatcher("/warningBlocked.jsp").forward(req, res);;
     } else if (login != null && password != null && UsersService.INSTANCE.isUserExist(login)
