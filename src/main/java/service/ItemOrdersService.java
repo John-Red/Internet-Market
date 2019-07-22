@@ -18,7 +18,9 @@ public enum ItemOrdersService {
     List<Orders> listOrders = OrdersRepositoryImpl.INSTANCE.getUsersOrder(userId);
     if (listOrders.size() < 1) {
       OrdersRepositoryImpl.INSTANCE.insert(userId);
+      listOrders = OrdersRepositoryImpl.INSTANCE.getUsersOrder(userId);
     }
+     
       List<ItemOrders> listItemOrders =
           ItemOrderRepositoryImpl.INSTANCE.getOrder(listOrders.get(0).getOrderId());
 
