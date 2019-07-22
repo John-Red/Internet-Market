@@ -24,7 +24,6 @@ public class ItemsFilter implements Filter {
     final HttpServletRequest req = (HttpServletRequest) request;
     final HttpServletResponse res = (HttpServletResponse) response;
     final HttpSession session = req.getSession();
-    request.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
 
     //Logged user.
     if ((session) != null &&

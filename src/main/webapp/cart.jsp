@@ -101,7 +101,6 @@
                           </tr>
 
                           <tr class="out_button_area">
-
                               <td class="d-none-l">
                               </td>
                               <td class="">
@@ -112,12 +111,10 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                  <t> "UserId now is" + "${userId}" </t>
+                                  <form method="post">
                                       <a class="gray_btn" href="/items">Continue Shopping</a>
-                                      <form method="post">
-                                      <button onclick="" name="proceedToCheckout" value="${userId}" >Proceed to checkout</button>
+                                      <button class="primary-btn" name="proceedToCheckout" value="${userId}" >Proceed to checkout</button>
                                       </form>
-
                                   </div>
                               </td>
                           </tr>

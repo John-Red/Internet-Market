@@ -17,12 +17,12 @@ public enum CartRepositoryImpl implements CartRepository {
 
   JdbcTemplate statement = DatabaseConnection.INSTANCE.getStatement();
 
-  public List<Cart> get() {
+  public List<Cart> get(Long userId) {
     return statement.query(
-        "SELECT items.image, items.name, items.price, item_orders.quantity, item_orders.item_order_id FROM users\n"
+        "SELECT items.image, items.name, items.price, item_orders.quantity, item_orders.item_order_id, items.item_id FROM users\n"
             + "JOIN orders on users.user_id = orders.user_id\n"
             + "JOIN item_orders on orders.order_id = item_orders.order_id\n"
-            + "join items on items.item_id = item_orders.item_id;",
+            + "join items on items.item_id = item_orders.item_id WHERE orders.active=true AND users.user_id=?;",
         new RowMapper<Cart>() {
           public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
             return Cart.builder()
@@ -31,9 +31,10 @@ public enum CartRepositoryImpl implements CartRepository {
                 .itemsPrice(rs.getInt("price"))
                 .itemOrdersQuantity(rs.getInt("quantity"))
                 .itemOrderId(rs.getLong("item_order_id"))
+                .itemId(rs.getLong("item_id"))
                 .build();
           }
-        });
+        }, userId);
   }
 
   public Integer availablityOfItem(Long item_id) {

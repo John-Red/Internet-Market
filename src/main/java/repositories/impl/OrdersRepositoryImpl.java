@@ -52,8 +52,14 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
     return result;
   }
 
-//  public Long getCurrentUserId(Long orderId) {
-//    String sql = "SELECT user_id FROM orders WHERE order_id = ?";
-//    return DatabaseConnection.INSTANCE.getConnection().queryForObject(sql, new Object[] {orderId}, Long.class);
-//  }
+  public Long getOrderIdForCurrentUser(Long userId){
+  String sql = "SELECT order_id FROM orders WHERE user_id = ? AND active = true";
+  return statement.queryForObject(sql, new Object[]{userId}, Long.class);
+  }
+
+  public void setOrderToFalse(Long orderId){
+    String sql = "UPDATE orders SET active = false WHERE order_id = ?";
+    statement.update(sql, orderId);
+  }
+
 }

@@ -23,14 +23,15 @@ public class CartServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    final HttpSession session = request.getSession();
     //check logged or not
-    Cart.currentUserId = UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
-    List<Cart> list = CartService.INSTANCE.get();
+    List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
+    int sumCartQuantity = 0;
+    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    }
     request.setAttribute("cartList", list);
     request.setAttribute("userId", Cart.currentUserId);
     request.setAttribute("Subtotal", CartService.INSTANCE.getSubtotalPrice());
-    request.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
+    request.setAttribute("CartQuantity", sumCartQuantity);
     request.getRequestDispatcher("/cart.jsp").forward(request, response);
   }
 
@@ -61,12 +62,10 @@ public class CartServlet extends HttpServlet {
       Long userId = Long.parseLong(buyParameter);
       if (CartService.INSTANCE.getSubtotalPrice() <= UsersService.INSTANCE.getUserBalance(userId)){
         UsersService.INSTANCE.updateUserBalance(userId);
+        CartService.INSTANCE.setOrderToFalse(userId);
+        CartService.INSTANCE.reduceQtyOfAvailableItems(CartService.INSTANCE.get(Cart.currentUserId));
       } else {
-        String someMessage = "Error !";
-        PrintWriter out = response.getWriter();
-        out.print("<html><head>");
-        out.print("<script type=\"text/javascript\">alert(" + someMessage + ");</script>");
-        out.print("</head><body></body></html>");
+        //response.sendRedirect("/");
       }
     }
     response.sendRedirect("/cart");

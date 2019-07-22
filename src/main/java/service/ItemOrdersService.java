@@ -20,7 +20,7 @@ public enum ItemOrdersService {
       OrdersRepositoryImpl.INSTANCE.insert(userId);
     }
       List<ItemOrders> listItemOrders =
-          ItemOrderRepositoryImpl.INSTANCE.getOrder(listOrders.get(0).getOrderId());
+          ItemOrderRepositoryImpl.INSTANCE.getOrder(listOrders. get(0).getOrderId());
 
       boolean idAlreadyExists = false;
 
@@ -43,8 +43,12 @@ public enum ItemOrdersService {
       }
   }
 
-  public boolean delete(Long id) {
-    return ItemOrderRepositoryImpl.INSTANCE.delete(id);
+  public boolean delete(Long orderId) {
+    return ItemOrderRepositoryImpl.INSTANCE.delete(orderId);
   }
+
+  //  public void cleanCartAfterPurchase(Long orderId) {
+  //    cleanCartAfterPurchase(orderId);
+  //  }
 }
 

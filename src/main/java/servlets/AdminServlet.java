@@ -1,5 +1,6 @@
 package servlets;
 
+import entities.Cart;
 import entities.Items;
 import entities.Users;
 import java.io.IOException;
@@ -21,8 +22,12 @@ public class AdminServlet extends HttpServlet {
     List<Users> listOfUsers = AdminService.INSTANCE.getAllUsers();
     req.setAttribute("usersList", listOfUsers);
     List<Items> listOfItems = AdminService.INSTANCE.getAllItems();
+    List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
+    int sumCartQuantity = 0;
+    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    }
     req.setAttribute("itemsList", listOfItems);
-    req.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
+    req.setAttribute("CartQuantity", sumCartQuantity);
     req.getRequestDispatcher("/admin.jsp").forward(req, resp);
   }
 
