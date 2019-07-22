@@ -23,4 +23,22 @@ public enum UsersService {
       throw new InvalidLoginOrPassword();
     }
   }
+
+  public boolean isUserExist(String login){
+    return UsersRepositoryImpl.INSTANCE.isUserExist(login);
+  }
+
+  public String getRoleByLogin (String login){
+    return UsersRepositoryImpl.INSTANCE.getRole(login);
+  }
+
+  public boolean validatePassword (String password, String login){
+    return UsersRepositoryImpl.INSTANCE.validatePassword(password, login);
+  }
+
+  public boolean isUserActive(String login){
+    return UsersRepositoryImpl.INSTANCE.isUserActive(login);
+  }
+
+
 }
