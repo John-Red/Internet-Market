@@ -3,12 +3,10 @@ package service;
 import entities.Cart;
 import java.util.List;
 import lombok.extern.log4j.Log4j;
-import repositories.OrdersRepository;
 import repositories.impl.CartRepositoryImpl;
 import repositories.impl.ItemOrderRepositoryImpl;
 import repositories.impl.ItemsRepositoryImpl;
 import repositories.impl.OrdersRepositoryImpl;
-import repositories.impl.UsersRepositoryImpl;
 
 @Log4j
 public enum CartService {
@@ -24,14 +22,6 @@ public enum CartService {
 
   public boolean delete(Long item_order_id) {
     return CartRepositoryImpl.INSTANCE.delete(item_order_id);
-  }
-
-  public Integer getCartQuantity() {
-    if (CartRepositoryImpl.INSTANCE.getSumCartQuantity() == null) {
-      return 0;
-    } else {
-      return CartRepositoryImpl.INSTANCE.getSumCartQuantity();
-    }
   }
 
   public void incrementQuantity(Long item_order_id) {
@@ -52,19 +42,22 @@ public enum CartService {
     }
   }
 
-  public Long getOrderIdForCurrentUser(Long userId){
+  public Long getOrderIdForCurrentUser(Long userId) {
     return OrdersRepositoryImpl.INSTANCE.getOrderIdForCurrentUser(userId);
   }
 
-  public void setOrderToFalse(Long userId){
+  public void setOrderToFalse(Long userId) {
     OrdersRepositoryImpl.INSTANCE.setOrderToFalse(getOrderIdForCurrentUser(userId));
   }
 
-  public void reduceQtyOfAvailableItems (List<Cart> listOfCartItems) {
+  public Integer reduceQtyOfAvailableItems(Long item_id, Integer quantity) {
+    return CartRepositoryImpl.INSTANCE.availablityOfItem(item_id) - quantity;
+  }
+
+  public void setQtyOfAvailableItems(List<Cart> listOfCartItems) {
     for (Cart c : listOfCartItems) {
-      ItemsRepositoryImpl.INSTANCE.reduceQtyOfAvailableItems(c.getItemId(), c.getItemOrdersQuantity());
+      ItemsRepositoryImpl.INSTANCE.setQtyOfAvailableItems(
+          reduceQtyOfAvailableItems(c.getItemId(), c.getItemOrdersQuantity()), c.getItemId());
     }
-
-
   }
 }
