@@ -90,4 +90,12 @@ public enum UsersRepositoryImpl {
     String sql = "SELECT user_id FROM users WHERE login = ?";
     return statement.queryForObject(sql, new Object[] {login}, Long.class);
   }
+
+  public boolean isUserActive (String login){
+    String sql = "SELECT active FROM users WHERE login = ?;";
+    Boolean activeFieldFromDB = statement.queryForObject(sql, new Object[]{login}, Boolean.class);
+    System.out.println(activeFieldFromDB);
+    return activeFieldFromDB;
+  }
+
 }
