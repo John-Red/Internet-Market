@@ -28,7 +28,7 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
     return result;
   }
 
-  public void insert(Integer userId) {
+  public void insert(Long userId) {
     String sql = "INSERT INTO orders (user_id) VALUES (?);";
     statement.update(sql, userId);
   }
@@ -38,8 +38,8 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
     return statement.update(sql, order_id) == 1;
   }
 
-  public List<Orders> getUsersOrder() {
-    result = statement.query("SELECT * FROM orders WHERE active = true AND user_id=1",
+  public List<Orders> getUsersOrder(Long userId) {
+    result = statement.query("SELECT * FROM orders WHERE active = true AND user_id=?",
         new RowMapper<Orders>() {
           public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
             return Orders.builder()
@@ -48,7 +48,7 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
                 .active(rs.getBoolean("active"))
                 .build();
           }
-        });
+        },userId);
     return result;
   }
 }

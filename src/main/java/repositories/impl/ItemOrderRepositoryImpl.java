@@ -49,7 +49,22 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
         orderId);
     return result;
   }
-
+  public List<ItemOrders> getUsersOrder(Long userId) {
+    result = statement.query(
+        "SELECT * FROM item_orders WHERE user_id = ?",
+        new RowMapper<ItemOrders>() {
+          public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return ItemOrders.builder()
+                .itemOrderId(rs.getLong("item_order_id"))
+                .itemId(rs.getLong("item_id"))
+                .orderId(rs.getLong("order_id"))
+                .quantity(rs.getInt("quantity"))
+                .build();
+          }
+        },
+        userId);
+    return result;
+  }
   public Long getItemId(Long item_order_id) {
     String sql = "SELECT item_id FROM item_orders WHERE item_order_id = ?";
     try {

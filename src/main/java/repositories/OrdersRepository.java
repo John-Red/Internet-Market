@@ -7,7 +7,7 @@ public interface OrdersRepository {
 
   List<Orders> get();
 
-  void insert(Integer userId);
+  void insert(Long userId);
 
   boolean delete(Integer orderId);
 }
