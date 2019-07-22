@@ -35,7 +35,7 @@ public enum ItemsService {
   }
 
   public List<Items> get(String categoryName) {
-    if (categoryName == null) return get();
+    if (categoryName == null) return getAllAvailable();
     else {
       List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.getCategory(categoryName);
       return (categories.size() > 0)
