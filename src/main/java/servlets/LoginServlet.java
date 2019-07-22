@@ -29,8 +29,6 @@ public class LoginServlet extends HttpServlet {
       throws ServletException, IOException {
     final String login = req.getParameter("login");
     final String password = req.getParameter("password");
-
-    boolean active = UsersService.INSTANCE.isUserActive(login);
     if (!(UsersService.INSTANCE.isUserActive(login))){
       req.getRequestDispatcher("/warningBlocked.jsp").forward(req, res);;
     } else if (login != null && password != null && UsersService.INSTANCE.isUserExist(login)
