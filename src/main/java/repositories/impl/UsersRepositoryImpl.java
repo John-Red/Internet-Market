@@ -86,4 +86,8 @@ public enum UsersRepositoryImpl {
       return exists;
     }
   }
+  public Long getCurrentUserId(Object login){
+    String sql = "SELECT user_id FROM users WHERE login = ?";
+    return statement.queryForObject(sql, new Object[] {login}, Long.class);
+  }
 }
