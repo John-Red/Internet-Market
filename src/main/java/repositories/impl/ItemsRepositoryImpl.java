@@ -36,6 +36,24 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
     return result;
   }
 
+  public List<Items> getAllAvailable() {
+    result =
+        statement.query(
+            "SELECT * FROM items WHERE available >0;",
+            new RowMapper<Items>() {
+              public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Items.builder()
+                    .itemId(rs.getLong("item_id"))
+                    .name(rs.getString("name"))
+                    .categoryId(rs.getLong("category_id"))
+                    .price(rs.getInt("price"))
+                    .available(rs.getInt("available"))
+                    .image(rs.getString("image") != null ? rs.getString("image") : "default.jpg")
+                    .build();
+              }
+            });
+    return result;
+  }
   public List<Items> get(Long itemId) {
     result =
         statement.query(

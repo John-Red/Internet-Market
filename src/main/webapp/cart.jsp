@@ -1,5 +1,5 @@
 <jsp:include page="header.jsp"></jsp:include>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
@@ -115,6 +115,7 @@
                                       <a class="gray_btn" href="/items"><fmt:message key="label.ContinueShopping" /></a>
                                       <button class="primary-btn" name="proceedToCheckout" value="${userId}" ><fmt:message key="label.Proceed" /></button>
                                       </form>
+                                      <span class="no-money">${NoMoney}</span>
                                   </div>
                               </td>
                           </tr>

@@ -14,6 +14,8 @@ public class Cart {
   private Long itemOrderId;
   private Long itemId;
   private Integer totalPrice;
+  private Long orderId;
+
   public static Long currentUserId;
 
   public Integer getTotalPrice() {

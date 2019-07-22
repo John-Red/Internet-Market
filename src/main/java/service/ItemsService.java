@@ -14,6 +14,9 @@ public enum ItemsService {
   public List<Items> get() {
     return ItemsRepositoryImpl.INSTANCE.get();
   }
+  public List<Items> getAllAvailable(){
+    return ItemsRepositoryImpl.INSTANCE.getAllAvailable();
+  }
 
   public List<Items> get(Long itemId) {
     return ItemsRepositoryImpl.INSTANCE.get(itemId);
@@ -37,7 +40,7 @@ public enum ItemsService {
       List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.getCategory(categoryName);
       return (categories.size() > 0)
           ? ItemsRepositoryImpl.INSTANCE.getByCategory(categories.get(0).getCategoryId())
-          : get();
+          : getAllAvailable();
     }
   }
 }

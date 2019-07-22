@@ -60,10 +60,13 @@ public class CartServlet extends HttpServlet {
       if (CartService.INSTANCE.getSubtotalPrice() <= UsersService.INSTANCE.getUserBalance(userId)) {
         UsersService.INSTANCE.updateUserBalance(userId);
         CartService.INSTANCE.setQtyOfAvailableItems(CartService.INSTANCE.get(userId));
+        request.setAttribute("orderId",CartService.INSTANCE.get(userId).get(0).getOrderId());
         CartService.INSTANCE.setOrderToFalse(userId);
-        request.getRequestDispatcher("/you_made_a_purchase.jsp").forward(request, response);
+         request.getRequestDispatcher("/you_made_a_purchase.jsp").forward(request, response);
       } else {
-        request.getRequestDispatcher("/not_enough_money.jsp").forward(request, response);
+        request.setAttribute("NoMoney","Not enough money on account");
+        doGet(request,response);
+      //  request.getRequestDispatcher("/not_enough_money.jsp").forward(request, response);
       }
     }
   }

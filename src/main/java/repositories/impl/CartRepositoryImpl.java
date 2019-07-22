@@ -19,7 +19,7 @@ public enum CartRepositoryImpl implements CartRepository {
 
   public List<Cart> get(Long userId) {
     return statement.query(
-        "SELECT items.image, items.name, items.price, item_orders.quantity, item_orders.item_order_id, items.item_id FROM users\n"
+        "SELECT items.image, items.name, items.price, item_orders.quantity, item_orders.item_order_id, items.item_id, orders.order_id FROM users\n"
             + "JOIN orders on users.user_id = orders.user_id\n"
             + "JOIN item_orders on orders.order_id = item_orders.order_id\n"
             + "join items on items.item_id = item_orders.item_id WHERE orders.active=true AND users.user_id=?;",
@@ -32,6 +32,7 @@ public enum CartRepositoryImpl implements CartRepository {
                 .itemOrdersQuantity(rs.getInt("quantity"))
                 .itemOrderId(rs.getLong("item_order_id"))
                 .itemId(rs.getLong("item_id"))
+                .orderId(rs.getLong("order_id"))
                 .build();
           }
         },
