@@ -1,7 +1,7 @@
 package utils;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public enum DatabaseConnection {
   INSTANCE;
@@ -9,8 +9,8 @@ public enum DatabaseConnection {
   private JdbcTemplate jdbcTemplate;
 
   DatabaseConnection() {
-    SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-    dataSource.setDriverClass(org.postgresql.Driver.class);
+    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    dataSource.setDriverClassName("org.postgresql.Driver");
     dataSource.setUrl(ServerAppConfig.getInstance().getDatabaseUrl());
     dataSource.setUsername(ServerAppConfig.getInstance().getDatabaseUsername());
     dataSource.setPassword(ServerAppConfig.getInstance().getDatabasePassword());
