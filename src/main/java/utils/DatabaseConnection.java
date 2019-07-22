@@ -17,7 +17,7 @@ public enum DatabaseConnection {
     jdbcTemplate = new JdbcTemplate(dataSource);
   }
 
-  public JdbcTemplate getConnection() {
+  public JdbcTemplate getStatement() {
     return jdbcTemplate;
   }
 }

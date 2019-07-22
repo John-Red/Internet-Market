@@ -27,6 +27,7 @@
 			</div>
 			<form method="post">
 			<div class="header-right">
+			  <a href="<c:url value="/logout"/>">Logout</a>
 			  <a href="/admin" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
 			  <a href="/cart" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
 			  <a class="search" ><i class="fa fa-search fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>

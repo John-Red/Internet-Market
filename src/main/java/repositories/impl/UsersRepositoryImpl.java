@@ -13,10 +13,9 @@ import utils.DatabaseConnection;
 public enum UsersRepositoryImpl {
   INSTANCE;
 
-  JdbcTemplate statement = DatabaseConnection.INSTANCE.getConnection();
+  JdbcTemplate statement = DatabaseConnection.INSTANCE.getStatement();
 
   public List<Users> get() {
-
     return statement.query(
         "SELECT * FROM users order by login",
         new RowMapper<Users>() {
@@ -33,12 +32,8 @@ public enum UsersRepositoryImpl {
   }
 
   public void insert(String login, String password, String role, boolean active) {
-    statement.update(
-        "INSERT INTO users (login, password, role, active) VALUES (?, ?, ?, ?);",
-        login,
-        password,
-        role,
-        active);
+    String sql = "INSERT INTO users (login, password, role, active) VALUES (?, ?, ?, ?);";
+    statement.update(sql, login, password, role, active);
   }
 
   public boolean delete(Long id) {
@@ -56,15 +51,35 @@ public enum UsersRepositoryImpl {
     statement.update(sql, role, userId);
   }
 
+  public String getRole(String login) {
+    String sql = "SELECT role FROM users WHERE login = ?;";
+    return statement.queryForObject(sql, new Object[]{login}, String.class);
+  }
+
+  public boolean isUserExist(String login) {
+    String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
+    boolean exists = false;
+    try {
+      exists = statement.queryForObject(sql, new Object[]{login}, Integer.class) > 0;
+    } catch (Exception e) {
+      log.error(e);
+    } finally {
+      return exists;
+    }
+  }
+
+  public boolean validatePassword(String password, String login) {
+    String sql = "SELECT password FROM users WHERE login = ?;";
+    String passwordFromDB = statement.queryForObject(sql, new Object[]{login}, String.class);
+    return password.equals(passwordFromDB);
+  }
+
+
   public boolean loginAlreadyExists(String login) {
     String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
     boolean exists = true;
     try {
-      exists =
-          DatabaseConnection.INSTANCE
-                  .getConnection()
-                  .queryForObject(sql, new Object[] {login}, Integer.class)
-              > 0;
+      exists = statement.queryForObject(sql, new Object[]{login}, Integer.class) > 0;
     } catch (Exception e) {
       log.error(e);
     } finally {

@@ -15,14 +15,13 @@ import service.AdminService;
 public class AdminServlet extends HttpServlet {
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     List<Users> listOfUsers = AdminService.INSTANCE.getAllUsers();
-    request.setAttribute("usersList", listOfUsers);
-
+    req.setAttribute("usersList", listOfUsers);
     List<Items> listOfItems = AdminService.INSTANCE.getAllItems();
-    request.setAttribute("itemsList", listOfItems);
-    request.getRequestDispatcher("/admin.jsp").forward(request, response);
+    req.setAttribute("itemsList", listOfItems);
+    req.getRequestDispatcher("/admin.jsp").forward(req, resp);
   }
 
   @Override
@@ -44,8 +43,10 @@ public class AdminServlet extends HttpServlet {
     String userId = req.getParameter("userId");
     String role = req.getParameter("getRole");
     if (userId != null) {
-      AdminService.INSTANCE.changeStateAndRole(Long.valueOf(userId), role, Boolean.valueOf(state));
+      AdminService.INSTANCE
+          .changeStateAndRole(Long.valueOf(userId), role, Boolean.valueOf(state));
     }
     resp.sendRedirect(req.getContextPath() + "/admin");
   }
+
 }

@@ -28,4 +28,17 @@ public enum AdminService {
     UsersRepositoryImpl.INSTANCE.changeActiveState(userId, state);
     UsersRepositoryImpl.INSTANCE.changeRole(userId, role);
   }
+
+  public boolean isUserExist(String login){
+    return UsersRepositoryImpl.INSTANCE.isUserExist(login);
+  }
+
+  public String getRoleByLogin (String login){
+    return UsersRepositoryImpl.INSTANCE.getRole(login);
+  }
+
+  public boolean validatePassword (String password, String login){
+    return UsersRepositoryImpl.INSTANCE.validatePassword(password, login);
+  }
+
 }
