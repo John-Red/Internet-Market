@@ -1,8 +1,11 @@
 <jsp:include page="header.jsp"></jsp:include>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page language="java"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false"%>
+
 
 <fmt:setLocale value="${param.lang}" />
 <fmt:setBundle basename="admin" />
@@ -44,7 +47,6 @@
               <select name="getRole">
               <option value="${user.getRole()}">${user.getRole()}</option>
               <option value="user">-><fmt:message key="label.user" /></option>
-              <option value="guest">-><fmt:message key="label.guest" /></option>
               <option value="admin">-><fmt:message key="label.admin" /></option>
               </select>
               </td>

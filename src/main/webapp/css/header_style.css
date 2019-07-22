@@ -134,6 +134,8 @@ ol {
 
 .header-right {
 	float: right;
+	width: 160px;
+	position:relative;
 }
 
 .header-right a {
@@ -175,5 +177,12 @@ display: inline-block;
   display: inline-block;
   width: 65px;
 }
-
+.search-img{
+ width:32px;
+ height:30px;
+}
+.a-search-img{
+  padding-left:25px;
+  position:absolute;
+	bottom:0;
 }

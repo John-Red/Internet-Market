@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-Authorization page
+
 </body>
 </html>

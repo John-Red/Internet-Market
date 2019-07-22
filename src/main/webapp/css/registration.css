@@ -107,3 +107,9 @@ input[type=submit] {
   max-width:30px;
   max-height:30px;
 }
+.to-registration{
+font-size: 15px;
+}
+.to-registration-src{
+text-decoration: none;
+}
