@@ -43,18 +43,21 @@ public class CartServlet extends HttpServlet {
     if (deleteParameter != null) {
       Long itemOrderId = Long.parseLong(deleteParameter);
       CartService.INSTANCE.delete(itemOrderId);
+      response.sendRedirect("/cart");
     }
 
     String incrementParameter = request.getParameter("incrementQuantity");
     if (incrementParameter != null) {
       Long itemOrderId = Long.parseLong(incrementParameter);
       CartService.INSTANCE.incrementQuantity(itemOrderId);
+      response.sendRedirect("/cart");
     }
 
     String decrementParameter = request.getParameter("decrementQuantity");
     if (decrementParameter != null) {
       Long itemOrderId = Long.parseLong(decrementParameter);
       CartService.INSTANCE.decrementQuantity(itemOrderId);
+      response.sendRedirect("/cart");
     }
 
     String buyParameter = request.getParameter("proceedToCheckout");
@@ -64,10 +67,10 @@ public class CartServlet extends HttpServlet {
         UsersService.INSTANCE.updateUserBalance(userId);
         CartService.INSTANCE.setOrderToFalse(userId);
         CartService.INSTANCE.reduceQtyOfAvailableItems(CartService.INSTANCE.get(Cart.currentUserId));
+        request.getRequestDispatcher("/you_made_a_purchase.jsp").forward(request, response);
       } else {
-        //response.sendRedirect("/");
+        request.getRequestDispatcher("/not_enough_money.jsp").forward(request, response);
       }
     }
-    response.sendRedirect("/cart");
   }
 }
