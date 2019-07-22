@@ -10,6 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import service.CartService;
 
 public class ItemsFilter implements Filter {
 
@@ -23,6 +24,7 @@ public class ItemsFilter implements Filter {
     final HttpServletRequest req = (HttpServletRequest) request;
     final HttpServletResponse res = (HttpServletResponse) response;
     final HttpSession session = req.getSession();
+    request.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
 
     //Logged user.
     if ((session) != null &&

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import repositories.impl.UsersRepositoryImpl;
 import service.AdminService;
+import service.CartService;
 import servlets.ItemsServlet;
 
 
@@ -22,6 +23,7 @@ public class AdminFilter implements Filter {
     final HttpServletRequest req = (HttpServletRequest) request;
     final HttpServletResponse res = (HttpServletResponse) response;
     final HttpSession session = req.getSession();
+    request.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
 
     //Logged user.
     if ((session) != null &&

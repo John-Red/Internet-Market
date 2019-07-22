@@ -94,4 +94,8 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
     String sql = "DELETE FROM item_orders WHERE item_id = ?";
     return statement.update(sql, id) == 1;
   }
+
+  public void cleanCartAfterPurchase(Long orderId) {
+    //String sql = "DELETE FROM item_orders wH"
+  }
 }

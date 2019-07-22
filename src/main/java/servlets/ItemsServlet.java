@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import repositories.impl.CartRepositoryImpl;
 import repositories.impl.CategoriesRepositoryImpl;
+import service.CartService;
 import repositories.impl.UsersRepositoryImpl;
 import service.ItemOrdersService;
 import service.ItemsService;
@@ -25,7 +26,7 @@ public class ItemsServlet extends HttpServlet {
     List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
     request.setAttribute("itemsList", itemsList);
     request.setAttribute("categoriesList", categories);
-    request.setAttribute("CartQuantity", CartRepositoryImpl.INSTANCE.getSumCartQuantity());
+    request.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
     request.getRequestDispatcher("/items.jsp").forward(request, response);
   }
 

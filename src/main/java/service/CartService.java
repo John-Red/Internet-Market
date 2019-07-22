@@ -5,6 +5,8 @@ import java.util.List;
 import lombok.extern.log4j.Log4j;
 import repositories.impl.CartRepositoryImpl;
 import repositories.impl.ItemOrderRepositoryImpl;
+import repositories.impl.OrdersRepositoryImpl;
+import repositories.impl.UsersRepositoryImpl;
 
 @Log4j
 public enum CartService {
@@ -47,4 +49,9 @@ public enum CartService {
       log.info("Item quantity can't be negative");
     }
   }
+
+//  public Long getCurrentUserId(Long orderId) {
+//    return OrdersRepositoryImpl.INSTANCE.getCurrentUserId(orderId);
+//  }
+
 }

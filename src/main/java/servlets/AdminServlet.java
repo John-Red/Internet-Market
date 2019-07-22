@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j;
 import service.AdminService;
+import service.CartService;
 
 @Log4j
 public class AdminServlet extends HttpServlet {
@@ -21,6 +22,7 @@ public class AdminServlet extends HttpServlet {
     req.setAttribute("usersList", listOfUsers);
     List<Items> listOfItems = AdminService.INSTANCE.getAllItems();
     req.setAttribute("itemsList", listOfItems);
+    req.setAttribute("CartQuantity", CartService.INSTANCE.getCartQuantity());
     req.getRequestDispatcher("/admin.jsp").forward(req, resp);
   }
 

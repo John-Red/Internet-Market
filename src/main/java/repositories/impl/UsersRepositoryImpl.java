@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.extern.log4j.Log4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import service.CartService;
 import utils.DatabaseConnection;
 
 @Log4j
@@ -74,7 +75,6 @@ public enum UsersRepositoryImpl {
     return password.equals(passwordFromDB);
   }
 
-
   public boolean loginAlreadyExists(String login) {
     String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
     boolean exists = true;
@@ -86,9 +86,20 @@ public enum UsersRepositoryImpl {
       return exists;
     }
   }
+
   public Long getCurrentUserId(Object login){
     String sql = "SELECT user_id FROM users WHERE login = ?";
     return statement.queryForObject(sql, new Object[] {login}, Long.class);
+  }
+
+  public Integer getUserBalance(Long userId) {
+    String sql = "SELECT balance FROM users WHERE user_id = ?";
+    return statement.queryForObject(sql, new Object[] {userId}, Integer.class);
+  }
+
+  public void updateUserBalance(Long userId, Integer balance) {
+    String sql = "UPDATE users SET balance = ? WHERE user_id = ?";
+    statement.update(sql, balance, userId);
   }
 
   public boolean isUserActive (String login){

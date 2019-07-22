@@ -1,5 +1,6 @@
 package servlets.filters;
 
+import entities.Cart;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -10,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import service.CartService;
 
 public class CartFilter implements Filter {
 
@@ -23,6 +25,7 @@ public class CartFilter implements Filter {
     final HttpServletRequest req = (HttpServletRequest) request;
     final HttpServletResponse res = (HttpServletResponse) response;
     final HttpSession session = req.getSession();
+
 
     //Logged user.
     if ((session) != null &&
@@ -38,6 +41,7 @@ public class CartFilter implements Filter {
   private void moveToMenu(final HttpServletRequest req, final HttpServletResponse res,
       final String role, FilterChain filterChain) throws ServletException, IOException {
     if (role.equals("admin")||role.equals("user")) {
+      req.setAttribute("userId", Cart.currentUserId);
       req.getRequestDispatcher("/cart").forward(req, res);
     } else {
       res.sendRedirect(req.getContextPath() + "/login");
