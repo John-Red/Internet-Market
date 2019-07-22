@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="zxx">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${param.lang}" />
+<fmt:setBundle basename="items" />
+
+<html lang="${param.lang}">
 <head>
 	<title>EPAM EXPRESS</title>
 	<meta charset="UTF-8">
@@ -18,7 +25,12 @@
 	<header class="header-section header-normal">
 		<div class="container-fluid">
 			<!-- logo -->
-			<div class="site-logo"><a href="/items">
+			<div class="site-logo">
+			<div class="localisation">
+              		<a href="?lang=en"><img src="./img/en.png" class="en-ru-img"></a>
+              		<a href="?lang=ru"><img src="./img/ru.png" class="en-ru-img"></a>
+              		</div>
+			<a href="/items">
 				<img src="img/epam_logo.png"  alt="logo"></a>
 			</div>
 			<!-- responsive -->
@@ -27,20 +39,19 @@
 			</div>
 			<form method="post">
 			<div class="header-right">
-			  <a href="<c:url value="/logout"/>">Logout</a>
 			  <a href="/admin" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
 			  <a href="/cart" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
-			  <a class="search" ><i class="fa fa-search fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
+			  <a href="<c:url value="/logout"/>" class="a-search-img"><img src="img/logout.png" class="search-img" ></a>
 			  </form>
 			</div>
 			<!-- site menu -->
 			<ul class="main-menu">
-			<li><a href="/items?category=furniture">Furniture</a></li>
-				<li><a href="/items?category=electronics">Electronics</a></li>
-				<li><a href="/items?category=sporting goods">Sporting Goods</a></li>
-				<li><a href="/items?category=merch">Merch</a></li>
-				<li><a href="/items?category=stationary">Stationery</a></li>
-				<li><a href="/items?category=books">Books</a></li>
+			<li><a href="/items?category=furniture"><fmt:message key="label.Furniture" /></a></li>
+				<li><a href="/items?category=electronics"><fmt:message key="label.Electronics" /></a></li>
+				<li><a href="/items?category=sporting goods"><fmt:message key="label.SportingGoods" /></a></li>
+				<li><a href="/items?category=merch"><fmt:message key="label.Merch" /></a></li>
+				<li><a href="/items?category=stationary"><fmt:message key="label.Stationery" /></a></li>
+				<li><a href="/items?category=books"><fmt:message key="label.Books" /></a></li>
 			</ul>
 		</div>
 	</header>

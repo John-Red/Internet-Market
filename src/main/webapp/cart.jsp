@@ -1,7 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="header.jsp"></jsp:include>
-<html lang="zxx">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${param.lang}" />
+<fmt:setBundle basename="cart" />
+
+<html lang="${param.lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,11 +28,11 @@
                   <table class="table">
                       <thead>
                           <tr>
-                              <th scope="col">Product</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">Quantity</th>
-                              <th scope="col">Total</th>
-                              <th scope="col">Remove</th>
+                              <th scope="col"><fmt:message key="label.product" /></th>
+                              <th scope="col"><fmt:message key="label.Price" /></th>
+                              <th scope="col"><fmt:message key="label.Quantity" /></th>
+                              <th scope="col"><fmt:message key="label.Total" /></th>
+                              <th scope="col"><fmt:message key="label.Remove" /></th>
                           </tr>
                       </thead>
                       <tbody>
@@ -75,7 +81,7 @@
 
 							  <tr class="bottom_button">
                               <td>
-                              <a class="gray_btn" href="/cart">Update Cart</a>
+                              <a class="gray_btn" href="/cart"><fmt:message key="label.UpdateCart" /></a>
 
                               </td>
 
@@ -84,7 +90,7 @@
 
                               </td>
                               <td>
-                                  <h5>Subtotal</h5>
+                                  <h5> <fmt:message key="label.GrandTotal"/></h5>
                               </td>
                               <td>
                                   <h5>${Subtotal}</h5>
@@ -106,8 +112,8 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="/items">Continue Shopping</a>
-                                      <a class="primary-btn ml-2" >Proceed to checkout</a>
+                                      <a class="gray_btn" href="/items"> <fmt:message key="label.ContinueShopping" /></a>
+                                      <a class="primary-btn ml-2" ><fmt:message key="label.Proceed" /></a>
                                   </div>
                               </td>
                           </tr>

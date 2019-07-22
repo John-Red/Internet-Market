@@ -97,9 +97,12 @@ ol {
 
 .site-logo {
 	display: inline-block;
-	padding: 58px 34px 0px;
+	padding: 58px 0px 0px;
 	padding-top: 0;
 	float: left;
+	width:250px;
+	display: inline-block;
+
 }
 
 .nav-switch {
@@ -131,6 +134,8 @@ ol {
 
 .header-right {
 	float: right;
+	width: 160px;
+	position:relative;
 }
 
 .header-right a {
@@ -162,4 +167,22 @@ ol {
 .header-right .search img {
 	padding-top: 10px;
 }
+.en-ru-img{
+display: inline-block;
+
+  max-width:30px;
+  max-height:30px;
+}
+.localisation{
+  display: inline-block;
+  width: 65px;
+}
+.search-img{
+ width:32px;
+ height:30px;
+}
+.a-search-img{
+  padding-left:25px;
+  position:absolute;
+	bottom:0;
 }
