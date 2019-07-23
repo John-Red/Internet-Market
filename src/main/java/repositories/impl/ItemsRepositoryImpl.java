@@ -77,7 +77,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
   public List<Items> getByCategory(Long categoryId) {
     result =
         statement.query(
-            "SELECT * FROM items WHERE category_id = ?",
+            "SELECT * FROM items WHERE category_id = ? AND available>0",
             new RowMapper<Items>() {
               public Items mapRow(ResultSet rs, int rowNum) throws SQLException {
                 return Items.builder()
