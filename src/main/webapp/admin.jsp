@@ -57,7 +57,7 @@
                     <option value="${!user.isActive()}">${!user.isActive()}</option>
                   </select>
               </td>
-              <td><p><input name="getBalance" maxlength="10" size="8" value=${user.getBalance()}></p></td>
+              <td><input name="getBalance" maxlength="10" size="8" value=${user.getBalance()}></td>
               <td>
               <td><button type="submit" name="userId" value="${user.getUserId()}"><fmt:message key="label.Submit" /></button></td>
               </td>
