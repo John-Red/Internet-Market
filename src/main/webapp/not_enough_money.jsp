@@ -13,7 +13,7 @@
   margin: 0 auto;
   float: none;
   margin-bottom: 10px;
-  margin-top: 150px;
+  margin-top: 70px;
 }
 .btn {
   margin-left: 180px;
@@ -35,8 +35,8 @@
 <div class="card" style="width: 35rem;">
   <img class="card-img-top" src="img/nomoneytravolta.gif" alt="Card image cap">
   <div class="card-text-center">
-    <h5 class="card-title">На балансе недостаточно средств</h5>
-    <a href="/items" class="btn btn-primary">Вернуться на главную</a>
+    <h5 class="card-title">Not enough coins on your account</h5>
+    <a href="/items" class="btn btn-primary">Back to main page</a>
   </div>
 </div>
 </body>

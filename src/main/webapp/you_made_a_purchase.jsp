@@ -36,9 +36,9 @@
 <div class="card" style="width: 28rem;">
   <img class="card-img-top" src="img/Shut_up_and_take_all_the_ny_money.gif" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Спасибо за покупку!</h5>
-    <p class="card-text">Заказ № ${orderId} оформлен и скоро будет доставлен на ваше рабочее место.</p>
-    <a href="/items" class="btn btn-primary">Вернуться на главную</a>
+    <h5 class="card-title">Thank you for purchase!</h5>
+    <p class="card-text">Your order № ${orderId} complete and will be delivered to your work place.</p>
+    <a href="/items" class="btn btn-primary">Back to main page</a>
   </div>
 </div>
 </body>
