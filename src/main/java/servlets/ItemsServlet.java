@@ -16,6 +16,7 @@ import repositories.impl.UsersRepositoryImpl;
 import service.CartService;
 import service.ItemOrdersService;
 import service.ItemsService;
+import service.UsersService;
 
 public class ItemsServlet extends HttpServlet {
   String selectedCategory;
@@ -34,6 +35,7 @@ public class ItemsServlet extends HttpServlet {
     }
     request.setAttribute("itemsList", itemsList);
     request.setAttribute("categoriesList", categories);
+    request.setAttribute("userBalance", UsersService.INSTANCE.getUserBalance(Cart.currentUserId));
     request.setAttribute("CartQuantity", sumCartQuantity);
     request.getRequestDispatcher("/items.jsp").forward(request, response);
   }

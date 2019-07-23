@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j;
 import service.AdminService;
 import service.CartService;
+import service.UsersService;
 
 @Log4j
 public class AdminServlet extends HttpServlet {
@@ -24,9 +25,11 @@ public class AdminServlet extends HttpServlet {
     List<Items> listOfItems = AdminService.INSTANCE.getAllItems();
     List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
     int sumCartQuantity = 0;
-    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    for (Cart c : list) {
+      sumCartQuantity += c.getItemOrdersQuantity();
     }
     req.setAttribute("itemsList", listOfItems);
+    req.setAttribute("userBalance", UsersService.INSTANCE.getUserBalance(Cart.currentUserId));
     req.setAttribute("CartQuantity", sumCartQuantity);
     req.getRequestDispatcher("/admin.jsp").forward(req, resp);
   }
@@ -53,7 +56,13 @@ public class AdminServlet extends HttpServlet {
       AdminService.INSTANCE
           .changeStateAndRole(Long.valueOf(userId), role, Boolean.valueOf(state));
     }
-    resp.sendRedirect(req.getContextPath() + "/admin?lang=en");
-  }
 
+    //change balance
+    String balance = req.getParameter("getBalance");
+    if (balance != null) {
+      AdminService.INSTANCE
+          .updateUserBalance(Long.valueOf(userId), Integer.valueOf(balance));
+    }
+    resp.sendRedirect(req.getContextPath() + "/admin");
+  }
 }

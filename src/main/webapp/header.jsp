@@ -42,7 +42,7 @@
 			  <a href="/admin?lang=en" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
 			  <a href="/cart?lang=en" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
 			  <a href="<c:url value="/logout"/>" class="a-search-img"><img src="img/logout.png" class="search-img" ></a>
-			  <a><span class="span-balance">coins 100000</span></a>
+			  <a><span class="span-balance">Balance: ${userBalance}</span></a>
 			</div>
 			</form>
 			<!-- site menu -->
