@@ -115,7 +115,6 @@
                                       <a class="gray_btn" href="/items?lang=en"><fmt:message key="label.ContinueShopping" /></a>
                                       <button class="primary-btn" name="proceedToCheckout" value="${userId}" ><fmt:message key="label.Proceed" /></button>
                                       </form>
-                                      <span class="no-money">${NoMoney}</span>
                                   </div>
                               </td>
                           </tr>

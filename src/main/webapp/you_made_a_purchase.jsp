@@ -8,29 +8,38 @@
 
 <html lang="${param.lang}">
 <head>
-    <meta charset="UTF-8">
-    <title>EPAM EXPRESS</title>
-<link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all"/>
-<link href="css/itemsstyle.css" rel="stylesheet" type="text/css" media="all"/>
-<link href="css/styles.css" rel="stylesheet" type="text/css" media="all"/>
-<link href="css/registration.css" rel="stylesheet" type="text/css" media="all"/>
 <style>
-.purchase-txt{
- font-size: 40px;
-  font-weight: bold;
-   color: #39c2d7;
+.card {
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+  margin-top: 150px;
+}
+.btn {
+  margin-left: 110px;
+}
+.card .card-body .btn-primary {
+  background: #76CDD8;
+  color: #ffffff;
+  border: none;
+}
+.card-title {
+  margin-left: 108px;
+}
+.card-text {
+  margin-left: 30px;
 }
 </style>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
-<%@include file="header.jsp" %>
-<div class="page">
-<div class="container-login">
-<div class="purchase-txt">
-<span>you made a purchase, your order id = ${orderId} </span>
+<div class="card" style="width: 28rem;">
+  <img class="card-img-top" src="img/Shut_up_and_take_all_the_ny_money.gif" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Спасибо за покупку!</h5>
+    <p class="card-text">Заказ № ${orderId} оформлен и скоро будет доставлен на ваше рабочее место.</p>
+    <a href="/items" class="btn btn-primary">Вернуться на главную</a>
+  </div>
 </div>
-</div>
-</div>
-<%@include file="footer.jsp" %>
 </body>
 </html>
