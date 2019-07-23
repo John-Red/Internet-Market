@@ -42,8 +42,9 @@
 			  <a href="/admin?lang=en" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
 			  <a href="/cart?lang=en" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
 			  <a href="<c:url value="/logout"/>" class="a-search-img"><img src="img/logout.png" class="search-img" ></a>
-			  </form>
+			  <a><span class="span-balance">Balance: 100000</span></a>
 			</div>
+			</form>
 			<!-- site menu -->
 			<ul class="main-menu">
 			<li><a href="/items?category=furniture&lang=en"><fmt:message key="label.Furniture" /></a></li>
