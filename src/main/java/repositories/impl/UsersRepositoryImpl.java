@@ -26,6 +26,7 @@ public enum UsersRepositoryImpl {
                 .password(rs.getString("password"))
                 .role(rs.getString("role"))
                 .active(rs.getBoolean("active"))
+                .balance(rs.getInt("balance"))
                 .build();
           }
         });

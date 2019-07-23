@@ -12,6 +12,6 @@ public class Users {
   private String password;
   private String role;
   private boolean active = true;
-
+  private Integer balance;
 
 }

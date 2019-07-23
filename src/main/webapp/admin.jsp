@@ -36,6 +36,7 @@
           <th><fmt:message key="label.Login" /></th>
           <th><fmt:message key="label.Role" /></th>
           <th><fmt:message key="label.Active" /></th>
+          <th>Balance</th>
           <th></th>
           <th></th>
       </tr>
@@ -56,6 +57,7 @@
                     <option value="${!user.isActive()}">${!user.isActive()}</option>
                   </select>
               </td>
+              <td><p><input name="getBalance" maxlength="10" size="8" value=${user.getBalance()}></p></td>
               <td>
               <td><button type="submit" name="userId" value="${user.getUserId()}"><fmt:message key="label.Submit" /></button></td>
               </td>
