@@ -19,56 +19,62 @@ public enum ItemOrderRepositoryImpl implements ItemOrdersRepository {
   JdbcTemplate statement = DatabaseConnection.INSTANCE.getStatement();
 
   public List<ItemOrders> get() {
-    result = statement.query("SELECT * FROM item_orders",
-        new RowMapper<ItemOrders>() {
-          public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return ItemOrders.builder()
-                .itemOrderId(rs.getLong("item_order_id"))
-                .itemId(rs.getLong("item_id"))
-                .orderId(rs.getLong("order_id"))
-                .quantity(rs.getInt("quantity"))
-                .build();
-          }
-        });
+    result =
+        statement.query(
+            "SELECT * FROM item_orders",
+            new RowMapper<ItemOrders>() {
+              public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return ItemOrders.builder()
+                    .itemOrderId(rs.getLong("item_order_id"))
+                    .itemId(rs.getLong("item_id"))
+                    .orderId(rs.getLong("order_id"))
+                    .quantity(rs.getInt("quantity"))
+                    .build();
+              }
+            });
     return result;
   }
 
   public List<ItemOrders> getOrder(Long orderId) {
-    result = statement.query(
-        "SELECT * FROM item_orders WHERE order_id = ?",
-        new RowMapper<ItemOrders>() {
-          public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return ItemOrders.builder()
-                .itemOrderId(rs.getLong("item_order_id"))
-                .itemId(rs.getLong("item_id"))
-                .orderId(rs.getLong("order_id"))
-                .quantity(rs.getInt("quantity"))
-                .build();
-          }
-        },
-        orderId);
+    result =
+        statement.query(
+            "SELECT * FROM item_orders WHERE order_id = ?",
+            new RowMapper<ItemOrders>() {
+              public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return ItemOrders.builder()
+                    .itemOrderId(rs.getLong("item_order_id"))
+                    .itemId(rs.getLong("item_id"))
+                    .orderId(rs.getLong("order_id"))
+                    .quantity(rs.getInt("quantity"))
+                    .build();
+              }
+            },
+            orderId);
     return result;
   }
+
   public List<ItemOrders> getUsersOrder(Long userId) {
-    result = statement.query(
-        "SELECT * FROM item_orders WHERE user_id = ?",
-        new RowMapper<ItemOrders>() {
-          public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return ItemOrders.builder()
-                .itemOrderId(rs.getLong("item_order_id"))
-                .itemId(rs.getLong("item_id"))
-                .orderId(rs.getLong("order_id"))
-                .quantity(rs.getInt("quantity"))
-                .build();
-          }
-        },
-        userId);
+    result =
+        statement.query(
+            "SELECT * FROM item_orders WHERE user_id = ?",
+            new RowMapper<ItemOrders>() {
+              public ItemOrders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return ItemOrders.builder()
+                    .itemOrderId(rs.getLong("item_order_id"))
+                    .itemId(rs.getLong("item_id"))
+                    .orderId(rs.getLong("order_id"))
+                    .quantity(rs.getInt("quantity"))
+                    .build();
+              }
+            },
+            userId);
     return result;
   }
+
   public Long getItemId(Long item_order_id) {
     String sql = "SELECT item_id FROM item_orders WHERE item_order_id = ?";
     try {
-      return statement.queryForObject(sql, new Object[]{item_order_id}, Long.class);
+      return statement.queryForObject(sql, new Object[] {item_order_id}, Long.class);
     } catch (DataAccessException e) {
       log.error("DataAccessException", e);
       return 0L;

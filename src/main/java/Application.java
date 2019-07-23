@@ -1,5 +1,4 @@
 import lombok.extern.log4j.Log4j;
-import utils.CreateRows;
 import utils.ServerApplication;
 
 @Log4j

@@ -15,16 +15,18 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
   JdbcTemplate statement = DatabaseConnection.INSTANCE.getStatement();
 
   public List<Orders> get() {
-    result = statement.query("SELECT * FROM orders",
-        new RowMapper<Orders>() {
-          public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return Orders.builder()
-                .orderId(rs.getLong("order_id"))
-                .userId(rs.getLong("user_id"))
-                .active(rs.getBoolean("active"))
-                .build();
-          }
-        });
+    result =
+        statement.query(
+            "SELECT * FROM orders",
+            new RowMapper<Orders>() {
+              public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Orders.builder()
+                    .orderId(rs.getLong("order_id"))
+                    .userId(rs.getLong("user_id"))
+                    .active(rs.getBoolean("active"))
+                    .build();
+              }
+            });
     return result;
   }
 
@@ -39,27 +41,29 @@ public enum OrdersRepositoryImpl implements OrdersRepository {
   }
 
   public List<Orders> getUsersOrder(Long userId) {
-    result = statement.query("SELECT * FROM orders WHERE active = true AND user_id=?",
-        new RowMapper<Orders>() {
-          public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return Orders.builder()
-                .orderId(rs.getLong("order_id"))
-                .userId(rs.getLong("user_id"))
-                .active(rs.getBoolean("active"))
-                .build();
-          }
-        },userId);
+    result =
+        statement.query(
+            "SELECT * FROM orders WHERE active = true AND user_id=?",
+            new RowMapper<Orders>() {
+              public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Orders.builder()
+                    .orderId(rs.getLong("order_id"))
+                    .userId(rs.getLong("user_id"))
+                    .active(rs.getBoolean("active"))
+                    .build();
+              }
+            },
+            userId);
     return result;
   }
 
-  public Long getOrderIdForCurrentUser(Long userId){
-  String sql = "SELECT order_id FROM orders WHERE user_id = ? AND active = true";
-  return statement.queryForObject(sql, new Object[]{userId}, Long.class);
+  public Long getOrderIdForCurrentUser(Long userId) {
+    String sql = "SELECT order_id FROM orders WHERE user_id = ? AND active = true";
+    return statement.queryForObject(sql, new Object[] {userId}, Long.class);
   }
 
-  public void setOrderToFalse(Long orderId){
+  public void setOrderToFalse(Long orderId) {
     String sql = "UPDATE orders SET active = false WHERE order_id = ?";
     statement.update(sql, orderId);
   }
-
 }

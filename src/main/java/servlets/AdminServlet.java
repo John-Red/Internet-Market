@@ -53,15 +53,13 @@ public class AdminServlet extends HttpServlet {
     String userId = req.getParameter("userId");
     String role = req.getParameter("getRole");
     if (userId != null) {
-      AdminService.INSTANCE
-          .changeStateAndRole(Long.valueOf(userId), role, Boolean.valueOf(state));
+      AdminService.INSTANCE.changeStateAndRole(Long.valueOf(userId), role, Boolean.valueOf(state));
     }
 
-    //change balance
+    // change balance
     String balance = req.getParameter("getBalance");
     if (balance != null) {
-      AdminService.INSTANCE
-          .updateUserBalance(Long.valueOf(userId), Integer.valueOf(balance));
+      AdminService.INSTANCE.updateUserBalance(Long.valueOf(userId), Integer.valueOf(balance));
     }
     resp.sendRedirect(req.getContextPath() + "/admin?lang=en");
   }

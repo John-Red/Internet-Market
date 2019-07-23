@@ -11,25 +11,21 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import service.CartService;
 
 public class CartFilter implements Filter {
 
-  public void init(FilterConfig filterConfig) throws ServletException {
+  public void init(FilterConfig filterConfig) throws ServletException {}
 
-  }
-
-  public void doFilter(final ServletRequest request, final ServletResponse response,
-      final FilterChain filterChain) throws IOException, ServletException {
+  public void doFilter(
+      final ServletRequest request, final ServletResponse response, final FilterChain filterChain)
+      throws IOException, ServletException {
 
     final HttpServletRequest req = (HttpServletRequest) request;
     final HttpServletResponse res = (HttpServletResponse) response;
     final HttpSession session = req.getSession();
 
-
-    //Logged user.
-    if ((session) != null &&
-        (session.getAttribute("role")) != null ) {
+    // Logged user.
+    if ((session) != null && (session.getAttribute("role")) != null) {
       final String role = (String) session.getAttribute("role");
       moveToMenu(req, res, role, filterChain);
     } else {
@@ -38,9 +34,13 @@ public class CartFilter implements Filter {
     }
   }
 
-  private void moveToMenu(final HttpServletRequest req, final HttpServletResponse res,
-      final String role, FilterChain filterChain) throws ServletException, IOException {
-    if (role.equals("admin")||role.equals("user")) {
+  private void moveToMenu(
+      final HttpServletRequest req,
+      final HttpServletResponse res,
+      final String role,
+      FilterChain filterChain)
+      throws ServletException, IOException {
+    if (role.equals("admin") || role.equals("user")) {
       req.setAttribute("userId", Cart.currentUserId);
       req.getRequestDispatcher("/cart").forward(req, res);
     } else {
@@ -48,7 +48,5 @@ public class CartFilter implements Filter {
     }
   }
 
-  public void destroy() {
-
-  }
+  public void destroy() {}
 }

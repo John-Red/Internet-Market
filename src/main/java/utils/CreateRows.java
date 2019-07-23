@@ -11,7 +11,7 @@ public enum CreateRows {
 
       ItemsService.INSTANCE.insert("sneakers", 4, 2300, 10, "sneakers.jpg");
       ItemsService.INSTANCE.insert("sneakers adidas", 4, 5500, 3, "sneakers adidas.jpg");
-     ItemsService.INSTANCE.insert("chair", 1, 15000, 1, "chair.jpg");
+      ItemsService.INSTANCE.insert("chair", 1, 15000, 1, "chair.jpg");
       ItemsService.INSTANCE.insert("table", 1, 1000, 1, "table.jpg");
       ItemsService.INSTANCE.insert("phone", 2, 1000, 17, "phone.jpg");
       ItemsService.INSTANCE.insert("notebook", 2, 17000, 5, "notebook.jpg");
