@@ -134,7 +134,7 @@ ol {
 
 .header-right {
 	float: right;
-	width: 160px;
+	width: 150px;
 	height: 54px;
 	position:relative;
 }
@@ -191,4 +191,4 @@ display: inline-block;
   font-family:'Helvetica';
   color:  #fff;
   text-align: center;
-a}
+}
