@@ -18,11 +18,11 @@ import service.ItemOrdersService;
 import service.ItemsService;
 
 public class ItemsServlet extends HttpServlet {
-
+  String selectedCategory;
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String selectedCategory = request.getParameter("category");
+    selectedCategory = request.getParameter("category");
     final HttpSession session = request.getSession();
     Cart.currentUserId = UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
 
@@ -46,6 +46,6 @@ public class ItemsServlet extends HttpServlet {
     String name = req.getParameter("addInCart");
     Long itemId = Long.parseLong(name);
     ItemOrdersService.INSTANCE.insert(itemId,userId);
-    resp.sendRedirect("/items");
+    resp.sendRedirect("/items?category="+selectedCategory+"&lang=en");
   }
 }

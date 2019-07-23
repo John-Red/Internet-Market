@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
     final HttpSession session = req.getSession();
     //check logged or not
     if ((session.getAttribute("role")) != null) {
-      res.sendRedirect(req.getContextPath() + "/items");
+      res.sendRedirect(req.getContextPath() + "/items?lang=en");
     } else {
       req.getRequestDispatcher("/login.jsp").forward(req, res);
     }
@@ -37,9 +37,9 @@ public class LoginServlet extends HttpServlet {
       final String role = UsersService.INSTANCE.getRoleByLogin(login);
       req.getSession().setAttribute("role", role);
       req.getSession().setAttribute("login", login);
-      res.sendRedirect(req.getContextPath() + "/items");
+      res.sendRedirect(req.getContextPath() + "/items?lang=en");
     } else {
-      res.sendRedirect(req.getContextPath() + "/login");
+      res.sendRedirect(req.getContextPath() + "/login?lang=en");
     }
   }
 }

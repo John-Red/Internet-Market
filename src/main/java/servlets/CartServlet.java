@@ -37,21 +37,21 @@ public class CartServlet extends HttpServlet {
     if (deleteParameter != null) {
       Long itemOrderId = Long.parseLong(deleteParameter);
       CartService.INSTANCE.delete(itemOrderId);
-      response.sendRedirect("/cart");
+      response.sendRedirect("/cart?lang=en");
     }
 
     String incrementParameter = request.getParameter("incrementQuantity");
     if (incrementParameter != null) {
       Long itemOrderId = Long.parseLong(incrementParameter);
       CartService.INSTANCE.incrementQuantity(itemOrderId);
-      response.sendRedirect("/cart");
+      response.sendRedirect("/cart?lang=en");
     }
 
     String decrementParameter = request.getParameter("decrementQuantity");
     if (decrementParameter != null) {
       Long itemOrderId = Long.parseLong(decrementParameter);
       CartService.INSTANCE.decrementQuantity(itemOrderId);
-      response.sendRedirect("/cart");
+      response.sendRedirect("/cart?lang=en");
     }
 
     String buyParameter = request.getParameter("proceedToCheckout");
@@ -64,9 +64,9 @@ public class CartServlet extends HttpServlet {
         CartService.INSTANCE.setOrderToFalse(userId);
          request.getRequestDispatcher("/you_made_a_purchase.jsp").forward(request, response);
       } else {
-        request.setAttribute("NoMoney","Not enough money on account");
-        doGet(request,response);
-      //  request.getRequestDispatcher("/not_enough_money.jsp").forward(request, response);
+        //request.setAttribute("NoMoney","Not enough money on account");
+        //doGet(request,response);
+        request.getRequestDispatcher("/not_enough_money.jsp").forward(request, response);
       }
     }
   }

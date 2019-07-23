@@ -23,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
     } catch (InvalidLoginOrPassword e) {
       log.error(e);
     }
-    resp.sendRedirect("/login");
+    resp.sendRedirect("/login?lang=en");
   }
 
   @Override

@@ -28,7 +28,7 @@ public enum CategoriesRepositoryImpl {
   }
 
   public List<Categories> getCategory(String categoryName) {
-    result = statement.query("SELECT * FROM categories WHERE name = ? AND available>0",
+    result = statement.query("SELECT * FROM categories WHERE name = ?",
         new RowMapper<Categories>() {
           public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
             return Categories.builder()

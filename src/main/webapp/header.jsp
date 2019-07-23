@@ -30,7 +30,7 @@
               		<a href="?lang=en"><img src="./img/en.png" class="en-ru-img"></a>
               		<a href="?lang=ru"><img src="./img/ru.png" class="en-ru-img"></a>
               		</div>
-			<a href="/items">
+			<a href="/items?lang=en">
 				<img src="img/epam_logo.png"  alt="logo"></a>
 			</div>
 			<!-- responsive -->
@@ -39,19 +39,20 @@
 			</div>
 			<form method="post">
 			<div class="header-right">
-			  <a href="/admin" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
-			  <a href="/cart" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
+			  <a href="/admin?lang=en" class="user" ><i class="fa fa-user fa-2x fa-fw" style="color:white" aria-hidden="true"></i></a>
+			  <a href="/cart?lang=en" class="card-bag" ><i class="fa fa-shopping-cart fa-2x fa-fw" style="color:white" aria-hidden="true"></i><span>${CartQuantity}</span></a>
 			  <a href="<c:url value="/logout"/>" class="a-search-img"><img src="img/logout.png" class="search-img" ></a>
-			  </form>
+			  <a><span class="span-balance">Balance: 100000</span></a>
 			</div>
+			</form>
 			<!-- site menu -->
 			<ul class="main-menu">
-			<li><a href="/items?category=furniture"><fmt:message key="label.Furniture" /></a></li>
-				<li><a href="/items?category=electronics"><fmt:message key="label.Electronics" /></a></li>
-				<li><a href="/items?category=sporting goods"><fmt:message key="label.SportingGoods" /></a></li>
-				<li><a href="/items?category=merch"><fmt:message key="label.Merch" /></a></li>
-				<li><a href="/items?category=stationary"><fmt:message key="label.Stationery" /></a></li>
-				<li><a href="/items?category=books"><fmt:message key="label.Books" /></a></li>
+			<li><a href="/items?category=furniture&lang=en"><fmt:message key="label.Furniture" /></a></li>
+				<li><a href="/items?category=electronics&lang=en"><fmt:message key="label.Electronics" /></a></li>
+				<li><a href="/items?category=sporting goods&lang=en"><fmt:message key="label.SportingGoods" /></a></li>
+				<li><a href="/items?category=merch&lang=en"><fmt:message key="label.Merch" /></a></li>
+				<li><a href="/items?category=stationary&lang=en"><fmt:message key="label.Stationery" /></a></li>
+				<li><a href="/items?category=books&lang=en"><fmt:message key="label.Books" /></a></li>
 			</ul>
 		</div>
 	</header>

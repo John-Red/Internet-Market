@@ -44,7 +44,7 @@ public class AdminFilter implements Filter {
       req.setAttribute("status", "Please, login as Admin");
       req.getRequestDispatcher("/warning.jsp").forward(req, res);;
     } else {
-      res.sendRedirect(req.getContextPath() + "/login");
+      res.sendRedirect(req.getContextPath() + "/login?lang=en");
     }
   }
 

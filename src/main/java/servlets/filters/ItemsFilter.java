@@ -42,7 +42,7 @@ public class ItemsFilter implements Filter {
     if (role.equals("admin")||role.equals("user")) {
       req.getRequestDispatcher("/items").forward(req, res);
     } else {
-      res.sendRedirect(req.getContextPath() + "/login");
+      res.sendRedirect(req.getContextPath() + "/login?lang=en");
     }
   }
 
