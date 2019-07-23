@@ -25,6 +25,7 @@ public class CartServlet extends HttpServlet {
     request.setAttribute("cartList", list);
     request.setAttribute("userId", Cart.currentUserId);
     request.setAttribute("Subtotal", CartService.INSTANCE.getSubtotalPrice());
+    request.setAttribute("userBalance", UsersService.INSTANCE.getUserBalance(Cart.currentUserId));
     request.setAttribute("CartQuantity", sumCartQuantity);
     request.getRequestDispatcher("/cart.jsp").forward(request, response);
   }

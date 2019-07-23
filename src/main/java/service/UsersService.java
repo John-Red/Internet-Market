@@ -26,10 +26,6 @@ public enum UsersService {
     }
   }
 
-//  public Integer getCurrentUserId(String login){
-//    return UsersRepositoryImpl.INSTANCE.getCurrentUserId(login);
-//  }
-
   public Integer getUserBalance(Long userId) {
     return UsersRepositoryImpl.INSTANCE.getUserBalance(userId);
   }
