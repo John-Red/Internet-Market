@@ -38,7 +38,7 @@
   <div class="card-body">
     <h5 class="card-title">Thank you for purchase!</h5>
     <p class="card-text">Your order № ${orderId} complete and will be delivered to your work place.</p>
-    <a href="/items" class="btn btn-primary">Back to main page</a>
+    <a href="/items?lang=en" class="btn btn-primary">Back to main page</a>
   </div>
 </div>
 </body>

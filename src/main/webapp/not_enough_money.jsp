@@ -36,7 +36,7 @@
   <img class="card-img-top" src="img/nomoneytravolta.gif" alt="Card image cap">
   <div class="card-text-center">
     <h5 class="card-title">Not enough coins on your account</h5>
-    <a href="/items" class="btn btn-primary">Back to main page</a>
+    <a href="/items?lang=en" class="btn btn-primary">Back to main page</a>
   </div>
 </div>
 </body>
