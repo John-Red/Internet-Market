@@ -24,7 +24,7 @@
             <input type="password" required placeholder="<fmt:message key="label.password" />" name="password"><br><br>
             <input type="submit"  class = "sign-up" value="<fmt:message key="label.SignIn" />" >
         </form>
-        <span class="to-registration"><fmt:message key="label.needAcc" /><a href="/registration" class="to-registration-src"> <fmt:message key="label.SignUp" /></a></span>
+        <span class="to-registration"><fmt:message key="label.needAcc" /><a href="/registration?lang=en" class="to-registration-src"> <fmt:message key="label.SignUp" /></a></span>
     </div>
     </div>
 </body>

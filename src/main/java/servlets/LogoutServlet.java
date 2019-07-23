@@ -16,7 +16,7 @@ public class LogoutServlet  extends HttpServlet {
     session.removeAttribute("password");
     session.removeAttribute("login");
     session.removeAttribute("role");
-    resp.sendRedirect("/login");
+    resp.sendRedirect("/login?lang=en");
   }
 
 }

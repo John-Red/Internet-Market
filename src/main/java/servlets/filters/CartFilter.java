@@ -44,7 +44,7 @@ public class CartFilter implements Filter {
       req.setAttribute("userId", Cart.currentUserId);
       req.getRequestDispatcher("/cart").forward(req, res);
     } else {
-      res.sendRedirect(req.getContextPath() + "/login");
+      res.sendRedirect(req.getContextPath() + "/login?lang=en");
     }
   }
 
