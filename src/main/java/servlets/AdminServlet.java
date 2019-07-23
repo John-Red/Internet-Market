@@ -63,6 +63,6 @@ public class AdminServlet extends HttpServlet {
       AdminService.INSTANCE
           .updateUserBalance(Long.valueOf(userId), Integer.valueOf(balance));
     }
-    resp.sendRedirect(req.getContextPath() + "/admin");
+    resp.sendRedirect(req.getContextPath() + "/admin?lang=en");
   }
 }

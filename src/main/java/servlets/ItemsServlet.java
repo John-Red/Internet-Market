@@ -26,7 +26,6 @@ public class ItemsServlet extends HttpServlet {
     selectedCategory = request.getParameter("category");
     final HttpSession session = request.getSession();
     Cart.currentUserId = UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
-
     List<Items> itemsList = ItemsService.INSTANCE.get(selectedCategory);
     List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
     List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);

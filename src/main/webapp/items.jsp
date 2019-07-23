@@ -28,7 +28,7 @@
 </div>
 
 <div><h2>${item.getName()}</h2></div>
-<div><span class="span">${item.getPrice()} &#275;</span></div>
+<div><span class="span">${item.getPrice()} $</span></div>
 <div class="item_available"><p> <fmt:message key="label.available" />  ${item.getAvailable()}</p></div>
 
 <div class="item_add">
@@ -44,7 +44,7 @@
 						<h2><fmt:message key="label.Categories" /></h2>
 							<ul class="menu-drop">
 							 <c:forEach items="${categoriesList}" var="categories" >
-							    <li class="item1"><a href="/items?category=${categories.getName()}">${categories.getName()}</a></li>
+							    <li class="item1"><a href="/items?category=${categories.getName()}&lang=en">${categories.getName()}</a></li>
 							</c:forEach>
 						</ul>
 </div>
