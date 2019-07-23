@@ -24,7 +24,8 @@ public class AdminServlet extends HttpServlet {
     List<Items> listOfItems = AdminService.INSTANCE.getAllItems();
     List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
     int sumCartQuantity = 0;
-    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    for (Cart c : list) {
+      sumCartQuantity += c.getItemOrdersQuantity();
     }
     req.setAttribute("itemsList", listOfItems);
     req.setAttribute("CartQuantity", sumCartQuantity);
@@ -56,11 +57,10 @@ public class AdminServlet extends HttpServlet {
 
     //change balance
     String balance = req.getParameter("getBalance");
-    if (balance!=null){
+    if (balance != null) {
       AdminService.INSTANCE
-          .updateUserBalance(Long.valueOf(userId),Integer.valueOf(balance));
+          .updateUserBalance(Long.valueOf(userId), Integer.valueOf(balance));
     }
     resp.sendRedirect(req.getContextPath() + "/admin");
   }
-
 }
