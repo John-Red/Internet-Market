@@ -28,7 +28,7 @@
 </div>
 
 <div><h2>${item.getName()}</h2></div>
-<div><span class="span">${item.getPrice()} $</span></div>
+<div><span class="span">${item.getPrice()} &#275;</span></div>
 <div class="item_available"><p> <fmt:message key="label.available" />  ${item.getAvailable()}</p></div>
 
 <div class="item_add">
