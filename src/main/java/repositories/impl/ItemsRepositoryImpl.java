@@ -54,6 +54,7 @@ public enum ItemsRepositoryImpl implements ItemsRepository {
             });
     return result;
   }
+
   public List<Items> get(Long itemId) {
     result =
         statement.query(

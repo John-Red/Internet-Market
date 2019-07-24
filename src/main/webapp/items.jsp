@@ -44,7 +44,7 @@
 						<h2><fmt:message key="label.Categories" /></h2>
 							<ul class="menu-drop">
 							 <c:forEach items="${categoriesList}" var="categories" >
-							    <li class="item1"><a href="/items?category=${categories.getName()}">${categories.getName()}</a></li>
+							    <li class="item1"><a href="/items?category=${categories.getName()}&lang=en">${categories.getName()}</a></li>
 							</c:forEach>
 						</ul>
 </div>

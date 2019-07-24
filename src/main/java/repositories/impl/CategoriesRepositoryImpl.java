@@ -15,29 +15,33 @@ public enum CategoriesRepositoryImpl {
   JdbcTemplate statement = DatabaseConnection.INSTANCE.getStatement();
 
   public List<Categories> get() {
-    result = statement.query("SELECT * FROM categories",
-        new RowMapper<Categories>() {
-          public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return Categories.builder()
-                .categoryId(rs.getLong("category_id"))
-                .name(rs.getString("name"))
-                .build();
-          }
-        });
+    result =
+        statement.query(
+            "SELECT * FROM categories",
+            new RowMapper<Categories>() {
+              public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Categories.builder()
+                    .categoryId(rs.getLong("category_id"))
+                    .name(rs.getString("name"))
+                    .build();
+              }
+            });
     return result;
   }
 
   public List<Categories> getCategory(String categoryName) {
-    result = statement.query("SELECT * FROM categories WHERE name = ?",
-        new RowMapper<Categories>() {
-          public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return Categories.builder()
-                .categoryId(rs.getLong("category_id"))
-                .name(rs.getString("name"))
-                .build();
-          }
-        },
-        categoryName);
+    result =
+        statement.query(
+            "SELECT * FROM categories WHERE name = ?",
+            new RowMapper<Categories>() {
+              public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Categories.builder()
+                    .categoryId(rs.getLong("category_id"))
+                    .name(rs.getString("name"))
+                    .build();
+              }
+            },
+            categoryName);
     return result;
   }
 

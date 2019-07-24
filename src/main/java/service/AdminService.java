@@ -29,7 +29,7 @@ public enum AdminService {
     UsersRepositoryImpl.INSTANCE.changeRole(userId, role);
   }
 
-  public void updateUserBalance (Long userId, Integer balance){
+  public void updateUserBalance(Long userId, Integer balance) {
     UsersRepositoryImpl.INSTANCE.updateUserBalance(userId, balance);
   }
 }

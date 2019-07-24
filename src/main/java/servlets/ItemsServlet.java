@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import repositories.impl.CartRepositoryImpl;
 import repositories.impl.CategoriesRepositoryImpl;
 import repositories.impl.UsersRepositoryImpl;
 import service.CartService;
@@ -20,18 +19,20 @@ import service.UsersService;
 
 public class ItemsServlet extends HttpServlet {
   String selectedCategory;
+
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     selectedCategory = request.getParameter("category");
     final HttpSession session = request.getSession();
-    Cart.currentUserId = UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
-
+    Cart.currentUserId =
+        UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
     List<Items> itemsList = ItemsService.INSTANCE.get(selectedCategory);
     List<Categories> categories = CategoriesRepositoryImpl.INSTANCE.get();
     List<Cart> list = CartService.INSTANCE.get(Cart.currentUserId);
     int sumCartQuantity = 0;
-    for (Cart c : list ) {sumCartQuantity += c.getItemOrdersQuantity();
+    for (Cart c : list) {
+      sumCartQuantity += c.getItemOrdersQuantity();
     }
     request.setAttribute("itemsList", itemsList);
     request.setAttribute("categoriesList", categories);
@@ -47,7 +48,7 @@ public class ItemsServlet extends HttpServlet {
     Long userId = UsersRepositoryImpl.INSTANCE.getCurrentUserId(session.getAttribute("login"));
     String name = req.getParameter("addInCart");
     Long itemId = Long.parseLong(name);
-    ItemOrdersService.INSTANCE.insert(itemId,userId);
-    resp.sendRedirect("/items?category="+selectedCategory+"&lang=en");
+    ItemOrdersService.INSTANCE.insert(itemId, userId);
+    resp.sendRedirect("/items?category=" + selectedCategory + "&lang=en");
   }
 }
